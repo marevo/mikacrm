@@ -1,0 +1,677 @@
+﻿@charset "utf8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+/*hgroup,*/
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header,
+/*hgroup,*/
+menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* End of Eric Meyer's CSS Reset */
+
+article, aside, details, figcaption, figure, footer, header,
+/*hgroup,*/
+main, nav, section, summary {
+	display: block;
+}
+.wrapper{
+	margin: 0 auto;
+}
+table{
+    /*table-layout: fixed;*/
+    /*width: 100% ;
+    /*text-align: center;*/
+}
+thead td {
+    background-color: #efefef;
+    padding: 10px;
+}
+
+tbody td{
+   padding: 10px;
+}
+ li {
+    list-style-type: none; /* Убираем маркеры */
+   }
+   a{
+	   color: white;
+   }
+#header{
+    background-color: #04B486;
+	margin-left: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100px;
+	z-index: 100;
+}
+#pod{
+	/*margin-top: 20px;*/
+}
+.middle:after {
+	display: table;
+	clear: both;
+	content: '';
+}
+#cont{
+/*width: 840px;*/
+}
+.container {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#fon{
+	background-color: 	#F0F0F0;
+}
+img{
+	float: left;
+}
+#exit {
+	margin-left: 800px;
+	float: right;
+}
+.menu_list{
+	margin-bottom: 30px;
+}
+#main_cont{
+	margin-top:100px;
+}
+#main_modul {
+	margin-left: 230px;
+}
+/* Left Sidebar
+-----------------------------------------------------------------------------*/
+#left-sidebar {
+	font: 18px/24px Arial, sans-serif;
+	max-width: 230px;
+	min-height: 1200px;
+	margin-top: 100px;
+	background-image: linear-gradient(to right,#038A67 0,#04B486 100%);	
+}
+#left-sidebar span{
+	display: inline-block;
+	width: 25px;
+	text-align: right;
+	margin-right: 18px;
+	margin-left: 13px;
+}
+.img-sm {
+    width: 36px!important;
+    height: 36px!important;
+}
+.vcenter {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+}
+.profile{
+	margin-left: 50px;
+}
+ul#menu_list li{
+margin-top: 20px;
+margin-bottom: 20px;
+}
+body{
+	font: 14px/20px Arial, sans-serif;
+}
+.contentpaneopen img {
+margin:10px;
+}
+.img-icon{
+    max-height: 24px;
+    vertical-align:top;
+    margin-right: 4px;
+	/*background-position: -90px -40px;*/
+}
+.footer{
+	position: relative;
+    height: 100px;
+	margin-left: -15px;
+	/*background: #04B486;
+	text-align: center;*/
+	/*z-index:0;*/
+}
+.footer div{
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.icon-exit3:before{
+	font-family: 'icomoon';
+	content: "\ed78";
+	width:15px;
+	height:15px;
+}
+.icon-box-add:before{
+	font-family: 'icomoon';
+	content: "\ead0";
+	width:15px;
+	height:15px;
+	/*margin-right: 10px;*/
+}
+.icon-vcard:before{
+	font-family: 'icomoon';
+	content: "\eb47";
+	width:15px;
+	height:15px;
+	/*margin-right:10px*/
+}
+.fa-shopping-basket:before{
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f291";
+	width:20px;
+	height:20px;
+	
+}
+.fa-cart-arrow-down:before{
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f218";
+	width:20px;
+	height:20px;
+	
+}
+.icon-home3:before{
+	font-family: 'icomoon';
+	content: "\e901";
+	width:20px;
+	height:20px;
+}
+.icon-package{
+	font-family: 'icomoon';
+	content: "\ec1b";
+	width:20px;
+	height:20px;
+	
+}
+.icon-truck{
+	font-family: 'icomoon';
+	content: "\e0ab";
+	width:20px;
+	height:20px;
+	
+}
+.fa-user:before{
+	/*font-family: 'fontawesome';*/
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f007";
+	width:15px;
+	height:15px;
+	
+}
+.fa-bar-chart:before{
+	/*font-family: 'fontawesome';*/
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f080";
+	width:15px;
+	height:15px;
+	
+}
+.fa-check-square-o{
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f1fd";
+	width:15px;
+	height:15px;
+    	
+}
+.fa-birthday-cake {
+    font: normal normal normal 18px/1 FontAwesome;
+	content: "\f080";
+	width:15px;
+	height:15px;
+	
+}	
+.fa-key{
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f084";
+	width:15px;
+	height:15px;
+}
+.fa-phone{
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f095";
+	width:15px;
+	height:15px;
+}
+.fa-first-order{
+	font: normal normal normal 18px/1 FontAwesome;
+	content: "\f2b0";
+	width:15px;
+	height:15px;
+}
+.backForDiv{
+    /*background-color: #2aabd2;*/
+    /*border: #d0d299 solid 1px;*/
+}
+/* класс позволяет ограничить размер высоты и ширины таблицы для удобства просмотра таблиц что имеют большую ширину и высоту*/
+.divForTable {
+    /*overflow: auto;*/
+   /*max-height:400px;*/
+    /*width: 100%;*/
+}
+.divForTable div{
+    /*table-layout: fixed;*/
+    padding-left: 0;
+    padding-right: 0;
+
+    /*width: 100% ;*/
+    /*text-align: center;*/
+}
+.material-icons {
+font-family: 'Material Icons';
+font-weight: normal;
+font-style: normal;
+font-size: 18px; /* Preferred icon size */
+display: inline-block;
+line-height: 1;
+text-transform: none;
+letter-spacing: normal;
+word-wrap: normal;
+white-space: nowrap;
+direction: ltr;
+/* Support for all WebKit browsers. */
+-webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+text-rendering: optimizeLegibility;
+/* Support for Firefox. */
+-moz-osx-font-smoothing: grayscale;
+/* Support for IE. */
+font-feature-settings: 'liga';
+}
+article{
+    padding: 10px;
+    border: 1px solid burlywood;
+    border-radius: 1em;
+    background-color: #7fcfff;
+}
+article h1,h2,h4{
+    background-color: antiquewhite;
+    border-radius:1rem;
+}
+article li{
+     list-style-type: none ;
+     }
+
+article footer{
+    border-radius:1rem;
+       background-color: #d6d699;
+}
+.forDisplayTimeShowAnswerServer {
+    background-color: #9db9d2;
+    height: 50px;
+    /*display: flex;*/
+    /*display: inline-flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+.forDisplayTimeShowAnswerServer>div{
+    height: 100%;
+}
+.forDisplayTime {
+    background-color: #2aabd2;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25em;
+    flex-wrap: wrap;
+}
+/*подсветка кликнутой строки в таблице*/
+.highLightTd{
+    background-color: #d6d699;
+}
+.textBold{
+    font-weight: bold;
+}
+/*viewAllOrders*/
+.orderNewRow{
+    background-color: #f9f1d7;
+}
+.orderNewCell{
+    background-color: #f9e5a9;
+}
+.orderSuccessRow{
+    background-color: #83dc83;
+
+}
+.orderSuccessCell{
+    background-color: #c4eb7c;
+
+}
+.orderNoSuccessRow{
+    background-color: #eba39d;
+}
+.orderNoSuccessCell{
+    background-color: #ebcccc;
+}
+
+#tableOneOrder{
+    /*background-color: #cfe2f3;*/
+}
+#formOneOrder tr td:nth-child(even)  {
+    text-align: left;
+
+}
+#formOneOrder tr td:nth-child(odd) {
+    text-align: right;
+
+}
+#tableOneOrder thead td:last-child ,#tableOneOrder thead td:first-child{
+    min-width: 150px;
+    /*background-color: #cfe2f3;*/
+}
+/* viewOneOrder.php*/
+tr :nth-child(3){
+   /*min-width: 100px;*/
+}
+tbody tr :nth-child(3):hover{
+    cursor: pointer;
+}
+#rezShow{
+    background-color: #ff9792;
+    height: 100%;
+    min-width: 100px;
+}
+table a{
+    display: block;
+    /*border: black 1px solid;*/
+    border-radius: 4px;
+    padding: 6px;
+    text-decoration: none;
+}
+
+table tbody a:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+table {
+    padding-left: 0;
+    padding-right: 0;
+}
+            #table_Orders table a{
+                display: block;
+                border: 1px solid black;
+            }
+            /* столбец даты в таблице всех заказов #tableOrders in viewAllOrders.php*/
+                    #table_Orders thead tr td:first-child {
+                        min-width: 130px;
+                    }
+            /*столбец названия заказа в таблице всех заказов #tableOrders in viewAllOrders.php*/
+                    #table_Orders thead tr td:nth-child(2) {
+                        min-width: 230px;
+                    }
+                    /*столбец названия клиента в таблице всех заказов #tableOrders in viewAllOrders.php*/
+                    #table_Orders thead tr td:nth-child(3) {
+                        min-width: 180px;
+                    }
+                    /* ссылка на создание нового заказа в строке поиска in viewAllOrders.php*/
+                    .row .rowSearch a{
+                        ;
+                       /* border: 1px solid black;
+                        background-color: #5bc0de;
+                        border-radius: 5px;
+                        max-width: 100px;
+                        min-height: 25px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;*/
+                    }
+table a{
+   /* min-width: 100px;
+    display: block;
+    border: black 1px solid;
+    border-radius: 4px;
+    padding: 6px;*/
+    /*padding :5px 15px;*/
+    text-decoration: none;
+}
+#rezZaprosaKServer{
+     /*height: 50px;*/
+    background-color: #9acfea;
+}
+            .uspeh,.noUspeh{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+                   .uspeh span,.noUspeh span{
+                       vertical-align: middle;
+                   }
+                   .uspeh{
+                       background-color: #a0d454;
+                       /*font-size: large;*/
+                       min-height: 100%!important;
+                       display: none;
+                   }
+                   .noUspeh{
+                       background-color: #dca7a7;
+                       /*font-size: larger;*/
+                       display: none;
+                       min-height: 100%!important;
+                       border: #d21f12 solid 2px;
+                   }
+                   /* в этот элемент будут передаваться ответы сервера (script)*/
+                   .divForAnswerServer{
+                       /*display:none;*/
+                   }
+/*модальное окно просмотра всех материалов в viewOneOrder.php*/
+#modalViewAllMaterialsToThisOrder, #modalAddMaterialToOrder{
+    /*position: fixed;*/
+    /*z-index: 100;*/
+    top:0px;
+    left:0px;
+    height: 100%;
+    width: 100%;
+    /*background: #f9e2ff;*/
+    box-shadow: 0 0 3px #000;
+    display: none;
+    overflow: auto;
+}
+/*ширина диалогового окна просмотра всех материалов в заказе*/
+#tableAllMaterialsForOrder .modal-content{
+    width: 1000px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+/*ширина всех модальных окон если не задано другое*/
+.modal-dialog {
+    width: 80%;
+}
+
+.modal-content{
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.tableFildMaterialToAddToOrder{
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+#modalViewAllMaterialsToThisOrder table a{
+    min-width: 100px;
+    display: block;
+    border: black 1px solid;
+    border-radius: 4px;
+    padding: 6px;
+    /*padding :5px 15px;*/
+    text-decoration: none;
+
+}
+/* таблица отображения */
+#tableAllMaterialsForOrder tbody, #tableFildMaterialToAddToOrder tbody{
+    width: 500px;
+}
+/*выравнивание по вертикали*/
+.fontSizeMedium {
+    font-size: medium;
+}
+
+.inputToControle{
+    background-color: #efefef;
+}
+
+#rezShowModal:before,.rezDeleteTr:before{
+    display: block;
+    content: 'результат запроса';
+    /*border:1px solid red;*/
+    background-color: #337ab7;
+    color:#f1fdff;
+    padding: 4px;
+    /*min-height: 30px;*/
+}
+/*цвет подсказки */
+.backgroundAlertRed{
+    background-color: #c78187;
+    border: 1px solid darkred;
+}
+/* /viewOneOrder.php*/
+/*viewAllOrders*/
+#viewAllOrdersModal .modal-dialog{
+    width: 400px!important;
+}
+.viewTrashedOrders ,.addNewOrder{
+    border: 1px solid black;
+    background-color: #5bc0de;
+    border-radius: 5px;
+    max-width: 100px;
+    min-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewTrashedOrders:hover,.addNewOrder:hover{
+    cursor:pointer;
+}
+.rowSearch{
+    background-color: #cdccd2;
+}
+/*/viewAllOrders*/
+
+#tableMaterials{
+    overflow-y: scroll;
+    max-height: 700px;
+}
+
+/*formAddNewMaterialsToBase.php*/
+/* отображение заголовка что правим и кнопок рядом viewOneSupplier.php*/
+.headingContent{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f1d7;
+/*background-color: #2aabd2;*/
+}
+             .headingContent div:first-child{
+                 /*display: flex;*/
+                 font-size: large;
+             }
+.a_displayBlock{
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 4px;
+    text-decoration: none;
+    /*max-width: 60%;*/
+    display: flex;
+    align-items: center;
+}
+.a_displayBlock:hover{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #2aabd2;
+}
+.a_displayBlock span{
+    /*display: block;*/
+}
+/*/formAddNewMaterialsToBase.php*/
+/* .formMaterial класс для возможного  сокрытия при update*/
+/* по началу ячейки таблицы закрыты для правки то есть можно только смотреть*/
+.formMaterial {
+    display: none;
+}
+/*viewAllMaterials.php*/
+
+#tbViewAllMaterials tbody td span, #tbViewAllSuppliers tbody td span{
+/*#tbViewAllMaterials tbody td:last-child span, .iconInTd{*/
+    display: block;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    /*max-width: 20px!important;*/
+}
+#tbViewAllMaterials tbody a{
+    display: block;
+    /*border: black 1px solid;*/
+    border-radius: 4px;
+    text-decoration: none;
+
+}
+/*ширина модального окна при вопросе удаления */
+#modalWinForDeleteMat .modal-dialog, #modalWinForDeleteSupp .modal-dialog, #modalwinfordeleteclient .modal-dialog{
+    width: 600px;
+}
+
+/*/viewAllMaterials.php*/
+
+/*viewAllSuppliers.php */
+.tdDisplayNone{
+    display: none;
+}
+.tdDisplayBlock{
+    display: block;
+}
+.trDisplayNone{
+    display: none;
+}
+.forClear{
+    border: #d45554 1px solid;
+}
+/* /viewOneOrder.php*/
+/* authorization.php */
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.input-group { margin-bottom:10px; }
+.separator { border-right: 1px solid #dfdfe0; }
+.facebook,.twitter { min-width:170px; }
+.facebook { background-color:#354E84;color:#fff; }
+.twitter { background-color:#00A5E3;color:#fff; }
+.facebook:hover,.twitter:hover { color:#fff; }
+#logo{
+	margin-top:10px;
+}

@@ -1,0 +1,3 @@
+#Orders соединить с materialstoorder(mo), умножив mo.priceRecomNeed на mo.recomAddCount и просуммировать. Это будут расходы.
+Sum(Payments.sumPayment) - доходы
+Sum(Payments.sumPayment)-Sum(Orders.manufacturingPrice) - чистая прибыль
