@@ -1,9 +1,10 @@
 /**
- * Created by marevo on 17.03.2018.
+ * Created by marevo on 23.04.2018.
  */
+
 $(function () {
-    //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить материал
-    $('#tbViewAllClients').on('click',function (event) {
+    //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить поставщика
+    $('#tbViewAllSuppliers').on('click',function (event) {
         var target = event.target;
         while (target.tagName != 'TABLE'){
             if(target.tagName == 'TD'){
@@ -11,20 +12,20 @@ $(function () {
                 if($(target).data('id')){
                     console.log('id for delete '+$(target).data('id'));
                     //вызовем модальное окно для удаления ненужного материала
-                    $('#modalIdClient').text( $(target).data('id') );
-                    $('#modalNameClient').text( $(target).siblings()[1].textContent );
-                    $('#modalWinForDeleteClient').modal('show');
+                    $('#modalIdSupplier').text( $(target).data('id') );
+                    $('#modalNameSupplier').text( $(target).siblings()[1].textContent );
+                    $('#modalWinForDeleteSuppleir').modal('show');
                 }
             }
             if(target.closest('a')){
-                console.log('хотим перейти на просмотр одного клиента');
+                console.log('хотим перейти на просмотр одного поставщика');
                 if(target.nodeName == 'SPAN')
                     target = target.parentNode;
                 var tarHref = $(target).attr('href');
                 console.log('tarHref=' + tarHref);
-                var idOneClient = $(target).data('id');
-                console.log('idClientForView=' + idOneClient);
-                includeViewOneClient(tarHref,idOneClient);
+                var idOneOrder = $(target).data('id');
+                console.log('idOrderForView=' + idOneOrder);
+                includeViewOneClient(tarHref,idOneOrder);
                 return false;
                 // if($(target).find('a').)
             }
@@ -67,7 +68,7 @@ $(function () {
 });
 
 //функция загрузки данных одного клиента в окошко '#main_modul'
-//функция подтяжки в id='#main_modul' viewOneClient.php с заданным id 
+//функция подтяжки в id='#main_modul' viewOneClient.php с заданным id
 function includeViewOneClient(tarHref,idOneClient) {
     jquery_send('#main_modul','post','../App/controllers/controllerViewAllClients.php',
         ['includeViewOneClient','tarHref','id'],

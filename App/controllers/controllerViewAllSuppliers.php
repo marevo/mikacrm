@@ -15,11 +15,11 @@ if(isset($_POST['deleteSupplierFromBase'])){
 //        $res = false;
         $res = \App\Models\Supplier::deleteObj($idSupp);
         if($res){
-            echo "<script>fUspehAll('удалили успешно')</script>";
+            echo "<script>fUspehAll('поставщика удалили успешно')</script>";
             echo "<script>$('[data-id_supplier = $idSupp]').parent().remove() ;</script>";
         }
         else{
-            echo "<script>fNoUspehAll('не удалось удалить материал')</script>";
+            echo "<script>fNoUspehAll('не удалось удалить поставщика')</script>";
         }
     }
 }
@@ -53,6 +53,7 @@ if(isset($_POST['searchLike'])){
 }
 
 //выбросить(подтянуть через include) на страницу форму добавления нового заказчика
-if(isset($_POST['iccludeFormNewSupplier'])){
-
+if(isset($_POST['includeFormNewSupplier'])){
+    echo "привет->запрос на загрузку формы добавления (создания) нового поставщика";
+    include '../../templates/formAddNewSupplierToBase.php';
 }

@@ -40,6 +40,6 @@
     <link rel="stylesheet" href="/css/manual.css">
     <link rel="icon" href="/fonts/glyphicons-halflings-regular.ttf">
     <link rel="shortcut icon"  href="/img/favicon/icon.ico">
-    <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/ajax_post_get.js"></script>
 </head>

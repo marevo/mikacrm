@@ -61,7 +61,8 @@
                             <script type="text/javascript">
                                 $('#makeNewClient').on('click',includeFormAddNewClient);
                                 function includeFormAddNewClient() {
-                                    jquery_send('#main_modul','post','../App/controllers/controllerViewAllClients.php',['includeFormNewClient'],['']);
+                                    jquery_send('#main_modul','post',
+                                        '../App/controllers/controllerViewAllClients.php',['includeFormNewClient'],['']);
                                     //event.stopPropagation();
                                     //                            document.getElementById("#main_modul").innerHTML= '<?// echo  include ('formAddNewOrder.php');?>//';
                                     return false;

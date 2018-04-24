@@ -31,6 +31,7 @@ class Client extends ModelLikeTable
     {
         // TODO: Implement isNew() method.
         if(empty($this->id) || is_null($this->id) ){
+            //да это новый клиент
             return true;
         }
         else{

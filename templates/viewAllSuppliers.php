@@ -8,7 +8,7 @@ require_once 'autoload.php';
 //require_once('../head.html');
 ?>
 <body>
-<div class="container" id="cont">
+    <div class="container" id="cont">
   <!--  <div class="row">
         <?php //require_once('header.html'); ?>
     </div>
@@ -20,7 +20,6 @@ require_once 'autoload.php';
     </div>
     <!--строка показа времени и показа результата добавки материала в базу  -->
     <?php  include_once 'App/html/forDisplayTimeShowAnswerServer.html'?>
-
     <div class="row"><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
         <!--<div class="col-lg-2 backForDiv"> <!-- начало доп блока слева
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
@@ -45,8 +44,20 @@ require_once 'autoload.php';
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <label for="makeNewSupplier"  class="text-center">новый поставщик</label>
-                    <div title="создать нового поставщика" id="makeNewSupplier"></div>
+                    <div title="создать нового поставщика" id="makeNewSupplier">
                     <a href='formAddNewSupplierToBase.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>
+                        <script type="text/javascript">
+                            $('#makeNewSupplier').on('click',includeFormAddNewSupplier);
+                            function includeFormAddNewSupplier() {
+                                jquery_send('#main_modul','post',
+                                    '../App/controllers/controllerViewAllSuppliers.php',['includeFormNewSupplier'],['']);
+                                //event.stopPropagation();
+                                //                            document.getElementById("#main_modul").innerHTML= '<?// echo  include ('formAddNewOrder.php');?>//';
+                                return false;
+                            }
+                        </script>
+
+                    </div>
                 </div>
             </div><!-- конец блока строки поиска  -->
 
@@ -59,7 +70,7 @@ require_once 'autoload.php';
                         $tableAllSupp = "<table id='tbViewAllSuppliers'><thead><tr><td class='tdDisplayNone'>id</td>" .
                             "<td>название</td><td>доп характ</td><td class='tdDisplayNone'>контакт</td><td>телефон</td><td class='tdDisplayNone'>email</td>" .
                             "<td>адрес поставщика</td><td class='tdDisplayNone'>день доставки</td><td class='tdDisplayNone'>сайт</td>" .
-                            "<td class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .
+                            "<td  class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .
                             "<td class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
                         foreach ($allSuppliersInBase as $item){
                             //найдем idMaterial для каждого поставщика, чтобы узнать есть или нет эти материалы в заказах и
@@ -70,7 +81,7 @@ require_once 'autoload.php';
                                     "<td class='tdDisplayNone'>$item->contactPerson</td><td>$item->phone0</td><td class='tdDisplayNone'>$item->email0</td>" .
                                     "<td>$item->address</td><td class='tdDisplayNone'> ".$item->getDeliveryDays()." </td>" .
                                     "<td class='tdDisplayNone'><a href='$item->site' target='_blank'>$item->site</a></td>" .
-                                    "<td class='text-center'><a href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
+                                    "<td class='text-center'><a data-id_supplier='$item->id' href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
                                     "<td></td></tr>";
                             }
                             else{
@@ -150,8 +161,8 @@ require_once 'autoload.php';
         $('#modalWinForDeleteSupp').on('click',function (event) {
             var target = event.target;
             if(target.name == 'btnDeleteSupplier'){
-                console.log('кликнули кнопку на удаление заказа');
-                //будем удалять материал из базы
+                console.log('кликнули кнопку на удаление поставщика');
+                //будем удалять поставщика из базы
                 jquery_send('.divForAnswerServer','post','../App/controllers/controllerViewAllSuppliers.php',
                     ['deleteSupplierFromBase','idSupplier'],['',$('#modalIdSupplier').text()]);
                 $('#modalIdSupplier').text('');
@@ -179,7 +190,7 @@ require_once 'autoload.php';
         //функция для создания нового поставщика 
         $('#makeNewSupplier').on('click',includeFormAddNewSupplier);
         function includeFormAddNewSupplier() {
-            jquery_send('#main_modul','post','/controllers/controllerViewAllOrders.php',['includeFormNewSupplier'],['']);
+            jquery_send('#main_modul','post','/controllers/controllerViewAllSuppliers.php',['includeFormNewSupplier'],['']);
             //event.stopPropagation();
             //                            document.getElementById("#main_modul").innerHTML= '<?// echo  include ('formAddNewOrder.php');?>//';
             return false;

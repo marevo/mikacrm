@@ -36,8 +36,6 @@ require 'autoload.php';
             <div> статус: admin/user<br>имя пользователя/ник</div>      
         </div>-->
     </div>
-    
-          
 </div>
 </body>
 </html>
