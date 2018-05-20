@@ -81,7 +81,7 @@ require_once 'autoload.php';
                                     "<td class='tdDisplayNone'>$item->contactPerson</td><td>$item->phone0</td><td class='tdDisplayNone'>$item->email0</td>" .
                                     "<td>$item->address</td><td class='tdDisplayNone'> ".$item->getDeliveryDays()." </td>" .
                                     "<td class='tdDisplayNone'><a href='$item->site' target='_blank'>$item->site</a></td>" .
-                                    "<td class='text-center'><a data-id_supplier='$item->id' href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
+                                    "<td class='text-center'><a data-id_supplier = $item->id href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
                                     "<td></td></tr>";
                             }
                             else{
@@ -90,8 +90,8 @@ require_once 'autoload.php';
                                     "<td class='tdDisplayNone'>$item->contactPerson</td><td>$item->phone0</td><td class='tdDisplayNone'>$item->email0</td>" .
                                     "<td>$item->address</td><td class='tdDisplayNone'> ".$item->getDeliveryDays()." </td>" .
                                     "<td class='tdDisplayNone'><a href='$item->site' target='_blank'>$item->site</a></td>" .
-                                    "<td class='text-center'><a href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
-                                    "<td data-id_supplier='$item->id' class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr>";
+                                    "<td class='text-center'><a data-id_supplier = $item->id href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
+                                    "<td data-id_supplier = $item->id class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr>";
                             }
                         }
                         $tableAllSupp .= "</tbody></table>";
