@@ -10,7 +10,7 @@ $(function () {
                 //нашли ячейку где был клик
                 if($(target).data('id')){
                     console.log('id for delete '+$(target).data('id'));
-                    //вызовем модальное окно для удаления ненужного материала
+                    //вызовем модальное окно для удаления ненужного клиента
                     $('#modalIdClient').text( $(target).data('id') );
                     $('#modalNameClient').text( $(target).siblings()[1].textContent );
                     $('#modalWinForDeleteClient').modal('show');

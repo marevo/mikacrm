@@ -91,13 +91,13 @@
 //                                есть  заказы поэтому не будем разрешать удалять клента
                                     $tableAllClients .= "<tr><td class='tdDisplayNone'>$item->id</td><td>$item->name</td><td>$item->contactPerson</td>" .
                                         "<td>$item->phone0</td><td class='tdDisplayNone'>$item->phone1</td><td class='tdDisplayNone'>$item->email0</td><td>$item->address</td>" .
-                                        "<td class='text-center'><a data-id =$item->id href='viewOneClient.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td><td></td></tr>";
+                                        "<td class='text-center'><a data-id = $item->id href='viewOneClient.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td><td></td></tr>";
                                 }
                                 else{
                                     // нет заказов у этого клиента, поэтому разрешим его удаление
                                     $tableAllClients .= "<tr><td class='tdDisplayNone'>$item->id</td><td>$item->name</td><td>$item->contactPerson</td>" .
                                         "<td>$item->phone0</td><td class='tdDisplayNone'>$item->phone1</td><td class='tdDisplayNone'>$item->email0</td><td>$item->address</td>" .
-                                        "<td class='text-center'><a href='viewOneClient.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
+                                        "<td class='text-center'><a data-id = $item->id href='viewOneClient.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
                                         "<td data-id='$item->id' class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr>";
                                 }
                             }

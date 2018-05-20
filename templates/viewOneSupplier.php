@@ -6,9 +6,9 @@
  * Time: 17:41
  */
 //require '../autoload.php';
-if(isset($_GET['id'])){
+if(isset($_POST['id'])){
 //    если передали id значит работаем с ним иначе будем брать в else по умолчанию id=1
-    $idSupplier = intval($_GET['id']);
+    $idSupplier = intval($_POST['id']);
 }
 else{
     $idSupplier = 1;
@@ -40,7 +40,7 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
         <!--            конец доп блока слева-->
         <div class="col-lg-12 backForDiv">
             <!--строка показа времени и показа результата добавки материала в базу  -->
-            <?php  include_once 'App/html/forDisplayTimeShowAnswerServer.html'?>
+            <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>
             <!--  блок отображения что меняем и кнокпки обновить страницу и кнопка править(покажет поля для внесения новых значений)  -->
             <div class="row headingContent">
                 <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">правка поставщика <?php echo $supp->name;?></div>
@@ -63,7 +63,7 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <form action="App/controllers/controllerOneSupplier.php" method="post">
+                    <form action="../App/controllers/controllerOneSupplier.php" method="post">
                         <table>
                             <thead>
                             <tr>
