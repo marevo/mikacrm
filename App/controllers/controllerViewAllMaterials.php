@@ -57,3 +57,16 @@ if(isset($_POST['searchLike'])){
         echo "$tableSearchMatTbody";
     }
 }
+//выбросить(подтянуть через include) на страницу форму добавления нового материала
+if(isset($_POST['includeFormNewMaterial'])){
+//    echo "привет->запрос на загрузку формы добавления (создания) нового материала";
+    include '../../templates/formAddNewMaterialsToBase.php';
+}
+if(isset($_POST['includeViewOneMaterial'])){
+    echo 'пришел запрос на подтяжку в #main_modul показа одного материала с параметром id    ';
+    if(isset($_POST['id'])){
+        $idSupp = htmlspecialchars($_POST['id']);
+        include '../../templates/viewOneMaterial.php';
+    }
+}
+

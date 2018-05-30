@@ -28,7 +28,7 @@ function insertNewClientToBase(){
         if(isset($_POST['address'])){
             $clNew->address = htmlspecialchars($_POST['address']);
         }
-        //вставим новый заказ в базу
+        //вставим нового клиента в базу
         $resInsert = $clNew -> insert();
 
         if($resInsert != false){

@@ -2,25 +2,7 @@
 //можем здесь писать если просто вывод или пока что при подключении будет autoload.php в head.html
 //require '../autoload.php';
 ?>
-    <!DOCTYPE HTML>
-    <html lang="ru-RU">
 
-<?php
-       // require_once('../head.html');
-    ?>
-    <body>
-    <div class="container">
-        <!--<div class="row">
-            <?php //require_once('header.html'); ?>
-        </div>
-        <div class="row"><!-- навигация 
-            <?php //include('../navigation.html');?>
-            <script>
-                showLi('материалы');
-            </script>
-
-            <!-- конец навигации 
-        </div>-->
         <!--строка показа времени и показа результата добавки материала в базу  -->
         <?php  include_once 'App/html/forDisplayTimeShowAnswerServer.html'?>
 
@@ -49,10 +31,10 @@
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                        <label for="makeNewMaterial"  class="text-center">новый материал</label>
-                        <div title="создать нового поставщика" id="makeNewMaterial"></div>
-                        <a href='formAddNewMaterialsToBase.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="makeNewMaterial" title="создать нового поставщика">
+                        <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый материал</button>
+<!--                        <label for="makeNewMaterial"  class="text-center"> </label>-->
+<!--                        <a href='formAddNewMaterialsToBase.php'> <div class="text-center"> </div></a>    -->
                     </div>
                 </div><!-- конец блока строки поиска  -->
 
@@ -123,61 +105,8 @@
             </div><!--modal-dialog-->
         </div><!--id="modalWinForDeleteMat" modal-fade -->
 
-    </div><!-- container -->
-    </body>
-    </html>
-<script type='text/javascript'>
-    $(function () {
-       //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить материал
-        $('#tbViewAllMaterials').on('click',function (event) {
-         var target = event.target;
-           while (target.tagName != 'TABLE'){
-               if(target.tagName == 'TD'){
-                   //нашли ячейку где был клик
-                   if($(target).data('id')){
-                       console.log('id for delete '+$(target).data('id'));
-                       //вызовем модальное окно для удаления ненужного материала
-                       $('#modalIdMaterial').text( $(target).data('id') );
-                       $('#modalNameMaterial').text( $(target).siblings()[1].textContent );
-                       $('#modalWinForDeleteMat').modal('show');
-                   }
-               }
-               target = target.parentNode;
-           }
-           console.log('click по таблице');
-       });
-        //функция обработки клика в модальном окне будем обрабатывать только кнопку
-        $('#modalWinForDeleteMat').on('click',function (event) {
-            var target = event.target;
-            if(target.name == 'btnDeleteMaterial'){
-                console.log('кликнули кнопку на удаление заказа');
-                //будем удалять материал из базы
-                jquery_send('.divForAnswerServer','post','App/controllers/controllerViewAllMaterials.php',
-                    ['deleteMaterialFromBase','idMaterial'],['',$('#modalIdMaterial').text()]);
-                $('#modalIdMaterial').text('');
-                $('#modalNameMaterial').text( '');
-                $('#modalWinForDeleteMat').modal('hide');
+<script src = '/js/viewAllMaterials.js'></script>
 
-            }
-        });
-        //функция обработки при вызове модального окна
-        $('#modalWinForDeleteMat').on('show.bs.modal',function () {
-
-        });
-        //функция поиска материала по подобию названия или доп. характеристик
-        $('#btnSearchMaterialLikeNameORLikeAddCharacteristic').on('click',function () {
-            console.log('нажали кнопку поиска материалы по подобию названию или добхарактеристик');
-            var inputSearchValue = $('#inputFindMaterial').val();
-            if(inputSearchValue.length < 3 || inputSearchValue.length == 0){
-                $('#inputFindMaterial').val('').attr('placeholder','минимум 3 символа');
-            }else {
-                console.log('отправим запрос на поиск');
-                jquery_send('#tbViewAllMaterials tbody','post','App/controllers/controllerViewAllMaterials.php',['searchLike','likeValue'],['',inputSearchValue]);
-            }
-        });
-
-    });
-</script>
 
 
 

@@ -11,7 +11,7 @@ $(function () {
                 //нашли ячейку где был клик
                 if($(target).data('id')){
                     console.log('id for delete '+$(target).data('id'));
-                    //вызовем модальное окно для удаления ненужного материала
+                    //вызовем модальное окно для удаления ненужного поставщика
                     $('#modalIdSupplier').text( $(target).data('id') );
                     $('#modalNameSupplier').text( $(target).siblings()[1].textContent );
                     $('#modalWinForDeleteSuppleir').modal('show');
@@ -23,9 +23,9 @@ $(function () {
                     target = target.parentNode;
                 var tarHref = $(target).attr('href');
                 console.log('tarHref=' + tarHref);
-                var idOneOrder = $(target).data('id');
-                console.log('idOrderForView=' + idOneOrder);
-                includeViewOneClient(tarHref,idOneOrder);
+                var idOneSupplier = $(target).data('id');
+                console.log('idSupplierForView=' + idOneSupplier);
+                includeViewOneSupplier(tarHref,idOneSupplier);
                 return false;
                 // if($(target).find('a').)
             }
@@ -69,9 +69,9 @@ $(function () {
 
 //функция загрузки данных одного клиента в окошко '#main_modul'
 //функция подтяжки в id='#main_modul' viewOneClient.php с заданным id
-function includeViewOneClient(tarHref,idOneClient) {
-    jquery_send('#main_modul','post','../App/controllers/controllerViewAllClients.php',
-        ['includeViewOneClient','tarHref','id'],
-        ['',tarHref, idOneClient]);
+function includeViewOneSupplier(tarHref,idOneSupplier) {
+    jquery_send('#main_modul','post','../App/controllers/controllerViewAllSuppliers.php',
+        ['includeViewOneSupplier','tarHref','id'],
+        ['',tarHref, idOneSupplier]);
 
 }
