@@ -26,7 +26,7 @@ require_once 'autoload.php';
         </div><!-- конец доп блока слева-->
         <div class="col-lg-12 backForDiv">
             <div class="row headingContent"><!--строка для отображения названия страницы где находится пользователь -->
-                <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center "> поставщики</div>
+                <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center "> все поставщики</div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"></div>
             </div>
             <div class="row rowSearch" ><!-- строка поиска-->
@@ -43,9 +43,10 @@ require_once 'autoload.php';
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label for="makeNewSupplier"  class="text-center">новый поставщик</label>
-                    <div title="создать нового поставщика" id="makeNewSupplier">
-                    <a href='formAddNewSupplierToBase.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>
+<!--                    <label for="makeNewSupplier"  class="text-center">новый поставщик</label>-->
+                    <div title="создать нового поставщика" id="makeNewSupplier" >
+                        <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый поставщик</button>
+<!--                    <a href='formAddNewSupplierToBase.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>-->
                         <script type="text/javascript">
                             $('#makeNewSupplier').on('click',includeFormAddNewSupplier);
                             function includeFormAddNewSupplier() {

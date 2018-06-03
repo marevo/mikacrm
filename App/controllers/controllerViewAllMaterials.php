@@ -35,7 +35,7 @@ if(isset($_POST['searchLike'])){
             $tableSearchMatTbody = "";
             foreach ($findMat as $item){
 //                                получим не false если есть этот материал хотябы в одном заказе
-                $ifExistOrderWithIdMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder($item[id]);
+                $ifExistOrderWithIdMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder_2($item[id]);
 //                                if($ifExistOrderWithIdMaterial )
 //                                   echo "<br/> c idMaterials = $item[id] есть заказы )";
 //                                else

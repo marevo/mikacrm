@@ -8,10 +8,11 @@
 
 namespace App\Models;
 use App\Db;
+use App\IAnsewFromControllerToView;
 use App\ModelLikeTable;
 use App\FastViewTable;
 
-class MaterialsToOrder extends ModelLikeTable 
+class MaterialsToOrder extends ModelLikeTable implements IAnsewFromControllerToView
 {
     public $id;
     public $idOrder;
@@ -57,15 +58,46 @@ class MaterialsToOrder extends ModelLikeTable
     }
 //    нахождение всех id материалов что есть в заказе
     public static function ifExistThisMaterialInAnyOneOrder($idMaterial){
-        $query = "SELECT  idOrder FROM ".static ::TABLE." WHERE idMaterials = '$idMaterial';";
-//        echo " <br/> $query    ";
+//        SELECT  COUNT(idOrder FROM materialsToOrder WHERE idMaterials = '7'
+
+        $query = "SELECT COUNT(idOrder) FROM ".static ::TABLE." WHERE idMaterials = '$idMaterial';";
+        echo " <br/> $query";
         $db = new Db();
         $sth = $db->get_dbh()->prepare($query);
         $res = $sth->execute();
-        if(false != $res)
+        var_dump($res);
+        if(false != $res){
             return $sth->fetchAll();
+        }
+
         else
             return false;
+    }
+//    нахождение всех id материалов что есть в заказе
+    /**
+     * @param $idMaterial
+     * @return bool
+     */
+    public static function ifExistThisMaterialInAnyOneOrder_2($idMaterial){
+//        SELECT  COUNT(idOrder FROM materialsToOrder WHERE idMaterials = '7'
+
+        $query = "SELECT COUNT(idOrder) AS count_Order FROM ".static ::TABLE." WHERE idMaterials = '$idMaterial';";
+//        echo " <br/> $query";
+        $db = new Db();
+        $sth = $db->get_dbh()->prepare($query);
+        $res = $sth->execute();
+        $ress = $sth->fetchAll();
+//        echo "<br/>запрос $query  рез massiv: "; print_r($ress);
+
+        if( false != $res ){
+            if($ress[0][count_Order]>0)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+
     }
 
     public static function ifExistThisSupplierInAnyMaterilsToOrder($idSupplier){
@@ -80,5 +112,18 @@ class MaterialsToOrder extends ModelLikeTable
             return $sth->fetchAll();
         else
             return false;
+    }
+    
+    public function showClientUspeh($string=null)
+    {
+        // TODO: Implement showClientUspeh() method.
+        if(! is_null($string))
+        echo "<script type='text/javascript'>fUspehAll($string)</script>";
+    }
+    public function showClientNeUspeh($string=null)
+    {
+        // TODO: Implement showClientNeUspeh() method.
+        if(! is_null($string))
+        echo "<script type='text/javascript'>fNoUspehAll($string)</script>";
     }
 }

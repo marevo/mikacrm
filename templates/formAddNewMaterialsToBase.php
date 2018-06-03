@@ -147,6 +147,7 @@ povesitProverkuValidnostyNaInput($('[name=priceForMeasure]'));
 </script>
                 </div>
             </div><!-- .row -->
+
         </div> <!-- .col-lg-12 -->
     </div><!-- .row -->
 

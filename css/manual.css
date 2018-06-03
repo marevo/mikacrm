@@ -67,7 +67,7 @@ thead td {
 }
 
 tbody td{
-   padding: 10px;
+   padding: 4px;
 }
  li {
     list-style-type: none; /* Убираем маркеры */
@@ -674,4 +674,8 @@ table a{
 .facebook:hover,.twitter:hover { color:#fff; }
 #logo{
 	margin-top:10px;
+}
+.vertical-align-middle{
+    display:inline-block;
+    vertical-align: middle;
 }

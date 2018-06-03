@@ -11,5 +11,6 @@ namespace App;
 
 interface IAnsewFromControllerToView
 {
-
+    public function showClientUspeh($string);
+    public function showClientNeUspeh($string);
 }

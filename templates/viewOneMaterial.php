@@ -6,39 +6,22 @@
  * Time: 23:17
  */
 //require '../autoload.php';
-if(isset($_GET['id'])){
+$idMaterial=1;
+if(isset($_POST['id'])){
 //    если передали id значит работаем с ним иначе будем брать в else по умолчанию id=1
-    $idMaterial = intval($_GET['id']);
+    $idMaterial = intval($_POST['id']);
+    \App\FastViewTable::showUspeh("есть материал с id = $idMaterial");
 }
 else{
-    $idMaterial = 1;
+    \App\FastViewTable::showUspeh("ошибка в id = $idMaterial");
 }
 $mat = \App\Models\Material::findObjByIdStatic($idMaterial);
-//все поставщики для выбора поставщика при update
-$allSuppliers = \App\Models\Supplier::getAllSuppliers();
-$options = "";
-foreach ($allSuppliers as $item){
-    $options.= "<option value='$item->id' >$item->name ... $item->addCharacteristic</option>";
-}
+
 ?>
-    <!DOCTYPE HTML>
-    <html lang="ru-RU">
+   
 <title> просмотр/правка данных материала </title>
-    <?php
-    //require_once('../head.html');
-    ?>
-    <body>
-    <div class="container">
-        <!--<div class="row">
-            <?php //require_once('header.html'); ?>
-        </div>
-        <div class="row"> навигация 
-            <?php //require_once('../navigation.html');?>
-            <script>
-                showLi('материал');
-            </script>
-            <!-- конец навигации 
-        </div>-->
+   
+    
         <div class="row">
             <!--            начало доп блока слева
             <div class="col-lg-2 backForDiv">
@@ -52,20 +35,21 @@ foreach ($allSuppliers as $item){
                     <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">правка материала <?php echo $mat->name;?></div>
                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button id="btnUpdateShow" > обновить </button></div>
                     <?php
-                    $ifExistOrderWithThisMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder($mat->id);
+                    $ifExistOrderWithThisMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder_2($mat->id);
                     if(! $ifExistOrderWithThisMaterial){
-                        //нет материалов этого поставщика ни в одном заказе кнопка править
+//                        echo  "$mat->id";
+                        //нет материалов этого поставщика ни в одном заказе кнопка править будет доступна на клиенте
                         echo "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center'><button class='btn btn-sm btn-primary' id='btnEnableUpdate' >править</button></div>";
                     }
                     else{
-                        //есть материалы этого поставщика, значит его править нельзя
-                        echo "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center'><button disabled='true' class='btn btn-sm btn-primary' id='btnEnableUpdate' >править</button></div>";
+//                        echo "материал с id= $mat->id есть в заказах и удалять и править его нельзя";
+                        echo "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center'><!--<button  class='btn btn-sm btn-primary' id='btnEnableUpdate' >править</button>--></div>";
                     }
                     ?>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <form action="App/controllers/controllerOneMaterial.php" method="post">
+                        <form action="../App/controllers/controllerOneMaterial.php" method="post">
                         <table>
                             <thead>
                             <tr>
@@ -81,7 +65,18 @@ foreach ($allSuppliers as $item){
                             <tr><td>единица измерения</td><td><?php echo $mat->measure ?></td><td class="tdDisplayNone"><input name="measure" maxlength="50" type="text" value="<?php echo $mat->measure ?>"/></td></tr>
                             <tr><td>форма поставки</td><td><?php echo $mat->deliveryForm ?></td><td class="tdDisplayNone"><input pattern="\d{1,4}(\.)?\d{1,2}" name="deliveryForm" type="text" value="<?php echo $mat->deliveryForm ?>"/></td></tr>
                             <tr><td>цена за единицу</td><td><?php echo $mat->priceForMeasure ?></td><td class="tdDisplayNone"><input pattern="\d{1,4}(\.)?\d{1,2}" name="priceForMeasure" type="text" value="<?php echo $mat->priceForMeasure ?>"/></td></tr>
-                            <tr><td>поставщик... доп характеристики</td><td><?php echo  \App\Models\Supplier::findObjByIdStatic($mat->id_suppliers)->name;  ?></td><td class="tdDisplayNone"><select name="id_suppliers" type="text"><?php echo $options ?></select></td></tr>
+                            <tr><td>поставщик</td><td><?php echo   \App\Models\Supplier::findObjByIdStatic($mat->id_suppliers)->name;  ?>
+
+                                   </td><td class="tdDisplayNone">
+                                    <select name="id_suppliers">
+                                        <?php
+                                        $allSuppliers = \App\Models\Supplier::findAll();
+                                        $options="";
+                                        foreach ($allSuppliers as $supplierItem){
+                                            $options.= "<option value='$supplierItem->id'>".htmlspecialchars($supplierItem->name)."</option>";
+                                        }
+                                        echo "$options" ?>
+                                    </select></td></tr>
 <!--                            <tr><td>название поставщика</td><td>--><?php //echo \App\Models\Supplier::findObjByIdStatic($mat->id_suppliers)->name; ?><!--</td><td class="tdDisplayNone"><input name="name_suppliers" type="text"/></td></tr>-->
                             <tr><td></td><td></td><td class="tdDisplayNone"><input name="name_suppliers" type="submit"/></td></tr>
                             <tr style="display: none;"><td>скрытое поле</td><td>маяк</td><td><input name="submitOneMaterial" /></td></tr>
@@ -93,46 +88,18 @@ foreach ($allSuppliers as $item){
                 <table></table>
             </div>
         </div>
-    </div>
-    <script type="text/javascript">
+    
+    <script type="text/javascript" src="/js/viewOneMaterial.js"></script>
+<script type="text/javascript">
+    //выбор в селекте нужного значения по id поставщика
+    $(function () {
+        $('select').val('<?php echo $mat->id_suppliers ;?>');
+    });
+</script>
 
-        $(function () {
-            $('#btnUpdateShow').on('click',function () {
-                location.reload();
-            });
-            $('#btnEnableUpdate').on('click',function () {
-                $('.tdDisplayNone').each(function () {
-                    $(this).css('display',function (i,value) {
-                        if(value == 'block')
-                            return 'none';
-                        else return 'block';
-                    });
-                });
-            });
-            $('select').val('<?php echo $mat->id_suppliers ;?>');
 
-        });
-        $('form').submit(function () {
-            $.ajax({
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),//ссылка куда идут данные,
-                data: $(this).serializeArray(),//сериализирует в виде массива
-                success: function ( data) {
-//                                     fUspehAll('удачно');
-                    $('.divForAnswerServer').html(data);
-//                                     return false;
-//                                    $(this).find('.alert').remove();
-//                    alert('улетели данные ' + $(this).serializeArray());
-                    console.log($(this).serializeArray());
-                }
-            });
-            $(this).find('.alert').remove();
-            return false;
-        });
-    </script>
-    </body>
-    </html>
-<?php
+    
+
 
 
 

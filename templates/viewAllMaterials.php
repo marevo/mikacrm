@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="makeNewMaterial" title="создать нового поставщика">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="makeNewMaterial" title="создать новый материал">
                         <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый материал</button>
 <!--                        <label for="makeNewMaterial"  class="text-center"> </label>-->
 <!--                        <a href='formAddNewMaterialsToBase.php'> <div class="text-center"> </div></a>    -->
@@ -49,18 +49,18 @@
                             $tableAllMat = "<table id ='tbViewAllMaterials'><thead><tr><td style='display: none;'>id</td><td>название</td><td>доп характ</td><td>ед изм</td><td>форма поставки</td><td>цена за ед</td><td style='display: none;'>id поставщика</td><td>поставщик</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class=\"glyphicon glyphicon-trash\"></span></td></tr></thead><tbody>";
                             foreach ($allMaterialsInBase as $item){
 //                                получим не false если есть этот материал хотябы в одном заказе
-                                $ifExistOrderWithIdMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder(intval($item['id']));
+                                $ifExistOrderWithIdMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder_2(intval($item['id']));
 //                                if($ifExistOrderWithIdMaterial )
 //                                   echo "<br/> c idMaterials = $item[id] есть заказы )";
 //                                else
 //                                    echo "<br/>   c idMaterials = $item[id] нет  заказов ";
 
                                 if($ifExistOrderWithIdMaterial){
-                                    $tableAllMat .= "<tr><td style='display: none;'>$item[id]</td><td>$item[name]</td><td>$item[addCharacteristic]</td><td>$item[measure]</td><td>$item[deliveryForm]</td><td>$item[priceForMeasure]</td><td style='display: none;'>$item[idSupplier]</td><td>$item[nameSupplier]</td><td><a href='viewOneMaterial.php?id=$item[id]'><span class='glyphicon glyphicon-eye-open'></span></a></td><td></td></tr>";
+                                    $tableAllMat .= "<tr><td style='display: none;'>$item[id]</td><td>$item[name]</td><td>$item[addCharacteristic]</td><td>$item[measure]</td><td>$item[deliveryForm]</td><td>$item[priceForMeasure]</td><td style='display: none;'>$item[idSupplier]</td><td>$item[nameSupplier]</td><td><a data-id=$item[id] href='viewOneMaterial.php?id=$item[id]'><span class='glyphicon glyphicon-eye-open'></span></a></td><td></td></tr>";
                                 }
                                 else{
                                     //получили false на запрос значит в заказах не используется это материал вствавим иконку удаления
-                                    $tableAllMat .= "<tr><td style='display: none;'>$item[id]</td><td>$item[name]</td><td>$item[addCharacteristic]</td><td>$item[measure]</td><td>$item[deliveryForm]</td><td>$item[priceForMeasure]</td><td style='display: none;'>$item[idSupplier]</td><td>$item[nameSupplier]</td><td><a href='viewOneMaterial.php?id=$item[id]'><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-id='$item[id]'><span class=\"glyphicon glyphicon-trash\"></span></td></tr>";
+                                    $tableAllMat .= "<tr><td style='display: none;'>$item[id]</td><td>$item[name]</td><td>$item[addCharacteristic]</td><td>$item[measure]</td><td>$item[deliveryForm]</td><td>$item[priceForMeasure]</td><td style='display: none;'>$item[idSupplier]</td><td>$item[nameSupplier]</td><td><a data-id=$item[id] href='viewOneMaterial.php?id=$item[id]'><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-id='$item[id]'><span class=\"glyphicon glyphicon-trash\"></span></td></tr>";
                                 }
                             }
                             $tableAllMat .= "</tbody></table>";
