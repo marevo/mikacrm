@@ -627,7 +627,7 @@ table a{
 }
 /*viewAllMaterials.php*/
 
-#tbViewAllMaterials tbody td span, #tbViewAllSuppliers tbody td span{
+#tbViewAllMaterials tbody td span, #tbViewAllSuppliers tbody td span, #tbViewAllClients tbody td span{
 /*#tbViewAllMaterials tbody td:last-child span, .iconInTd{*/
     display: block;
     border: 1px solid black;

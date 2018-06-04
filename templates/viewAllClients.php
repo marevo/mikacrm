@@ -57,7 +57,8 @@
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <label for="makeNewClient"  class="text-center">новый клиент</label>
                         <div title="создать нового клиента" id="makeNewClient" class="addNewClient">
-                            <a href='formAddNewClientToBase.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>
+                           <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый клиент</button>
+<!--                            <a href='formAddNewClientToBase.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>-->
                             <script type="text/javascript">
                                 $('#makeNewClient').on('click',includeFormAddNewClient);
                                 function includeFormAddNewClient() {
