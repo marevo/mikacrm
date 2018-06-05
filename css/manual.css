@@ -679,3 +679,6 @@ table a{
     display:inline-block;
     vertical-align: middle;
 }
+.tableParent{
+   // background-color: #2aabd2;
+}
