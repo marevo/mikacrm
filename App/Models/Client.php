@@ -86,4 +86,11 @@ class Client extends ModelLikeTable
  //       echo $query;
         return $res;
    }
+    //function findNameClient
+    public static function findNameClient($id){
+        $client = self::findObjByIdStatic($id);
+        if(! is_null($client))
+            return $client->name;
+        else return "не привязан к клиенту";
+    }
 }

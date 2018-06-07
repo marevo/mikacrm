@@ -38,7 +38,7 @@
                 $tableAllContact = "<table  id ='tbViewAllContact'>
                                           <thead>
                                           <tr><td>ФИО</td><td>id_client</td><td>телефон</td><td>email</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
-                $allContactInBase = \App\Models\ContactsClient::findAllOrderByName();
+                $allContactInBase = \App\Models\Contacts::findAllOrderByName();
                // var_dump($allContactInBase);
                 $ContactTBODY = "";
                 if(! empty($allContactInBase)){
