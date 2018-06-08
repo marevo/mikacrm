@@ -1,37 +1,31 @@
 /**
  * Created by marevo on 06.06.2018.
  */
-
-/**
- * Created by marevo on 30.08.2017.
- */
 //можно сюда перенести js код из viewAllMaterials.php
 $(function () {
-    //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить материал
-    $('#tbViewAllMaterials').on('click',function (event) {
+    //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить контакт или просмотреть его
+    $('#tbViewAllContact').on('click',function (event) {
         var target = event.target;
         while (target.tagName != 'TABLE'){
             if(target.tagName == 'TD'){
                 //нашли ячейку где был клик
-                if($(target).data('id')){
-                    console.log('id for delete '+$(target).data('id'));
+                //обработка клика для удаления контакта
+                if($(target).data('id')&& $(target).data('do')=='trash'){
+                    console.log('idContact for delete '+$(target).data('id'));
                     //вызовем модальное окно для удаления ненужного материала
                     $('#modalIdMaterial').text( $(target).data('id') );
                     $('#modalNameMaterial').text( $(target).siblings()[1].textContent );
-                    $('#modalWinForDeleteMat').modal('show');
+                    $('#modalWinForDeleteContact').modal('show');
                 }
-            }
-            if(target.closest('a')){
-                console.log('хотим перейти на просмотр одного материала');
-                if(target.nodeName == 'SPAN')
-                    target = target.parentNode;
-                var tarHref = $(target).attr('href');
-                console.log('tarHref=' + tarHref);
-                var idOneMaterial = $(target).data('id');
-                console.log('idMaterialForView=' + idOneMaterial);
-                includeViewOneMaterial(tarHref,idOneMaterial);
-                return false;
-                // if($(target).find('a').)
+                //обработка клика для просмотра одного контакта
+                if($(target).data('id')&& $(target).data('do') == 'view'){
+                    console.log('хотим перейти на просмотр одного материала');
+                    var idOneContact = $(target).data('id');
+                    console.log('idContactForView=' + idOneContact);
+                    includeViewOneContact(idOneContact);
+                    return false;
+                    // if($(target).find('a').)
+                }
             }
             target = target.parentNode;
         }
@@ -78,9 +72,10 @@ function includeFormAddNewMaterial() {
 }
 //функция загрузки данных одного материала в окошко '#main_modul'
 //функция подтяжки в id='#main_modul' viewOneMaterial.php с заданным id
-function includeViewOneMaterial(tarHref,idOneMaterial) {
-    jquery_send('#main_modul','post','../App/controllers/controllerViewAllMaterials.php',
-        ['includeViewOneMaterial','tarHref','id'],
-        ['',tarHref, idOneMaterial]);
+function includeViewOneContact(idOneContact) {
+    jquery_send('#main_modul','post','../App/controllers/controllerViewAllContacts.php',
+        ['includeViewOneContact','idOneContact'],
+        ['', idOneContact]
+    );
 
 }

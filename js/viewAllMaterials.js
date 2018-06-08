@@ -13,7 +13,7 @@ $(function () {
                     console.log('id for delete '+$(target).data('id'));
                     //вызовем модальное окно для удаления ненужного материала
                     $('#modalIdMaterial').text( $(target).data('id') );
-                    $('#modalNameMaterial').text( $(target).siblings()[1].textContent );
+                    $('#modalNameMaterial').text( $(target).siblings()[0].textContent );
                     $('#modalWinForDeleteMat').modal('show');
                 }
             }

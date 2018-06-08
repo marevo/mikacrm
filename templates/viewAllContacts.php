@@ -43,7 +43,7 @@
                 $ContactTBODY = "";
                 if(! empty($allContactInBase)){
                     foreach ($allContactInBase as $itemCCIB){
-                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                     }
                     $ContactTBODY .= "</tbody></table>";
                 }
@@ -59,7 +59,7 @@
     </div>
 </div>
 <!-- модальное окно для удаления   -->
-<div id="modalWinForDelete" class="modal fade" role="dialog" aria-hidden="true">
+<div id="modalWinForDeleteContact" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">удалить контакт навсегда!
@@ -86,7 +86,7 @@
             </div><!--modal-body-->
         </div><!--modal content-->
     </div><!--modal-dialog-->
-</div><!--id="modalWinForDeleteMat" modal-fade -->
+</div><!--id="modalWinForDeleteContact" modal-fade -->
 
 <script src = '/js/viewAllContacts.js'></script>
 

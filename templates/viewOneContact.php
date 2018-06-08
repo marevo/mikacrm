@@ -6,9 +6,9 @@
  * Time: 6:33
  */
 $idContact=1;
-if(isset($_POST['id'])){
+if(isset($_POST['idOneContact'])){
 //    если передали id значит работаем с ним иначе будем брать в else по умолчанию id=1
-    $idContact = intval($_POST['id']);
+    $idContact = intval($_POST['idOneContact']);
     \App\FastViewTable::showUspeh("есть контакт с id = $idContact");
 }
 else{
