@@ -5,6 +5,7 @@
  * Date: 07.06.2018
  * Time: 6:33
  */
+require_once ('../../autoload.php');
 $idContact=1;
 if(isset($_POST['idOneContact'])){
 //    если передали id значит работаем с ним иначе будем брать в else по умолчанию id=1
@@ -15,7 +16,7 @@ else{
     \App\FastViewTable::showUspeh("ошибка в id = $idContact");
 }
 $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
-var_dump($cont);
+//var_dump($cont);
 ?>
 
 <title> просмотр/правка данных контакта </title>
