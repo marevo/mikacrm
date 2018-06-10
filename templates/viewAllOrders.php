@@ -120,7 +120,7 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
            <!-- <div class="col-lg-2 backForDiv">
                 этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
             </div>-->
-            <div class="col-lg-12">
+            <div class="col-lg-12 classPaddingRight_0">
                 <div class="row headingContent">
                     <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">заказы</div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"></div>
