@@ -597,9 +597,15 @@ table a{
     background-color: #f9f1d7;
 /*background-color: #2aabd2;*/
 }
-             .headingContent div:first-child{
+             .headingContent:first-child{
                  /*display: flex;*/
                  font-size: large;
+             }
+             .headingContent  div{
+                 margin-right: 20px;
+                 margin-left: 10px;
+                 padding-right: 10px;
+                 padding-left:0px ;
              }
 .a_displayBlock{
     display: block;

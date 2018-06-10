@@ -63,7 +63,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">удалить контакт навсегда!
-                <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span></button>
+                <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
