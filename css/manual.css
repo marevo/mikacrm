@@ -692,3 +692,9 @@ table a{
 .tableParent{
    // background-color: #2aabd2;
 }
+#tbViewAllContact tbody .glyphicon{
+    display: block;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+}
