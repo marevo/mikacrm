@@ -12,6 +12,9 @@ if(isset($_POST['includeViewOneContact'])){
         $idContact = intval($_POST['idOneContact']);
         //var_dump("хотим показать контакт $idContact");
     }
-
     include_once ('../../templates/viewOneContact.php');
+}
+if(isset($_POST['includeFormNewContact'])){
+    //echo "пришел запрос на подтяжку формы добавления нового контакта";
+    include_once ('../../templates/formAddNewContactToBase.php');
 }

@@ -13,7 +13,7 @@ if(isset($_POST['idOneContact'])){
     \App\FastViewTable::showUspeh("есть контакт с id = $idContact");
 }
 else{
-    \App\FastViewTable::showUspeh("ошибка в id = $idContact");
+    \App\FastViewTable::showNoUspeh("ошибка в id = $idContact");
 }
 $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
 //var_dump($cont);

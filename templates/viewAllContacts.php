@@ -43,7 +43,8 @@
                 $ContactTBODY = "";
                 if(! empty($allContactInBase)){
                     foreach ($allContactInBase as $itemCCIB){
-                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+
+                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id_clients</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                     }
                     $ContactTBODY .= "</tbody></table>";
                 }

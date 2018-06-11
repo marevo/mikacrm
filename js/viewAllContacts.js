@@ -31,6 +31,15 @@ $(function () {
         }
         console.log('click по таблице');
     });
+    //функция для создания нового контакта в базе
+    $('#makeNewContactClient').on('click',includeFormAddNewContact);
+    function includeFormAddNewContact() {
+        jquery_send('#main_modul','post','../App/controllers/controllerViewAllContacts.php',['includeFormNewContact'],['']);
+        //event.stopPropagation();
+        //document.getElementById("#main_modul").innerHTML= '<?// echo  include ('formAddNewOrder.php');?>//';
+        return false;
+    }
+    
     //функция обработки клика в модальном окне будем обрабатывать только кнопку
     $('#modalWinForDeleteMat').on('click',function (event) {
         var target = event.target;
@@ -62,14 +71,8 @@ $(function () {
     });
 
 });
-//функция для создания нового материала
-$('#makeNewMaterial').on('click',includeFormAddNewMaterial);
-function includeFormAddNewMaterial() {
-    jquery_send('#main_modul','post','/App/controllers/controllerViewAllMaterials.php',['includeFormNewMaterial'],['']);
-    //event.stopPropagation();
-    //                            document.getElementById("#main_modul").innerHTML= '<?// echo  include ('formAddNewOrder.php');?>//';
-    return false;
-}
+
+
 //функция загрузки данных одного материала в окошко '#main_modul'
 //функция подтяжки в id='#main_modul' viewOneMaterial.php с заданным id
 function includeViewOneContact(idOneContact) {
