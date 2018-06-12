@@ -10,9 +10,8 @@ require '../../autoload.php';
 //если пришел скрытый маркер udate контакта с id
 if (isset($_POST['updateOneContact'])){
     $idContactUpdate = intval($_POST['updateOneContact']);
-       var_dump("пришел маркер на обновление контакта id=$idContactUpdate");
+//    \App\FastViewTable::showAnswerServer("пришел маркер на обновление контакта id = $idContactUpdate");
     updateOneContact($idContactUpdate);
-    //insertNewMaterialToBase();
 }
 //функция update контакта с $idContactUpdate = $idCont
 function updateOneContact($idCont){
@@ -43,18 +42,21 @@ function updateOneContact($idCont){
         //если удачно сделали update contact
         if($resUpdateContact){
                \App\FastViewTable::showUspeh('контакт удачно обновлен');
+            $newNameOneContac = \App\Models\Contacts::findObjByIdStatic($idCont)->name;
+            \App\FastViewTable::showAnswerServer("контакт $newNameOneContac успешно обновлен");
             }
             else{
                 \App\FastViewTable::showNoUspeh('не удалось обновить контакт');
+                \App\FastViewTable::showAnswerServer("контакт '". $objOneContact->name."' не обновлен");
             }
         }
 }
-//функция вставки в базу нового материала
+//функция вставки в базу нового контакта
 //если пришел скрытый маркер insert вставим новый контакт в базу
-if (isset($_POST['updateOneContact'])){
-    $idContactUpdate = intval($_POST['updateOneContact']);
-    var_dump("пришел маркер на обновление контакта id=$idContactUpdate");
-    updateOneContact($idContactUpdate);
+if (isset($_POST['insertOneContact'])){
+    $idContactUpdate = intval($_POST['insertOneContact']);
+//    \App\FastViewTable::showAnswerServer("пришел маркер на обновление контакта id = $idContactUpdate");
+    
     //insertNewMaterialToBase();
 }
 function insertNewContactToBase(){

@@ -75,6 +75,9 @@ tbody td{
    a{
 	   color: white;
    }
+#answerServer li{
+    font-size: xx-small;
+}
 #header{
     background-color: #04B486;
 	margin-left: 0px;

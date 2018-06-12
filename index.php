@@ -32,9 +32,9 @@ require 'autoload.php';
 	<!--для шифровки пароля<?echo password_hash ( "password2" , PASSWORD_BCRYPT);?>-->
         <!--    подтянем menu сайта-->
         <?php require_once ('./navigation.php'); ?>
-     <!--<div class="footer">
-            <div> статус: admin/user<br>имя пользователя/ник</div>      
-        </div>-->
+<!--         <div class="footer">-->
+<!--                <div> статус: admin/user<br>имя пользователя/ник</div>-->
+<!--         </div>-->
     </div>
 </div>
 </body>

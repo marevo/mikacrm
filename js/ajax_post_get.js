@@ -182,8 +182,20 @@ function fNoUspehAll() {
         clearTimeout('alrRmv');
     }
 }
-//*/функции отображения на клиенте результатов запроса на сервер
+//*/функции отображения на клиенте сообщений сервера в #answerServer
 
+function ShowAnswerServer() {
+    if(arguments.length > 0){
+        var strAppendLi = arguments[0];
+        var countLi = $('#answerServer li').length;
+        if(countLi >4 ){
+            //уже есть 5 li в ul
+            $('#answerServer li').eq(0).remove();
+        }
+        $('#answerServer').append("<li>"+strAppendLi+"</li>");
+    }
+}
+//*/функции отображения на клиенте сообщений сервера в #answerServer
 /*функция вешает  на elem обработчик ограничения количества limitCount символов в поле textarea*/
 function limitTextInTextArea(elem,limitCount ) {
     elem.keyup(function() {
@@ -242,7 +254,7 @@ function showInDomElement(elem) {
         // console.log(' вы сидите на этой странице уже '+ countTimeOnThisPage++ +' sec');
         clearInterval(intervalForClear);
     }
-    }
+}
 $(function () {
     //запросим даныые о времени через ajax и запишем их в dateFromServer
     getTimeFromServer();
@@ -251,6 +263,8 @@ $(function () {
     //запустим это функцию запроса времени и отображения на элементе раз в минуту
     intervalForClear = setInterval(showInDomElement($elemForDislayTimeFromServer),1000*60);
 });
+
+
 //на загрузку document повесим вызов времени с сервера
 // $(function () {
 //     (function () {

@@ -20,6 +20,7 @@
 				<ul id="menu_list">
 					<? include "handlers/menu.php"; ?>
 				</ul>
+			<ul id="answerServer"><li>сообщения сервера</li></ul>
 		</div>	
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="main_modul">
 		<!--контент сайта-->

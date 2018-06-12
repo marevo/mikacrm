@@ -68,5 +68,11 @@ trait FastViewTable
     public static function showNoUspeh( $str){
         echo "<script>fNoUspehAll('$str');</script>";
     }
+
+    //для вывода доп инфо в #rezShow
+    public static function showAnswerServer($str){
+        //echo "answerServer!";
+        echo "<script type='text/javascript'>ShowAnswerServer('$str');</script>";
+    }
 }
 
