@@ -25,7 +25,7 @@ echo "это для создания нового контакта";
             </div>
             <div class="row"><!--форма добавки контакта в базу -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pading0">
-                    <form  id="formOneContact"   method="post" action="../App/controllers/controllerAddNewContactToBase.php" >
+                    <form  id="formOneContact"   method="post" action="../App/controllers/controllerOneContact.php" >
                         <table>
                             <thead><tr class="trDisplayNone">
                                 <td>название поля</td>
@@ -34,7 +34,7 @@ echo "это для создания нового контакта";
 <!--невидимый маркер для отслеживания запроса добавки нового контакта в базу -->
                             <tr class="trDisplayNone">
                                 <td class="text-right"><label for="sendContactToAddToBase">скрытое поле  для отправки маркера</label></td>
-                                <td class="text-left"><input  name="sendContactToAddToBase"  value="sendMarker"  /></td>
+                                <td class="text-left"><input  name="sendContactToAddToBase"  value="sendMarkerToaddNewContactToBase"/></td>
                             </tr>
                             <tr><td class="text-right"><label for="nameContact">название контакта</label></td>
                                 <td class="text-left"><input maxlength="200" size="55" name="nameContact" id="idNameContact" placeholder="Иванов Иван Иванович чп Иванов Чернигов max 200 символов" required /></td>

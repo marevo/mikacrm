@@ -38,7 +38,7 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <form action="../App/controllers/controllerViewOneContact.php" method="post">
+                <form action="../App/controllers/controllerOneContact.php" method="post">
                     <table>
                         <thead>
                         <tr>
@@ -58,11 +58,11 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
                                     <?php
                                     $allClient = \App\Models\Client::findAllOrderByName();
                                     if(false != $allClient) {
-                                        $optionsNameClient="<option value='0'>выберите клиента</option>";
+                                        $optionsNameClient="<option value='0'>клиент не выбран</option>";
                                         foreach ($allClient as $client){
                                             $optionsNameClient.= "<option value='$client->id'> $client->name</option>";
                                         }
-                                    echo "<select> name = 'selectNameClient' $optionsNameClient </select>";
+                                    echo "<select name = 'selectIdClient'>  $optionsNameClient </select>";
                                     }
                                     else echo "база клиентов пуста(";
 
@@ -80,7 +80,6 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
                 </form>
             </div>
         </div>
-        <table></table>
     </div>
 </div>
 
