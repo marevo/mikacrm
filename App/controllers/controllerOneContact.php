@@ -39,10 +39,10 @@ function updateOneContact($idCont){
                 $objOneContact->id_clients = $idClient;
         }
         $resUpdateContact = $objOneContact -> update();
+        $newNameOneContac = \App\Models\Contacts::findObjByIdStatic($idCont)->name;
         //если удачно сделали update contact
         if($resUpdateContact){
                \App\FastViewTable::showUspeh('контакт удачно обновлен');
-            $newNameOneContac = \App\Models\Contacts::findObjByIdStatic($idCont)->name;
             \App\FastViewTable::showAnswerServer("контакт $newNameOneContac успешно обновлен");
             }
             else{
@@ -53,48 +53,35 @@ function updateOneContact($idCont){
 }
 //функция вставки в базу нового контакта
 //если пришел скрытый маркер insert вставим новый контакт в базу
-if (isset($_POST['insertOneContact'])){
-    $idContactUpdate = intval($_POST['insertOneContact']);
-//    \App\FastViewTable::showAnswerServer("пришел маркер на обновление контакта id = $idContactUpdate");
-    
-    //insertNewMaterialToBase();
+if (isset($_POST['insertContactToBase'])){
+    \App\FastViewTable::showAnswerServer("пришел маркер на добавку нового контакта в базу");
+    insertNewContactToBase();
 }
 function insertNewContactToBase(){
-    if (isset($_POST['send'])) {
-
-        $matNew = new \App\Models\Material();
-        if (isset($_POST['nameMaterial'])) {
-            $matNew->name = trim( htmlspecialchars($_POST['nameMaterial']) );
+        $objNewContact = new \App\Models\Contacts();
+        if(isset($_POST['nameContact'])){
+            $nameContact = htmlspecialchars($_POST['nameContact']);
+            $objNewContact ->name = $nameContact;
         }
-        if (isset($_POST['addCharacteristic'])) {
-            $matNew->addCharacteristic = trim( htmlspecialchars($_POST['addCharacteristic']));
+        if(isset($_POST['phone'])){
+            $phoneContact = htmlspecialchars($_POST['phone']);
+            $objNewContact ->phone = $phoneContact;
         }
-        if (isset($_POST['idSupplier'])) {
-            $matNew->id_suppliers = intval($_POST['idSupplier']);
+        if(isset($_POST['email'])){
+            $emailContact = htmlspecialchars($_POST['email']);
+            $objNewContact ->email = $emailContact;
         }
-        if (isset($_POST['measure'])) {
-            $matNew -> measure =trim( htmlspecialchars($_POST['measure']));
-        }
-        if (isset($_POST['deliveryForm'])) {
-            $matNew -> deliveryForm = trim( htmlspecialchars($_POST['deliveryForm']));
-        }
-        if(isset($_POST['priceForMeasure'])){
-            $matNew -> priceForMeasure = trim(htmlspecialchars($_POST['priceForMeasure']));
-        }
-        //вставим новый заказ в базу
-        $resInsert = $matNew -> insert();
-
-        if($resInsert != false){
-            echo "<script> fUspehAll('материал добавлен');</script>";
+        //вставим новый контакт в базу
+        $resInsert = $objNewContact -> insert();
+//        $resInsert = true;
+        if($resInsert){
+            \App\FastViewTable::showUspeh('удачно');
+            \App\FastViewTable::showAnswerServer(" контакт " .$objNewContact ->name ." успешно добавлен в базу ");
         }
         else{
-            echo "<script>fNoUspehAll('материал не добавлен(');</script>";
+            \App\FastViewTable::showNoUspeh('не удачно');
+            \App\FastViewTable::showAnswerServer(" не удалось создать контакт ".$objNewContact ->name );
         }
-//        if (isset($_POST['submitFromFormOneOrder']))
-//            foreach ($orNew as $k => $value) {
-//                echo "<br/>$k--- $value";
-//            }
-    }
 }
 
 //поиск поставщика по подобию имени  и выгрузка их в селект выбора поставщиков formAddNewMaterilsToBase.php ['name = idSupplier']

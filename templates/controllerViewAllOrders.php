@@ -231,7 +231,7 @@ if(isset($_POST['searchOrderForName'])){
 
 if(isset($_POST['includeFormNewOrder'])){
 //    include 'formAddNewOrder.php';
-    echo "привет->запрос на загрузку формы добавления заказа";
+    \App\FastViewTable::showAnswerServer("пришел запрос на загрузку в главный модуль формы создания нового заказа");
     include 'formAddNewOrder.php';
 //    $formOneOrder = file_get_contents ('formAddNewOrder.php');
 //    $ifEx = file_exists('formANO.php') ;

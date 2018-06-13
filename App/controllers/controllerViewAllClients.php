@@ -69,7 +69,7 @@ if(isset($_POST['searchLike'])){
 
 //выброс ( подтяжка через include) формы добавки нового клиента
 if(isset($_POST['includeFormNewClient'])){
-    echo "привет->запрос на загрузку формы добавления (создания) нового клента";
+    \App\FastViewTable::showAnswerServer("запрос на загрузку формы добавления (создания) нового клиента");
 //    include '..\templates\formAddNewClientToBase.php';
     include '../../templates/formAddNewClientToBase.php';
 }

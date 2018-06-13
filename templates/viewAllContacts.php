@@ -74,11 +74,11 @@
                                 <div class="col-lg-12 text-center">хотите удалить этот контакт навсегда ?</div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 text-center " id="modalNameMaterial"> название контакта</div>
-                                <div style="display: none;" class="col-lg-12 text-center " id="modalIdMaterial"> id контакта</div>
+                                <div class="col-lg-12 text-center " id="modalNameContact"> название контакта</div>
+                                <div style="display: none;" class="col-lg-12 text-center " id="modalIdContact"> id контакта</div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center"><button name="btnDeleteMaterial" class="btn btn-danger">да</button></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center"><button name="btnDeleteContact" class="btn btn-danger">да</button></div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center"><button class="btn btn-default" data-dismiss="modal">нет</button></div>
                             </div>
                         </div>

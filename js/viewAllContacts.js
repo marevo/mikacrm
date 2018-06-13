@@ -13,8 +13,8 @@ $(function () {
                 if($(target).data('id')&& $(target).data('do')=='trash'){
                     console.log('idContact for delete '+$(target).data('id'));
                     //вызовем модальное окно для удаления ненужного материала
-                    $('#modalIdMaterial').text( $(target).data('id') );
-                    $('#modalNameMaterial').text( $(target).siblings()[1].textContent );
+                    $('#modalIdContact').text( $(target).data('id') );
+                    $('#modalNameContact').text( $(target).siblings()[0].textContent );
                     $('#modalWinForDeleteContact').modal('show');
                 }
                 //обработка клика для просмотра одного контакта
@@ -41,21 +41,21 @@ $(function () {
     }
     
     //функция обработки клика в модальном окне будем обрабатывать только кнопку
-    $('#modalWinForDeleteMat').on('click',function (event) {
+    $('#modalWinForDeleteContact').on('click',function (event) {
         var target = event.target;
-        if(target.name == 'btnDeleteMaterial'){
-            console.log('кликнули кнопку на удаление заказа');
+        if(target.name == 'btnDeleteContact'){
+            console.log('кликнули кнопку на удаление контакта');
             //будем удалять материал из базы
-            jquery_send('.divForAnswerServer','post','App/controllers/controllerViewAllMaterials.php',
-                ['deleteMaterialFromBase','idMaterial'],['',$('#modalIdMaterial').text()]);
-            $('#modalIdMaterial').text('');
-            $('#modalNameMaterial').text( '');
-            $('#modalWinForDeleteMat').modal('hide');
+            jquery_send('.divForAnswerServer','post','App/controllers/controllerViewAllContacts.php',
+                ['deleteContactFromBase','idContact'],['',$('#modalIdContact').text()]);
+            $('#modalIdContact').text('');
+            $('#modalNameContact').text( '');
+            $('#modalWinForDeleteContact').modal('hide');
 
         }
     });
     //функция обработки при вызове модального окна
-    $('#modalWinForDeleteMat').on('show.bs.modal',function () {
+    $('#modalWinForDeleteContact').on('show.bs.modal',function () {
 
     });
     //функция поиска материала по подобию названия или доп. характеристик

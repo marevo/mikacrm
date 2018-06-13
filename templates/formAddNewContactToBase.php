@@ -5,10 +5,8 @@
  * Date: 01.09.2017
  * Time: 14:12
  */
-echo "это для создания нового контакта";
-
-//require '../autoload.php';
-//include('../head.html')
+require_once ('../../autoload.php');
+\App\FastViewTable::showAnswerServer('загрузим форму для добаления нового контакта');
 ?>
 
     <div class="row">
@@ -33,8 +31,8 @@ echo "это для создания нового контакта";
                             <tbody>
 <!--невидимый маркер для отслеживания запроса добавки нового контакта в базу -->
                             <tr class="trDisplayNone">
-                                <td class="text-right"><label for="sendContactToAddToBase">скрытое поле  для отправки маркера</label></td>
-                                <td class="text-left"><input  name="sendContactToAddToBase"  value="sendMarkerToaddNewContactToBase"/></td>
+                                <td class="text-right">скрытое поле  для отправки маркера</td>
+                                <td class="text-left"><input  name="insertContactToBase"  value="sendMarkerToaddNewContactToBase"/></td>
                             </tr>
                             <tr><td class="text-right"><label for="nameContact">название контакта</label></td>
                                 <td class="text-left"><input maxlength="200" size="55" name="nameContact" id="idNameContact" placeholder="Иванов Иван Иванович чп Иванов Чернигов max 200 символов" required /></td>
@@ -76,21 +74,7 @@ echo "это для создания нового контакта";
                                     elem.value = elem.value.substr(0, 200);
                                     console.log('обрезали длину названия и описания контакта до 200 символов');
                                 }
-                                //  проверка на уникальность имен клиента - не может быть 2 одинаковых name клиента
-//                                if($(this).val().length > 0)
-//                                    jquery_send('.divForAnswerServer','post',
-//                                        'App/controllers/controllerAddNewClientToBase.php',
-//                                        ['testOnUniqNameClient','nameClient'],['',$(this).val()]);
-//                                $(this).parent().find('.alert').remove();
                             }
-//                            if((this).name == 'adderss'){
-//                                if($(this).val().length > 200 ) {
-//                                    var el = $(this);
-//                                    elem.value = elem.value.substr(0, 200);
-//                                    console.log('обрезали длину адрес клиента до 200 символов');
-//                                    $(this).parent().find('.alert').remove();
-//                                }
-//                            }
                             return false;
                         });
                         //обработка полей телефона и имейла
@@ -155,16 +139,15 @@ echo "это для создания нового контакта";
                             $.ajax({
                                 type: $(this).attr('method'),
                                 url: $(this).attr('action'),//ссылка куда идут данные,
-                                data: $(this).serializeArray(),//сериализирует в виде массива
+                                data: $(this).serializeArray(),//сериализирует в виде асоциативного массива
                                 success: function ( data) {
 //                                     fUspehAll('удачно');
                                     $('.divForAnswerServer').html(data);
 //                                     return false;
-//                                    $(this).find('.alert').remove();
+                                    $(this).find('.alert').remove();
 //        alert('улетели данные ' + $(this).serializeArray());
                                     console.log($(this).serializeArray());
                                 }
-
                             });
                             $(this).find('.alert').remove();
                             return false;
