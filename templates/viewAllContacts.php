@@ -37,14 +37,17 @@
                 <?php
                 $tableAllContact = "<table  id ='tbViewAllContact'>
                                           <thead>
-                                          <tr><td>ФИО</td><td>id_client</td><td>телефон</td><td>email</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
+                                          <tr><td>ФИО</td><td>клиент контакта</td><td>телефон</td><td>email</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
                 $allContactInBase = \App\Models\Contacts::findAllOrderByName();
                // var_dump($allContactInBase);
                 $ContactTBODY = "";
                 if(! empty($allContactInBase)){
                     foreach ($allContactInBase as $itemCCIB){
-
-                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id_clients</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+//                        найдем имя клиента если есть привязка контакта к клиенту
+                        $itemCCIBNameClient = \App\Models\Client::findObjByIdStatic($itemCCIB->id_clients)->name;
+                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIBNameClient</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+                        //если не нужно искать имя клиента ( упрощенно выводим в таблицу id_clients
+//                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id_clients</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                     }
                     $ContactTBODY .= "</tbody></table>";
                 }

@@ -18,10 +18,7 @@ else{
 $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
 //var_dump($cont);
 ?>
-
 <title> просмотр/правка данных контакта </title>
-
-
 <div class="row">
     <!--            начало доп блока слева
     <div class="col-lg-2 backForDiv">
