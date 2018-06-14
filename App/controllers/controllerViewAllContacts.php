@@ -45,3 +45,26 @@ function deleteContactFromBase($idCont){
         \App\ModelLikeTable::showAnswerServer("$ex <br/> не удачно сработала функция удаления контакта в базе");
     }
 }
+//поиск по подобию в названии name  по подобию в name или 
+if(isset($_POST['searchLike'])){
+    if(isset($_POST['likeValue'])){
+        $likeValue = htmlspecialchars($_POST['likeValue']);
+        $findContacts = \App\Models\Contacts::searchAllForLikeName($likeValue);
+//        var_dump($findContacts);
+        $ContactTBODY = "";
+        if(! empty($findContacts)){
+            foreach ($findContacts as $itemCCIB){
+//                        найдем имя клиента $itemCCIBNameClient если есть привязка контакта к клиенту
+                $itemCCIBNameClient = \App\Models\Client::findObjByIdStatic($itemCCIB->id_clients)->name;
+                $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td data-id_clients='$itemCCIB->id_clients'>$itemCCIBNameClient</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+                //если не нужно искать имя клиента ( упрощенно выводим в таблицу id_clients
+//              $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id_clients</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+            }
+        }
+        else{
+            $ContactTBODY = "<tr><td colspan='6' class='text-center'> пока ничего нет ( </td></tr>";
+            \App\ModelLikeTable::showNoUspeh('нет контактов с такими данными');
+        }
+        echo "$ContactTBODY";
+    }
+}

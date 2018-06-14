@@ -137,7 +137,7 @@ abstract class ModelLikeTable
         $values = [];
         $queryStrUpdate = 'UPDATE '.static::TABLE.' SET ';
         foreach ($this as $k => $v){
-            if(static::NAME_ID == $k || $v == NULL){
+            if(static::NAME_ID == $k || is_null($v) ){
                 continue;
             }
             $values [':'.$k] = $v;
@@ -145,6 +145,7 @@ abstract class ModelLikeTable
         }
         $queryStrUpdate = trim($queryStrUpdate,',');//убарали последнюю запятую
         $queryStrUpdate .= ' WHERE '.static::NAME_ID.' = '.$this->id.';';
+//        var_dump($queryStrUpdate);
         if(! empty($values)){
             $db = new Db();
 //            foreach ($values as $k => $v){// для перевода на другую строку &lt;br&gt;
@@ -161,7 +162,7 @@ abstract class ModelLikeTable
     //поиск по  подобному назаванию в любой таблице (естественно должно быть поле name
     public static function searchAllForLikeName( $likeName){
         $db = new Db();
-        $query  = "SELECT * FROM ".static::TABLE ." WHERE `name` LIKE '%".$likeName."%';";
+        $query  = "SELECT * FROM ".static::TABLE ." WHERE `name` LIKE '%".$likeName."%' ORDER BY name;";
 //       echo "$query";
 //        die();
         $res = $db->query($query ,static::class );

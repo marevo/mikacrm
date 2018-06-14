@@ -19,11 +19,11 @@
             <!--  сторка для поиска заказов по клиенту и по названию заказа -->
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><label for="inputFindContactClient">искать по названию или доп характ </label></div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><label for="inputFindContact">искать по названию или доп характ </label></div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindContactClient" placeholder="по названию"/></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchContactClientLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindContact" placeholder="по названию"/></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button></div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -35,17 +35,17 @@
         <div class="row backForDiv divForTable">
             <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tableParent">
                 <?php
-                $tableAllContact = "<table  id ='tbViewAllContact'>
+                $tableAllContact = "<table  id ='tbViewAllContacts'>
                                           <thead>
-                                          <tr><td>ФИО</td><td>клиент контакта</td><td>телефон</td><td>email</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
+                                          <tr><td>название + доп характеристики</td><td>клиент контакта</td><td>телефон</td><td>email</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
                 $allContactInBase = \App\Models\Contacts::findAllOrderByName();
                // var_dump($allContactInBase);
                 $ContactTBODY = "";
                 if(! empty($allContactInBase)){
                     foreach ($allContactInBase as $itemCCIB){
-//                        найдем имя клиента если есть привязка контакта к клиенту
+//                        найдем имя клиента $itemCCIBNameClient если есть привязка контакта к клиенту
                         $itemCCIBNameClient = \App\Models\Client::findObjByIdStatic($itemCCIB->id_clients)->name;
-                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIBNameClient</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td data-id_clients='$itemCCIB->id_clients'>$itemCCIBNameClient</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                         //если не нужно искать имя клиента ( упрощенно выводим в таблицу id_clients
 //                        $ContactTBODY .= "<tr><td>$itemCCIB->name</td><td>$itemCCIB->id_clients</td><td>$itemCCIB->phone</td><td>$itemCCIB->email</td><td data-do='view' data-id = $itemCCIB->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                     }

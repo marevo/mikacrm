@@ -4,7 +4,7 @@
 //можно сюда перенести js код из viewAllMaterials.php
 $(function () {
     //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить контакт или просмотреть его
-    $('#tbViewAllContact').on('click',function (event) {
+    $('#tbViewAllContacts').on('click',function (event) {
         var target = event.target;
         while (target.tagName != 'TABLE'){
             if(target.tagName == 'TD'){
@@ -59,14 +59,14 @@ $(function () {
 
     });
     //функция поиска материала по подобию названия или доп. характеристик
-    $('#btnSearchMaterialLikeNameORLikeAddCharacteristic').on('click',function () {
+    $('#btnSearchContactLikeNameORLikeAddCharacteristic').on('click',function () {
         console.log('нажали кнопку поиска материалы по подобию названию или добхарактеристик');
-        var inputSearchValue = $('#inputFindMaterial').val();
+        var inputSearchValue = $('#inputFindContact').val();
         if(inputSearchValue.length < 3 || inputSearchValue.length == 0){
-            $('#inputFindMaterial').val('').attr('placeholder','минимум 3 символа');
+            $('#inputFindContact').val('').attr('placeholder','минимум 3 символа');
         }else {
             console.log('отправим запрос на поиск');
-            jquery_send('#tbViewAllMaterials tbody','post','App/controllers/controllerViewAllMaterials.php',['searchLike','likeValue'],['',inputSearchValue]);
+            jquery_send('#tbViewAllContacts tbody','post','App/controllers/controllerViewAllContacts.php',['searchLike','likeValue'],['',inputSearchValue]);
         }
     });
 

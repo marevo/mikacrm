@@ -35,8 +35,11 @@ function updateOneContact($idCont){
         }
         if(isset($_POST['selectIdClient'])){
             $idClient = intval($_POST['selectIdClient']);
-            if($idClient)
+            var_dump($idClient);
+            if($idClient!="")
                 $objOneContact->id_clients = $idClient;
+            else
+                $objOneContact->id_clients = 0;
         }
         $resUpdateContact = $objOneContact -> update();
         $newNameOneContac = \App\Models\Contacts::findObjByIdStatic($idCont)->name;

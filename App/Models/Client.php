@@ -89,9 +89,9 @@ class Client extends ModelLikeTable
     //function findNameClient
     public static function findNameClient($id){
         \App\FastViewTable::showAnswerServer("ищем имя клиента");
-//        $client = self::findObjByIdStatic($id);
-//        if($client)
-//            return $client->name;
-//        else return "не привязан к клиенту";
+        $client = self::findObjByIdStatic($id);
+        if($client)
+            return $client->name;
+        else return "не привязан к клиенту";
     }
 }

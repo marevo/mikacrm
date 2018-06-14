@@ -15,9 +15,8 @@ $(function () {
             });
         });
     });
-
-
 });
+
 $('form').submit(function () {
     $.ajax({
         type: $(this).attr('method'),

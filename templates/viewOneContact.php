@@ -48,8 +48,14 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
                         <tr><td>название контакта</td>
                             <td><?php echo $cont->name ?></td>
                             <td class="tdDisplayNone"><input name="name" type="text"  maxlength="200" title =" новое название <?php echo "$cont->name "?>" value="<?php echo $cont->name ?>"/></td></tr>
-                        <?php $clientName = \App\Models\Client::findNameClient($cont->id_clients);  ?>
-                        <tr><td>принадлежность к клиенту</td><td><?php echo "$clientName" ?></td>
+                        <?php ?>
+                        <tr><td>принадлежность к клиенту</td>
+                            <td>
+                                <?php
+                                $clientName = \App\Models\Client::findNameClient($cont->id_clients);
+                                echo "$clientName";
+                                ?>
+                            </td>
                             <td class="tdDisplayNone">
 
                                     <?php
@@ -62,7 +68,6 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
                                     echo "<select name = 'selectIdClient'>  $optionsNameClient </select>";
                                     }
                                     else echo "база клиентов пуста(";
-
                                     ?>
 
                             </td></tr>
