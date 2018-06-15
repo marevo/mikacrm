@@ -578,14 +578,19 @@ table a{
     width: 400px!important;
 }
 .viewTrashedOrders ,.addNewOrder{
-    border: 1px solid black;
-    background-color: #5bc0de;
-    border-radius: 5px;
-    max-width: 100px;
-    min-height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*border: 1px solid black;*/
+    /*background-color: #5bc0de;*/
+    /*border-radius: 5px;*/
+    /*max-width: 100px;*/
+    /*min-height: 25px;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*display: none;*/
+
+    /*создание расстояния между кнопками просмотр заказов в корзине и создание нового заказа*/
+
+    /**end создание расстояния между кнопками просмотр заказов в корзине и создание нового заказа*/
 }
 .viewTrashedOrders:hover,.addNewOrder:hover{
     cursor:pointer;
@@ -593,6 +598,12 @@ table a{
 .rowSearch{
     background-color: #cdccd2;
 }
+        .rowSearch .padingLeftDIV_0{
+           padding-left: 0;
+        }
+            .rowSearch .padingLeftDIV{
+                       padding-left: 0;
+                    }
 /*/viewAllOrders*/
 
 #tableMaterials{
@@ -706,3 +717,9 @@ table a{
     border-radius: 3px;
     padding: 5px;
 }
+/* выравниевание по вертикали div с кнопкой создать*/
+.rowSearch {
+    display: flex;
+    align-items: center;
+}
+/**end выравниевание по вертикали div с кнопкой создать*/

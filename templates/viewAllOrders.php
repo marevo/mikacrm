@@ -128,41 +128,43 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
                 <div class="row rowSearch" ><!-- строка поиска-->
                             <!--  сторка для поиска заказов по клиенту и по названию заказа -->
 <!--                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>-->
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                <label for="" class="">искать заказ</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 _0">
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">-->
+<!--                                <label for="" class="">искать заказ</label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
 <!--                                <label for="inputFindOrderForName">искать по названию заказа</label>-->
                                 <input type="text" name="inputFindOrderForName" placeholder="по названию">
-                                <button name="searchForName" class="btn-primary">искать </button>
-                            </div>
-                            <div class="col-lg-6 col-md-76 col-sm-6 col-xs-6">
+                                <button name="searchForName" class="btn-primary">искать</button>
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 col-md-76 col-sm-6 col-xs-6">-->
 <!--                                <label for="inputFindOrderForNameClient">по названию клиента</label>-->
                                 <input type="text" name="inputFindOrderForNameClient" placeholder="по клиенту">
                                 <button name="searchForNameClient" class="btn-primary">искать</button>
 
-                            </div>
+<!--                            </div>-->
 
-                        </div>
+<!--                        </div>-->
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <label for="viewTrashedOrders">заказы в корзине</label>
+<!--                                <label for="viewTrashedOrders">заказы в корзине</label>-->
                                 <div title="показать удаленные заказы" class="viewTrashedOrders" id="viewTrashedOrders">
-                                    <span class="glyphicon glyphicon-eye-open" style="padding-left: 10px;padding-right: 10px"></span>
-                                    <span class="glyphicon glyphicon-trash"></span>
+<!--                                    <span class="glyphicon glyphicon-eye-open" style="padding-left: 10px;padding-right: 10px"></span>-->
+<!--                                    <span class="glyphicon glyphicon-trash"></span>-->
+                                    <button class="btn btn-primary"> <span class="glyphicon glyphicon-eye-open"></span>  <span class="glyphicon glyphicon-trash"></span>заказы в корзине</button>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <label for="makeNewOrder"  class="text-center">новый заказ</label>
+<!--                                <label for="makeNewOrder"  class="text-center">новый заказ</label>-->
                                 <div title="создать новый заказ" id="makeNewOrder" class="addNewOrder">
+                                    <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый заказ</button>
                                     <!--  <a href='formAddNewOrder.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a> -->
-                                    <a id="aOnclick"> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>
+<!--                                    <a id="aOnclick"> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>-->
                                     <script type="text/javascript">
                                         $('#makeNewOrder').on('click',includeFormAddNewOrder);
                                         function includeFormAddNewOrder() {
