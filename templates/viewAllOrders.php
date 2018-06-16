@@ -103,16 +103,6 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
 <?php //include('../head.html') ?>
 <body>
     <div class="container">
-        <!--<div class="row">
-            <?php //require_once('header.html');?>
-        </div>
-        <div class="row"><!-- навигация -->
-            <?php //include('../navigation.html');?>
-           <!-- подсветка меню с контентом 'заказы'
-            <script>
-                showLi('заказы');
-            </script>
-        </div>-->
         <!--подключение строки с показом времени и результатов запросов на сервер -->
         <?php include_once ('App/html/forDisplayTimeShowAnswerServer.html'); ?>
 
@@ -120,51 +110,32 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
            <!-- <div class="col-lg-2 backForDiv">
                 этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
             </div>-->
-            <div class="col-lg-12 classPaddingRight_0">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 classPaddingRight_0">
                 <div class="row headingContent">
                     <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">заказы</div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"></div>
                 </div>
                 <div class="row rowSearch" ><!-- строка поиска-->
                             <!--  сторка для поиска заказов по клиенту и по названию заказа -->
-<!--                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>-->
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 _0">
-<!--                        <div class="row">-->
-<!--                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">-->
-<!--                                <label for="" class="">искать заказ</label>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-<!--                                <label for="inputFindOrderForName">искать по названию заказа</label>-->
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 ">
                                 <input type="text" name="inputFindOrderForName" placeholder="по названию">
                                 <button name="searchForName" class="btn-primary">искать</button>
-<!--                            </div>-->
-<!--                            <div class="col-lg-6 col-md-76 col-sm-6 col-xs-6">-->
-<!--                                <label for="inputFindOrderForNameClient">по названию клиента</label>-->
-                                <input type="text" name="inputFindOrderForNameClient" placeholder="по клиенту">
+                             <input type="text" name="inputFindOrderForNameClient" placeholder="по клиенту">
                                 <button name="searchForNameClient" class="btn-primary">искать</button>
 
-<!--                            </div>-->
-
-<!--                        </div>-->
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-<!--                                <label for="viewTrashedOrders">заказы в корзине</label>-->
-                                <div title="показать удаленные заказы" class="viewTrashedOrders" id="viewTrashedOrders">
-<!--                                    <span class="glyphicon glyphicon-eye-open" style="padding-left: 10px;padding-right: 10px"></span>-->
-<!--                                    <span class="glyphicon glyphicon-trash"></span>-->
-                                    <button class="btn btn-primary"> <span class="glyphicon glyphicon-eye-open"></span>  <span class="glyphicon glyphicon-trash"></span>заказы в корзине</button>
-                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 viewTrashedOrders" id="viewTrashedOrders">
+                                    <button class="btn btn-primary" id="viewTrashedOrders" title="показать удаленные заказы">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                        заказы в корзине</button>
+
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-<!--                                <label for="makeNewOrder"  class="text-center">новый заказ</label>-->
-                                <div title="создать новый заказ" id="makeNewOrder" class="addNewOrder">
-                                    <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый заказ</button>
-                                    <!--  <a href='formAddNewOrder.php'> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a> -->
-<!--                                    <a id="aOnclick"> <div class="text-center"> <span class='glyphicon glyphicon-plus'></span></div></a>-->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" title="создать новый заказ">
+                                    <button class="btn btn-primary addNewOrder" id="makeNewOrder">
+                                        <span class='glyphicon glyphicon-plus'></span> новый заказ</button>
                                     <script type="text/javascript">
                                         $('#makeNewOrder').on('click',includeFormAddNewOrder);
                                         function includeFormAddNewOrder() {
@@ -174,19 +145,11 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
                                             return false;
                                         }
                                     </script>
-                                </div>
                             </div>
                         </div>
-                        <div class="row">
-
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 
-                    </div>
                 </div><!-- конец блока строки поиска  -->
                 <div class="row backForDiv divForTable"><!-- строка показа в таблице заказов-->
                     <div class="col-lg-12" id="table_Orders">
