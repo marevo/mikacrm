@@ -2,7 +2,7 @@
 //--строка показа времени и показа результата добавки материала в базу
  include_once 'App/html/forDisplayTimeShowAnswerServer.html';
 ?>
-<div class="row"><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
+<div class="row"><!-- основной блок контета состоит из 12 колонок слева  -->
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  backForDiv">
         <!--строка для отображения названия страницы где находится пользователь -->
         <div class="row headingContent">

@@ -49,8 +49,8 @@ $('#table_Orders').on('click', function () {
 });
 //клик для загрузки таблицы данных одного заказа
 
-//повесим поиск заказов на div .viewTrashedOrders
-$('.viewTrashedOrders').on('click',function () {
+//повесим поиск заказов на #viewTrashedOrders
+$('#viewTrashedOrders').on('click',function () {
     console.log('нажали div в строке поиска для показа заказов в корзине  ');
 //запустим на сервер запрос для отображения удаленных заказво
     jquery_send('#rezShow','post','../templates/controllerViewAllOrders.php',
