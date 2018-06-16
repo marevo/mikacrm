@@ -97,12 +97,9 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
         }
 }
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
-<title>просмотр всех заказов</title>
-<?php //include('../head.html') ?>
-<body>
-    <div class="container">
+
+<title>заказы</title>
+
         <!--подключение строки с показом времени и результатов запросов на сервер -->
         <?php include_once ('App/html/forDisplayTimeShowAnswerServer.html'); ?>
 
@@ -172,6 +169,4 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView){
         <?php include_once './App/html/viewAllOrdersModal.html';?>
         <?php// include_once '/App/html/viewAllOrdersModal.html';?>
         <script src = '/js/viewAllOrders.js'></script>
-    </div><!-- container -->
-</body>
-</html>
+
