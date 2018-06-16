@@ -3,37 +3,26 @@
  include_once 'App/html/forDisplayTimeShowAnswerServer.html';
 ?>
 <div class="row"><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
-
-    <!--            начало доп блока слева
-    <div class="col-lg-2 backForDiv">
-        этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
-    </div>
-    <!--            конец доп блока слева-->
-    <div class="col-lg-12 backForDiv">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  backForDiv">
         <!--строка для отображения названия страницы где находится пользователь -->
         <div class="row headingContent">
-            <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center "> все контакты </div>
+            <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center "> контакты </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"></div>
         </div>
         <div class="row rowSearch" ><!-- строка поиска-->
             <!--  сторка для поиска заказов по клиенту и по названию заказа -->
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><label for="inputFindContact">искать по названию или доп характ </label></div>-->
-<!--                </div>-->
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindContact" placeholder="по названию ..доп характеристикам"/></div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button></div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="makeNewContactClient" title="создать новый контакт">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="makeNewContactClient" title="создать новый контакт">
                 <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый контакт</button>
             </div>
         </div><!-- конец блока строки поиска  -->
         <div class="row backForDiv divForTable">
-            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tableParent">
+            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php
                 $tableAllContact = "<table  id ='tbViewAllContacts'>
                                           <thead>
@@ -59,9 +48,8 @@
                 ?>
             </div>
         </div>
-
     </div>
-</div>
+</div><!-- row end-->
 <!-- модальное окно для удаления   -->
 <div id="modalWinForDeleteContact" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">

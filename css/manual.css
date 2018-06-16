@@ -73,7 +73,7 @@ tbody td{
     list-style-type: none; /* Убираем маркеры */
    }
    a{
-	   /*color: white;*/
+	   color: white;
    }
 #answerServer li{
     font-size: xx-small;
@@ -710,7 +710,7 @@ table a{
     vertical-align: middle;
 }
 .tableParent{
-   // background-color: #2aabd2;
+    /*background-color: #2aabd2;*/
 }
 #tbViewAllContacts tbody .glyphicon{
     display: block;
