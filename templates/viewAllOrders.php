@@ -33,8 +33,8 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
                       <td>$filds_nameToView[isReady]</td>
                       <td>$filds_nameToView[isCompleted]</td>
                       <td>$filds_nameToView[payment]</td>
-                      <td>просмотр</td>
-                      <td>удалить</td>
+                      <td><span class='glyphicon glyphicon-eye-open'></span></td>
+                      <td><span class='glyphicon glyphicon-trash'></span></td>
                   </tr>
             </thead>
             <tbody>";
@@ -86,7 +86,7 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
                                  $isReady
                                  $isAllow
                                  $payment
-                                 <td><a data-id= $rowItem[idOrder] href='viewOneOrder.php?id=$rowItem[idOrder]' ><span class='glyphicon glyphicon-eye-open'></span></a></td>
+                                 <td><a data-id= $rowItem[idOrder]  ><span class='glyphicon glyphicon-eye-open'></span></a></td>
                                  <td><button data-id=$rowItem[idOrder]><span class='glyphicon glyphicon-trash'></span></button></td>
                 </tr>";
         endforeach;
