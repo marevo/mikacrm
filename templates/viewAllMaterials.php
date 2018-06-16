@@ -20,18 +20,11 @@
                 </div>
                 <div class="row rowSearch" ><!-- строка поиска-->
                     <!--  сторка для поиска заказов по клиенту и по названию заказа -->
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><label for="inputFindMaterial">искать по названию или доп характ </label></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindMaterial" placeholder="по названию"/></div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchMaterialLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button></div>
-                        </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="text" size="22" id="inputFindMaterial" placeholder="по названию или доп характ"/>
+                                <button id="btnSearchMaterialLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="makeNewMaterial" title="создать новый материал">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="makeNewMaterial" title="создать новый материал">
                         <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый материал</button>
 <!--                        <label for="makeNewMaterial"  class="text-center"> </label>-->
 <!--                        <a href='formAddNewMaterialsToBase.php'> <div class="text-center"> </div></a>    -->
