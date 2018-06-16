@@ -73,7 +73,7 @@ tbody td{
     list-style-type: none; /* Убираем маркеры */
    }
    a{
-	   color: white;
+	   /*color: white;*/
    }
 #answerServer li{
     font-size: xx-small;
@@ -662,6 +662,7 @@ table a{
     border: 1px solid black;
     border-radius: 3px;
     padding: 5px;
+    color:black;
     /*max-width: 20px!important;*/
 }
 #tbViewAllMaterials tbody a{

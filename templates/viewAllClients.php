@@ -44,17 +44,10 @@
                 <div class="row rowSearch" ><!-- строка поиска-->
                     <!--  сторка для поиска клиентов по name клиента или contactPerson -->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><label for="inputFindClient">искать по названию или контакту </label></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindClient" placeholder="по названию"/></div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchClientLikeNameORLikeContactPerson" class="btn-primary">искать </button></div>
-                        </div>
+                            <input type="text" id="inputFindClient" placeholder="по названию"/>
+                            <button id="btnSearchClientLikeNameORLikeContactPerson" class="btn-primary">искать</button>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 <!--                        <label for="makeNewClient"  class="text-center">новый клиент</label>-->
                         <div title="создать нового клиента" id="makeNewClient" class="addNewClient">
                            <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый клиент</button>
