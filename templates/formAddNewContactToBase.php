@@ -35,7 +35,7 @@ require_once ('../../autoload.php');
                                 <td class="text-left"><input  name="insertContactToBase"  value="sendMarkerToaddNewContactToBase"/></td>
                             </tr>
                             <tr><td class="text-right"><label for="nameContact">название контакта</label></td>
-                                <td class="text-left"><input maxlength="200" size="55" name="nameContact" id="idNameContact" placeholder="Иванов Иван Иванович чп Иванов Чернигов max 200 символов" required /></td>
+                                <td class="text-left"><input maxlength="200" size="55" name="nameContact" id="idNameContact" placeholder="Иванов Иван Иванович чп Иванов Чернигов (max 200 символов)" required /></td>
                             </tr>
 <!--                            <tr><td class="text-right"><label for="contactPerson">контактное лицо фио</label></td>-->
 <!--                                <td class="text-left"><input maxlength="100" size="55"  name="contactPerson" placeholder="Иванов Иван Иванович"  /></td>-->
@@ -52,6 +52,7 @@ require_once ('../../autoload.php');
                             </tbody>
                         </table>
                     </form>
+                    
                     <script type="text/javascript">
                         //                        $('form select').on('change',function () {
                         //                            if($(this).val() == 0) {
@@ -63,44 +64,40 @@ require_once ('../../autoload.php');
                         //                                $('.alert').remove();
                         //                            return false;
                         //                        });
-                        //обработка полей textarea  на макс кол символов и отсутсвие пробелов по краям
-                        $('#idNameContact').on('blur',function () {
-                            $(this).parent('.alert').remove();
-                            $(this).val($.trim($(this).val()));
-                            console.log('убрали пробелы');
-                            if(this.name == 'nameContact'){
-                                if($(this).val().length > 200 ) {
-                                    var elem = $(this);
-                                    elem.value = elem.value.substr(0, 200);
-                                    console.log('обрезали длину названия и описания контакта до 200 символов');
-                                }
-                            }
-                            return false;
+                        //обработка полей textarea  на min & max кол символов и отсутсвие пробелов по краям
+                        $('#idNameContact').on('blur', function (event) {
+                            var elemInput = $(this);
+                            //запустим функцию проверки на пустоту и на min max количество символов в поле input #idNameContact
+                            checkEmtyAndLength(elemInput, 3, 200);
                         });
+//                        $('#idNameContact').on('blur',function () {
+//                            $(this).parent().find('.alertDelete').remove();
+//                            if($(this).val()==''){
+//                                $(this).before('<div class="alertDelete backgroundAlertRed">поле обязательно для заполнения</div>');
+////                                $(this).parent().addClass('alert');
+//                                return false;
+//                            }
+//                            if($(this).val().length < 3){
+//                                $(this).before('<div class="alertDelete backgroundAlertRed">не менее трех символов</div>');
+//                                return false;
+//                            }
+//                            $(this).val($.trim($(this).val()));
+//                            console.log('убрали пробелы');
+//                            if(this.name == 'nameContact'){
+//                                if($(this).val().length > 200 ) {
+//                                    var elem = $(this);
+//                                    elem.value = elem.value.substr(0, 200);
+//                                    console.log('обрезали длину названия и описания контакта до 200 символов');
+//                                }
+//                            }
+//                            return false;
+//                        });
                         //обработка полей телефона и имейла
                         $('form input').on('blur',function (event) {
-//                            удалили старые предупреждения о не правильном формате номера телефона
-//                            $('[class~=alertDelete]').remove();
+                            //проверка на валидность введения телефона в ajax_post_get.js function testOnPhoneExpand(elemInput)
                             if(this.name == 'phone'){
-                                if( $(this).val().length <0 ){
-                                    $(this).parent().find('[class~=alertDelete]').remove();
-                                    $(this).before('<div class="alertDelete backgroundAlertRed">поле обязательно для заполнения</div>');
-                                }
-                                else
-                                    {
-                                    $(this).prev().remove();
-                                    $(this).parent().find('[class~=alertDelete]').remove();
-                                    console.log('заносили данные в поля телефона phone');
-                                    var inputPhoneValue = $(this).val();
-        //                               eсли не прошли тест на правильность - вставим предупреждение
-                                    if(testOnPhone(inputPhoneValue) == false){
-                                        $(this).parent().find('[class~=alertDelete]').remove();
-                                        $(this).before('<div class="alertDelete backgroundAlertRed">формат номера от 5 до 10 цифр</div>');
-                                    }else {
-        //                                   $(this).prev().remove();
-                                        $(this).parent().find('[class~=alertDelete]').remove();
-                                    }
-                                }
+                                var phoneField = $(this);
+                                testOnPhoneExpand(phoneField);
                             }
                             if(this.name == 'email' && $(this).val().length>0){
                                 console.log('заносили данные в полe email');
@@ -111,9 +108,7 @@ require_once ('../../autoload.php');
                                 }else {
 //                                 $(this).prev().remove();
                                     $(this).parent().find('[class~=alertDelete]').remove();
-
                                 }
-
                             }
                         });
                         //обязательные поля для заполнения название клиента, телефон, адрес
@@ -147,6 +142,8 @@ require_once ('../../autoload.php');
                                     $(this).find('.alert').remove();
 //        alert('улетели данные ' + $(this).serializeArray());
                                     console.log($(this).serializeArray());
+                                    //вернемся на показ всех контактов
+                                    location.reload();
                                 }
                             });
                             $(this).find('.alert').remove();

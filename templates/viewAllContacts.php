@@ -12,10 +12,8 @@
         <div class="row rowSearch" ><!-- строка поиска-->
             <!--  сторка для поиска заказов по клиенту и по названию заказа -->
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindContact" placeholder="по названию ..доп характеристикам"/></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button></div>
-                </div>
+                <input type="text" id="inputFindContact" placeholder="по названию ..доп характеристикам"/>
+                <button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать</button>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="makeNewContactClient" title="создать новый контакт">
                 <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый контакт</button>
