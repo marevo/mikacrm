@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 16 2018 г., 22:03
+-- Время создания: Июн 17 2018 г., 15:17
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.0.14
 
@@ -33,20 +33,21 @@ CREATE TABLE `clients` (
   `phone0` varchar(16) DEFAULT 'null',
   `phone1` varchar(16) DEFAULT 'null',
   `email0` varchar(30) DEFAULT 'null',
-  `address` varchar(200) DEFAULT 'null'
+  `address` varchar(200) DEFAULT 'null',
+  `birthday` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `clients`
 --
 
-INSERT INTO `clients` (`id`, `name`, `contactPerson`, `phone0`, `phone1`, `email0`, `address`) VALUES
-(0, 'клиент не выбран', 'null', 'null', 'null', 'null', 'null'),
-(1, 'чп Пупкин В С', 'Василий Пупкин', '0939999990', NULL, 'pupkin@gmail.com', 'Чернигов'),
-(2, 'фирма Рога и Копыта 2', 'Владимир Кузякин', '0949999990', NULL, 'rogaandcopyta@gmail.com', 'Чернигов'),
-(3, 'фирма Рога и Копыта ', '', 'null', '', '', 'Чернигов'),
-(4, 'имя несуществующий клиент( нужно для проверки)', 'контакт-не существует', 'null', 'null', 'null', 'Чернигов'),
-(6, 'Евич Илья', 'Евич Илья Андреевич', '0931107156', '', '', 'Чернигов, Козацкая');
+INSERT INTO `clients` (`id`, `name`, `contactPerson`, `phone0`, `phone1`, `email0`, `address`, `birthday`) VALUES
+(0, 'клиент не выбран', 'null', 'null', 'null', 'null', 'null', '0000-00-00'),
+(1, 'чп Пупкин В С', 'Василий Пупкин', '0939999990', NULL, 'pupkin@gmail.com', 'Чернигов', '1990-03-07'),
+(2, 'фирма Рога и Копыта 2', 'Владимир Кузякин', '0949999990', NULL, 'rogaandcopyta@gmail.com', 'Чернигов', '1990-06-23'),
+(3, 'фирма Рога и Копыта ', '', 'null', '', '', 'Чернигов', '0000-00-00'),
+(4, 'имя несуществующий клиент( нужно для проверки)', 'контакт-не существует', 'null', 'null', 'null', 'Чернигов', '0000-00-00'),
+(6, 'Евич Илья', 'Евич Илья Андреевич', '0931107156', '', '', 'Чернигов, Козацкая', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -181,6 +182,7 @@ CREATE TABLE `menu` (
   `id` tinyint(3) UNSIGNED NOT NULL,
   `parent_id` tinyint(4) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
+  `text` varchar(255) NOT NULL,
   `handler` varchar(255) NOT NULL DEFAULT '',
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -189,16 +191,30 @@ CREATE TABLE `menu` (
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id`, `parent_id`, `title`, `handler`, `image`) VALUES
-(2, 0, 'Tasks', 'templates/viewAllTasks.php', 'fa-check-square-o'),
-(3, 0, 'Contacts', 'templates/viewAllContacts.php', 'icon-vcard'),
-(4, 0, 'Clients', 'templates/viewAllClients.php', 'fa-user'),
-(5, 0, 'Orders', 'templates/viewAllOrders.php', 'fa-shopping-basket'),
-(6, 0, 'Suppliers', 'templates/viewAllSuppliers.php', 'icon-truck'),
-(7, 0, 'Materials', 'templates/viewAllMaterials.php', 'icon-package'),
-(8, 0, 'Reports', 'templates/viewAllReports.php', 'fa-bar-chart'),
-(9, 0, 'Add_module', 'templates/viewAllModyles.php', 'icon-box-add'),
-(11, 5, 'Place_order', 'templates/formAddNewOrder.php', 'fa-cart-arrow-down');
+INSERT INTO `menu` (`id`, `parent_id`, `title`, `text`, `handler`, `image`) VALUES
+(2, 0, 'Tasks', 'Задачи', 'templates/viewAllTasks.php', 'fa-check-square-o'),
+(3, 0, 'Contacts', 'Контакты', 'templates/viewAllContacts.php', 'icon-vcard'),
+(4, 0, 'Clients', 'Клиенты', 'templates/viewAllClients.php', 'fa-user'),
+(5, 0, 'Orders', 'Заказы', 'templates/viewAllOrders.php', 'fa-shopping-basket'),
+(6, 0, 'Suppliers', 'Поставщики', 'templates/viewAllSuppliers.php', 'icon-truck'),
+(7, 0, 'Materials', 'Материалы', 'templates/viewAllMaterials.php', 'icon-package'),
+(8, 0, 'Reports', 'Отчёты', 'templates/viewAllReports.php', 'fa-bar-chart'),
+(9, 0, 'Modules', 'Управление модулями', 'templates/viewAllModyles.php', 'icon-box-add'),
+(11, 5, 'Place_order', 'Создание заказа', 'templates/formAddNewOrder.php', 'fa-cart-arrow-down');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `modules`
+--
+
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `unsql` varchar(255) NOT NULL,
+  `dir` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -418,6 +434,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `modules`
+--
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
@@ -484,7 +506,12 @@ ALTER TABLE `materialsToOrder`
 -- AUTO_INCREMENT для таблицы `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT для таблицы `modules`
+--
+ALTER TABLE `modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
