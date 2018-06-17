@@ -3,8 +3,7 @@
  */
 
 // проверка поля на пустоту и наличие хотя бы 3 символов
-function checkEmtyAndLength(elemInput,minChars, maxChars) {
-
+function checkNotEmtyAndLengthTrue(elemInput, minChars, maxChars) {
     $(elemInput).parent().find('.alertDelete').remove();
     if($(elemInput).val()==''){
         $(elemInput).before('<div class="alertDelete backgroundAlertRed">поле обязательно для заполнения</div>');
@@ -15,11 +14,12 @@ function checkEmtyAndLength(elemInput,minChars, maxChars) {
         $(elemInput).before('<div class="alertDelete backgroundAlertRed">не менее трех символов</div>');
         return false;
     }
-    $(elemInput).val($.trim($(this).val()));
+    $(elemInput).val($.trim($(elemInput).val()));
     console.log('убрали пробелы');
     if($(elemInput).val().length > maxChars) {
         elemInput.value = elemInput.value.substr(0, 200);
         console.log('обрезали длину названия и описания контакта до 200 символов');
+        return true;
     }
-return false;
+return true
 }

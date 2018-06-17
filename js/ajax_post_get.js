@@ -218,16 +218,18 @@ function testOnPhone(phone) {
     return regExpPhone.test(phone);
 }
 
-//расширенная функция для проверки валидности телефона и если валидность не пройдена то подсветит
+//расширенная функция для проверки валидности телефона и если валидность не пройдена то вылезет подсказка
 function testOnPhoneExpand(elemInputPhone){
     $(elemInputPhone).parent().find('[class~=alertDelete]').remove();
     var inputPhoneValue =$(elemInputPhone).val();
     if(testOnPhone(inputPhoneValue) == false){
         $(elemInputPhone).parent().find('[class~=alertDelete]').remove();
         $(elemInputPhone).before('<div class="alertDelete backgroundAlertRed">формат номера от 5 до 10 цифр</div>');
+        return false;
     }else {
         //                                   $(this).prev().remove();
         $(elemInputPhone).parent().find('[class~=alertDelete]').remove();
+        return true;
     }
 }
 function testOnEmail(email){
@@ -235,6 +237,18 @@ function testOnEmail(email){
     // var regExpEmail =/^(((\w+).)?(\w+))@(\w+)(\.\w+)+$/
     var regExpEmail =/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
     return regExpEmail.test(email);
+}
+//расширенная функция для проверки валидности email если валидность не пройдена, то вылезет подсказка
+function testOnEmailExpand(elemInputEmail){
+    $(elemInputEmail).parent().find('[class~=alertDelete]').remove();
+    var inputEmailValue =$(elemInputEmail).val();
+    if(testOnEmail(inputEmailValue) == false){
+        $(elemInputEmail).parent().find('[class~=alertDelete]').remove();
+        $(elemInputEmail).before('<div class="alertDelete backgroundAlertRed">что-то типа name@domen.ua</div>');
+    } else {
+        //                                   $(this).prev().remove();
+        $(elemInputEmail).parent().find('[class~=alertDelete]').remove();
+    }
 }
 //на загрузку document повесим вызов времени с сервера
 //определим переменную которая будет содержать время сервера
