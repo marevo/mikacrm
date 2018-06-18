@@ -5,7 +5,7 @@
  * Date: 07.06.2018
  * Time: 6:35
  */
-require '../../autoload.php';
+require_once '../../autoload.php';
 
 //если пришел скрытый маркер udate контакта с id
 if (isset($_POST['updateOneContact'])){
@@ -80,6 +80,7 @@ function insertNewContactToBase(){
         if($resInsert){
             \App\FastViewTable::showUspeh('удачно');
             \App\FastViewTable::showAnswerServer(" контакт " .$objNewContact ->name ." успешно добавлен в базу ");
+            echo"<script type='text/javascript'></script>";
         }
         else{
             \App\FastViewTable::showNoUspeh('не удачно');
