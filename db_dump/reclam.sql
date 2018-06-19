@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 17 2018 г., 15:17
+-- Время создания: Июн 19 2018 г., 18:21
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.0.14
 
@@ -392,7 +392,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `login`, `password`, `gmail`, `secretQuestion`, `secretAnswer`, `session`, `updated`, `rightUser`) VALUES
-(1, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d');
+(1, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d'),
+(2, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '?', '!', 'o5rdm54bm7m1lvfvuhsd9jp9d4', '1529421526', NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -486,12 +487,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT для таблицы `contactsclients`
 --
 ALTER TABLE `contactsclients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `materials`
 --
@@ -506,12 +507,12 @@ ALTER TABLE `materialsToOrder`
 -- AUTO_INCREMENT для таблицы `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT для таблицы `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
@@ -536,7 +537,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
