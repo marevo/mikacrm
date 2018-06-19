@@ -27,9 +27,11 @@
 <script type="text/javascript">
 document.getElementById("exit").onclick=function(){
 	var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/handlers/deleteSession.php", false);
+        xhr.open("POST", "/handlers/session.php", false);
 	    xhr.overrideMimeType("text/plain; charset=utf8");
-        xhr.send(null);
+		var formData = new FormData();
+		formData.append('action','delete');
+        xhr.send(formData);
 		location.reload();
 }
 function hide_completed(){

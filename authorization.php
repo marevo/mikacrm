@@ -1,6 +1,6 @@
 <?
     require_once('./head.php');
-echo password_hash ( "AdMiNmArEvO_1972" , PASSWORD_BCRYPT);
+//echo password_hash ( "AdMiNmArEvO_1972" , PASSWORD_BCRYPT);
 ?>
 <div class="container">
 	<div class="row">
@@ -44,9 +44,10 @@ echo password_hash ( "AdMiNmArEvO_1972" , PASSWORD_BCRYPT);
 	function authorize() {
 		// создать объект для формы
         var formData = new FormData(document.forms.authorization);
+		formData.append('action','create');
         // отослать
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/handlers/createSession.php", false);
+        xhr.open("POST", "/handlers/session.php", false);
 	    xhr.overrideMimeType("text/plain; charset=utf8");
         xhr.send(formData);
 			if(xhr.responseText=="authorized")
