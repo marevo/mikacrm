@@ -54,7 +54,7 @@
                                 <td><textarea name="nameSupplier"  cols="50" rows="4" placeholder="название поставщика 200 символов" required ></textarea></td>
                             </tr>
                             <tr><td class="text-right"><label for="addCharacteristic">дополнительные характеристики</label></td>
-                                <td class="text-left"><textarea cols="50" rows="6"  name="addCharacteristic" placeholder="что-то типа поставка пленки... " required ></textarea></td>
+                                <td class="text-left"><textarea cols="50" rows="6"  name="addCharacteristic" placeholder="название материала и его описание" required ></textarea></td>
                             </tr>
 
                             <tr><td class="text-right"><label for="contactPerson">контактное лицо</label></td>

@@ -56,6 +56,8 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
                         "<td class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .
                         "<td class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
                     foreach ($allClientsInBase as $item) {
+                        if(! $item->id)
+                            continue;
                         //найдем id заказа для каждого клиента, чтобы узнать есть у него заказы и
                         // разрешать удалять только тех клиентов, у которых нет заказов
                         if ($item->ifExistAnyOrderForThisClient()) {
@@ -85,8 +87,8 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
 <div id="modalWinForDeleteClient" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header text-center">удалить клиента навсегда!
-                <button class="close" data-dismiss="modal">x</button>
+            <div class="modal-header text-center text-danger">клиент будет удален навсегда!
+                <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">

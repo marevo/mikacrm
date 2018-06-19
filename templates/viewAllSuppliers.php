@@ -96,15 +96,15 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
 <div id="modalWinForDeleteSupp" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header text-center">удалить поставщика навсегда!
-                <button class="close" data-dismiss="modal">закрыть</button>
+            <div class="modal-header text-center">удаление поставщика
+                <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row" style="background-color: #c0c7d2;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-12 text-center">хотите удалить этотого поставщика навсегда ?</div>
+                                <div class="col-lg-12 text-center text-danger">хотите удалить этотого поставщика навсегда ?</div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 text-center " id="modalNameSupplier"> название поставщика</div>

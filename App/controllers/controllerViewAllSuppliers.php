@@ -54,7 +54,7 @@ if(isset($_POST['searchLike'])){
 
 //выбросить(подтянуть через include) на страницу форму добавления нового заказчика
 if(isset($_POST['includeFormNewSupplier'])){
-    echo "привет->запрос на загрузку формы добавления (создания) нового поставщика";
+//    echo "привет->запрос на загрузку формы добавления (создания) нового поставщика";
     include '../../templates/formAddNewSupplierToBase.php';
 }
 if(isset($_POST['includeViewOneSupplier'])){

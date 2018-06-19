@@ -52,7 +52,7 @@
 <div id="modalWinForDeleteContact" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header text-center">удалить контакт навсегда!
+            <div class="modal-header text-center text-danger"> контакт будет удален навсегда !
                 <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="modal-body">

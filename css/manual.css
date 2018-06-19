@@ -672,8 +672,12 @@ table a{
     text-decoration: none;
 
 }
+
 /*ширина модального окна при вопросе удаления */
-#modalWinForDeleteMat .modal-dialog, #modalWinForDeleteSupp .modal-dialog, #modalwinfordeleteclient .modal-dialog{
+#modalWinForDeleteMat .modal-dialog,
+#modalWinForDeleteSupp .modal-dialog,
+#modalwinfordeleteclient .modal-dialog,
+#modalWinForDeleteContact .modal-dialog {
     width: 600px;
 }
 
