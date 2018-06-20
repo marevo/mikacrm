@@ -84,29 +84,32 @@ if(isset($_POST['searchLike'])){
 //phoneContact
 //:
 //"11111"
-if (isset($_POST['restoredContactDeletedToSend'])){
-//    echo ("Ku-Ku");
-    \App\ModelLikeTable::showUspeh("хотим восстановить удаленного контакта");
+if (isset($_POST['restoreLastDeleteContact'])){
     \App\FastViewTable::showAnswerServer("пришел маркер на восстановление последнего удаленного контакта в базу");
-    if(isset($_POST['idClient'])){
-        $objRestoredContact = json_decode($_POST['restoreLastDeleteContact'][1], true);
-           // insertLastDeletedContactToBase($objRestoredContact);
+    if(isset($_POST['idContact'])){
+        //$objRestoredContact = json_decode($_POST['restoreLastDeleteContact'][1], true);
+            insertLastDeletedContactToBase(intval($_POST['idContact']));
     }
 
 }
-function insertLastDeletedContactToBase($objRC){
+function insertLastDeletedContactToBase($idDeletedContact){
+    if(\App\Models\Contacts::findObjByIdStatic($idDeletedContact)){
+        \App\ModelLikeTable::showNoUspeh("такой контакт нельзя восстановить он не удален");
+        \App\FastViewTable::showAnswerServer("такой контакт нельзя восстановить он не удален");
+        return false;
+    }
     $objNewContact = new \App\Models\Contacts();
 
-    $nameContact = htmlspecialchars($objRC['nameContact']);
+    $nameContact = htmlspecialchars($_POST['nameContact']);
     $objNewContact->name = $nameContact;
 
-    $phoneContact = htmlspecialchars($objRC['phoneContact']);
+    $phoneContact = htmlspecialchars($_POST['phoneContact']);
     $objNewContact->phone = $phoneContact;
 
-    $emailContact = htmlspecialchars($objRC['emailContact']);
+    $emailContact = htmlspecialchars($_POST['emailContact']);
     $objNewContact->email = $emailContact;
 
-    $objNewContact->id_clients = intval($objRC['idClient']);
+    $objNewContact->id_clients = intval($_POST['idClient']);
      
     //вставим новый контакт в базу
     $resInsert = $objNewContact -> insert();
@@ -114,7 +117,7 @@ function insertLastDeletedContactToBase($objRC){
     if($resInsert){
         \App\FastViewTable::showUspeh('удачно');
         \App\FastViewTable::showAnswerServer(" контакт " .$objNewContact ->name ." успешно добавлен в базу ");
-        echo"<script type='text/javascript'></script>";
+        echo"<script type='text/javascript'>location.reload();</script>";
     }
     else{
         \App\FastViewTable::showNoUspeh('не удачно');

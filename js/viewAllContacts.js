@@ -1,7 +1,8 @@
 /**
  * Created by marevo on 06.06.2018.
  */
-//можно сюда перенести js код из viewAllMaterials.php
+//создадим объект для возможного удаления с тем
+var contactDeleted;
 $(function () {
     //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить контакт или просмотреть его
     $('#tbViewAllContacts').on('click',function (event) {
@@ -16,28 +17,16 @@ $(function () {
                     $('#modalIdContact').text( $(target).data('id') );
                     $('#modalNameContact').text( $(target).siblings()[0].textContent );
                     $('#modalWinForDeleteContact').modal('show');
-                    //сохраним в localeStorage id удаленного контакта
-                    localStorage.setItem('idContact-trashed', $(target).data('id') );
-                    console.log('idContact-trashed= '+$(target).data('id'));
-                    localStorage.setItem('idClient', $(target).siblings()[1].textContent ) ;
-                    console.log('idClient= '+$(target).siblings()[1].textContent);
-                    localStorage.setItem('phoneContact-trashed', $(target).siblings()[2].textContent ) ;
-                    console.log('phoneContact-trashed= '+ $(target).siblings()[2].textContent);
-                    localStorage.setItem('emailContact-trashed', $(target).siblings()[3].textContent ) ;
-                    console.log('emailContact-trashed= '+ $(target).siblings()[3].textContent);
-                  debugger;
-                    var contactDeleted = {
+                    //создадим объект для возможного удаления с тем, чтобы сохранить его для последующего восстановления при случайном удалении
+                     contactDeleted = {
                         'idContact': $(target).data('id'),
                         'nameContact':$(target).siblings()[0].textContent,
                         'idClient': $(target).siblings()[1].textContent,
                         'phoneContact' : $(target).siblings()[2].textContent,
-                        'emailContact': $(target).siblings()[3].textContent
+                        'emailContact': $(target).siblings()[3].textContent,
+                        'restoreLastDeleteContact' : 'restoredContactDeletedToSend'
                     };
                     localStorage.setItem('objContactTrashed', JSON.stringify(contactDeleted) );
-                    var restoredContactDeleted = JSON.parse(localStorage.getItem('objContactTrashed'));
-                    console.log(restoredContactDeleted);
-                    debugger;
-
                 }
                 //обработка клика для просмотра одного контакта
                 if($(target).data('id')&& $(target).data('do') == 'view'){
@@ -63,37 +52,30 @@ $(function () {
     }
     //кнопка для восстановления последнего удаленного контакта
     $('#restoreLastDeletedContact').on('click', restoreLastDeleteContactFunction );
+    /**
+     *функция для отправки по ajax заранее записанного в LocalStorage последнего отправленного на удаление контакта
+     */
     function restoreLastDeleteContactFunction() {
         var restoredContactDeletedToSend = JSON.parse(localStorage.getItem('objContactTrashed'));
-        restoredContactDeletedToSend.restoreLastDeleteContact = 'restoreContactInBase';
-        // debugger;
-        // jquery_send('.divForAnswerServer','post',"../App/controllers/controllerViewAllContacts.php",
-        //     ['restoredContactDeletedToSend','idContact','nameContact','idClient','phoneContact','emailContact'],
-        //     ['', restoredContactDeletedToSend.idContact , restoredContactDeletedToSend.nameContact ,
-        //         restoredContactDeletedToSend.idClient , restoredContactDeletedToSend.phoneContact , restoredContactDeletedToSend.emailContact]
-        // );
-        debugger;
-        if(true){
-            $.ajax({
-                type: 'post',
-                url: "../App/controllers/controllerViewAllContacts.php", //ссылка куда идут данные,
-                data: 'restoredContactDeletedToSend',// маркер для сервера
-                success: function (data) {
+        $.ajax({
+            type: 'post',
+            url: "../App/controllers/controllerViewAllContacts.php", //ссылка куда идут данные,
+            data: restoredContactDeletedToSend,// маркер для сервера
+            success: function (data) {
 //                                     fUspehAll('удачно');
-                    $('.divForAnswerServer').html(data);
+                $('.divForAnswerServer').html(data);
 //                                     return false;
-                    $(this).find('.alert').remove();
+                $(this).find('.alert').remove();
 //        alert('улетели данные ' + $(this).serializeArray());
 //                 console.log($(this).serializeArray());
 
-                    //var timerId = setTimeout(function() {location.reload(); clearTimeout(timerId); }, 1000);
-                    // $(this).find('.alert').remove();
+                //var timerId = setTimeout(function() {location.reload(); clearTimeout(timerId); }, 1000);
+                // $(this).find('.alert').remove();
 //                                        вернемся на показ всех контактов
 //                 location.reload();
-                    return false;
-                }
-            });
-        }
+                return false;
+            }
+        });
     }
     
     //функция обработки клика в модальном окне будем обрабатывать только кнопку
@@ -101,7 +83,10 @@ $(function () {
         var target = event.target;
         if(target.name == 'btnDeleteContact'){
             console.log('кликнули кнопку на удаление контакта');
-            //будем удалять материал из базы
+            //перезапишем контакт в LocaleStorage для возможного восстановления при случайном удалении
+            localStorage.setItem('objContactTrashed', JSON.stringify(contactDeleted) );
+            console.log("сохранили в объекте objContactTrashed в LocaleStorage данные удаленного контакта");
+            //будем удалять контакт из базы
             jquery_send('.divForAnswerServer','post','App/controllers/controllerViewAllContacts.php',
                 ['deleteContactFromBase','idContact'],['', $('#modalIdContact').text()]);
             $('#modalIdContact').text('');
