@@ -4,10 +4,18 @@
 var req;
 var elem    //!!! - ГЛОБАЛЬНАЯ (т.к. для post_send(get_send) и func_response) elem - ЭЛЕМЕНТ ДЛЯ ВЫВОДА
 //################################################# ФОРМИРОВАНИЕ И ОТПРАВКА POST
+
+/**
+ * @elemm куда вернуть результат запроса
+ * @method тип запроса post or get
+ * @program файл который бедет обрабатывать запрос
+ * @param_arr массив названий переменных
+ * @value_arr массив значений переменных
+ *  */
 function jquery_send(elemm, method, program, param_arr, value_arr) {
     var str='';                                                                //!!! - начальный str=''
     for(var i=0; i<param_arr.length; i++) {                                    //!!! - массивы - перебор
-        str+=param_arr[i]+'='+encodeURIComponent(value_arr[i])+'&';             //!!! - накапливаем str
+        str+= param_arr[i]+'='+ encodeURIComponent(value_arr[i])+'&';             //!!! - накапливаем str
     }
     $.ajax(
         {
@@ -183,7 +191,10 @@ function fNoUspehAll() {
     }
 }
 //*/функции отображения на клиенте сообщений сервера в #answerServer
-
+/**ShowAnswerServer
+ * показ в ul пяти последних сообщений сервера
+ * передавать надо 1 сообщение в функцию
+ */
 function ShowAnswerServer() {
     if(arguments.length > 0){
         var strAppendLi = arguments[0];

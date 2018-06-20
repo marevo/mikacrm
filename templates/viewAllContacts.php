@@ -15,8 +15,9 @@
                 <input type="text" id="inputFindContact" placeholder="по названию ..доп характеристикам"/>
                 <button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать</button>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="makeNewContactClient" title="создать новый контакт">
-                <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый контакт</button>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"  >
+                <button id="makeNewContactClient" title="создать новый контакт" class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый контакт</button>
+                <button id="restoreLastDeletedContact" class="btn btn-primary" title="восстановить последний удаленный контакт"><span class='glyphicon glyphicon-cloud-upload'></span> восстановить контакт</button>
             </div>
         </div><!-- конец блока строки поиска  -->
         <div class="row backForDiv divForTable">

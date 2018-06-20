@@ -68,3 +68,56 @@ if(isset($_POST['searchLike'])){
         echo "$ContactTBODY";
     }
 }
+//восстановление случайно удаленного контакта
+//emailContact
+//:
+//""
+//idClient
+//:
+//""
+//idContact
+//:
+//7
+//nameContact
+//:
+//"111"
+//phoneContact
+//:
+//"11111"
+if (isset($_POST['restoredContactDeletedToSend'])){
+//    echo ("Ku-Ku");
+    \App\ModelLikeTable::showUspeh("хотим восстановить удаленного контакта");
+    \App\FastViewTable::showAnswerServer("пришел маркер на восстановление последнего удаленного контакта в базу");
+    if(isset($_POST['idClient'])){
+        $objRestoredContact = json_decode($_POST['restoreLastDeleteContact'][1], true);
+           // insertLastDeletedContactToBase($objRestoredContact);
+    }
+
+}
+function insertLastDeletedContactToBase($objRC){
+    $objNewContact = new \App\Models\Contacts();
+
+    $nameContact = htmlspecialchars($objRC['nameContact']);
+    $objNewContact->name = $nameContact;
+
+    $phoneContact = htmlspecialchars($objRC['phoneContact']);
+    $objNewContact->phone = $phoneContact;
+
+    $emailContact = htmlspecialchars($objRC['emailContact']);
+    $objNewContact->email = $emailContact;
+
+    $objNewContact->id_clients = intval($objRC['idClient']);
+     
+    //вставим новый контакт в базу
+    $resInsert = $objNewContact -> insert();
+//        $resInsert = true;
+    if($resInsert){
+        \App\FastViewTable::showUspeh('удачно');
+        \App\FastViewTable::showAnswerServer(" контакт " .$objNewContact ->name ." успешно добавлен в базу ");
+        echo"<script type='text/javascript'></script>";
+    }
+    else{
+        \App\FastViewTable::showNoUspeh('не удачно');
+        \App\FastViewTable::showAnswerServer(" не удалось создать контакт ".$objNewContact ->name );
+    }
+}

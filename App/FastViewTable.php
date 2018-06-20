@@ -70,6 +70,9 @@ trait FastViewTable
     }
 
     //для вывода доп инфо в #rezShow
+    /** показ строка которую передадут на клиент для показа в 5 последних сообщениях сервера
+     * @param $str 
+     */
     public static function showAnswerServer($str){
         //echo "answerServer!";
         echo "<script type='text/javascript'>ShowAnswerServer('$str');</script>";
