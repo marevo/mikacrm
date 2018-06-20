@@ -86,7 +86,7 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
                                  $isReady
                                  $isAllow
                                  $payment
-                                 <td><a data-id= $rowItem[idOrder]  ><span class='glyphicon glyphicon-eye-open'></span></a></td>
+                                 <td data-do='view' data-id= $rowItem[idOrder]  ><span class='glyphicon glyphicon-eye-open'></span></td>
                                  <td><button data-id=$rowItem[idOrder]><span class='glyphicon glyphicon-trash'></span></button></td>
                 </tr>";
         endforeach;
