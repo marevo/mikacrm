@@ -77,7 +77,7 @@ if(isset($_POST['showTrashedOrders'])){
                 .$rowItem[name].'</td><td>'
                 .$rowItem[nameClient].'</td><td>'
                 .$rowItem[orderPrice].'</td>'
-                .$isReady.$isAllow.$payment.'<td><a data-id = '.$rowItem[idOrder].' href=\'viewOneOrder.php?id='.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-edit\'> просмотр</span></a></td><td></td></tr>';
+                .$isReady.$isAllow.$payment.'<td><a data-id = '.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-eye-open\'></span></a></td><td></td></tr>';
 
         endforeach;
         //получили строки удаленных заказов для добавления в таблицу
