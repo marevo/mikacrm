@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 19 2018 г., 18:56
+-- Время создания: Июн 21 2018 г., 13:42
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.0.14
 
@@ -192,7 +192,6 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `parent_id`, `title`, `text`, `handler`, `image`) VALUES
-(2, 0, 'Tasks', 'Задачи', 'templates/viewAllTasks.php', 'fa-check-square-o'),
 (3, 0, 'Contacts', 'Контакты', 'templates/viewAllContacts.php', 'icon-vcard'),
 (4, 0, 'Clients', 'Клиенты', 'templates/viewAllClients.php', 'fa-user'),
 (5, 0, 'Orders', 'Заказы', 'templates/viewAllOrders.php', 'fa-shopping-basket'),
@@ -392,7 +391,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `login`, `password`, `gmail`, `secretQuestion`, `secretAnswer`, `session`, `updated`, `rightUser`) VALUES
 (1, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d'),
-(2, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '?', '!', 'o5rdm54bm7m1lvfvuhsd9jp9d4', '1529423741', NULL);
+(2, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '?', '!', 'o5rdm54bm7m1lvfvuhsd9jp9d4', '1529577748', NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -506,7 +505,7 @@ ALTER TABLE `materialsToOrder`
 -- AUTO_INCREMENT для таблицы `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `modules`
 --
