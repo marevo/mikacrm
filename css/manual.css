@@ -19,7 +19,8 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	/*vertical-align: baseline;*/
+    vertical-align: middle;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -424,9 +425,10 @@ tbody tr :nth-child(3):hover{
 table a{
     display: block;
     /*border: black 1px solid;*/
-    border-radius: 4px;
-    padding: 6px;
+    border-radius: 3px;
+    padding: 4px;
     text-decoration: none;
+    color:black;
 }
 
 table tbody a:hover{

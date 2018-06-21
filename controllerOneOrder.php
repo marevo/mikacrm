@@ -228,10 +228,10 @@ if(isset($_GET['update'])){
             ";
             //запустим функцию отображения ответа сервера (если успешно поменяли/ или если не успешно поменяли)
             if($res == true){
-                echoUspehAll();
+                \App\FastViewTable::showUspeh("успешно");
             }
             if($res == false){
-                echoNoUspeh();
+                \App\FastViewTable::showNoUspeh("не удалось изменить");
             }
             break;
         case 'dateOfOrdering':
