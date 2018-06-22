@@ -53,7 +53,7 @@
 <div id="modalWinForDeleteContact" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header text-center text-danger"> контакт будет удален навсегда !
+            <div class="modal-header text-center "> удаление контакта
                 <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="modal-body">
@@ -61,7 +61,7 @@
                     <div class="row" style="background-color: #c0c7d2;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-12 text-center">хотите удалить этот контакт навсегда ?</div>
+                                <div class="col-lg-12 text-center text-danger">хотите удалить этот контакт навсегда ?</div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 text-center " id="modalNameContact"> название контакта</div>
