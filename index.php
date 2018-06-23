@@ -28,7 +28,7 @@ else
         <!--   wrapper      подтянем header сайта-->
         <?php require_once ('./templates/header.php'); ?>	
 	</div>
-	<div class="row" id="main_cont"><!-- middle  -->
+	<div class="row navbar-fixed-top" id="main_cont"><!-- middle  -->
 	<!--для шифровки пароля<?echo password_hash ( "password2" , PASSWORD_BCRYPT);?>-->
         <!--    подтянем menu сайта-->
         <?php require_once ('./navigation.php'); ?>

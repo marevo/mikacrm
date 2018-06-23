@@ -1,29 +1,75 @@
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<div class="row" id="container">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="logo">
-				<div id="logo"><img src="\img\1_Primary_logo_on_transparent_322x63.png"/></div>
-			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " id="pod">
-			<ul class="nav navbar-nav navbar-right">
-			<li>
-				<span class="fa-user" style="margin-left: 100px; margin-top: 30px;">
-							<?
-								require_once 'autoload.php';
-								$sid=session_id();
-								$res=\App\Models\User::getCurrentUserBySession($sid);
-								echo $res[0]->name;
-							?>
-							
-				</span>
-				</li>
-				<li>
-				<a id="exit"><i class="icon-exit3"></i>Выход</a>
-				</li>
-			</ul>	
+   <div class='col-lg-4' id="logo">
+				<div id="logo">
+					<img src="\img\1_Primary_logo_on_transparent_322x63.png"/>
+				</div>
+   </div>
+   <div class='col-lg-4' id="pod">
+   </div>
+   <div class='col-lg-4' id="pod">
+   <div class='row pod_row' >
+			<div class=' col-lg-6 pod_user'>
+						<a>
+							<i class="fa-user"> </i>
+									<?
+										require_once 'autoload.php';
+										$sid=session_id();
+										$res=\App\Models\User::getCurrentUserBySession($sid);
+										echo $res[0]->name;
+									?>
+						</a>
 			</div>	
+					<div class=' col-lg-6 pod_exit'>			
+						<a id="exit" href="#">
+							<i class="icon-exit3"></i> Выход
+						</a>
+					</div>
+	</div>
+   </div>
+  <!-- <div class='col-lg-4'>
+						<a id="exit" href="#">
+							<i class="icon-exit3"></i> Выход
+						</a>
+   </div>
+   <div class="navbar-header" >
+				
+	</div>
+			-<div class="navbar-collapse collapse" id="pod">
+			<div>
+			<div>
+			Екатерина
+			</div>
+			<div>
+			Выход
+			</div>
+				 <ul class="nav navbar-nav">
+					<li onclick="zoomInY('left-sidebar')">
+						<a class="sidebar-control sidebar-mobile-main-toggle sidebar-main-toggle hidden-xs">
+							<i class="icon-paragraph-justify3">
+							</i>
+						</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id="head">
+					<li>
+					    <a>
+							<i class="fa-user"> </i>
+									<?
+										require_once 'autoload.php';
+										$sid=session_id();
+										$res=\App\Models\User::getCurrentUserBySession($sid);
+										echo $res[0]->name;
+									?>
+						</a>			
+						
+					</li>
+					<li>
+						<a id="exit" href="#">
+							<i class="icon-exit3"></i> Выход
+						</a>
+					</li>
+				</ul>	-->
+			
 				<div id="completed_successfully" style="display:none">Успешно завершено</div>
-		</div>
-    </div>
 <script type="text/javascript">
 document.getElementById("exit").onclick=function(){
 	var xhr = new XMLHttpRequest();
