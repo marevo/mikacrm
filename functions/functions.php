@@ -73,9 +73,9 @@ function activate (id/*,handler*/) {
 	$bold="";
 	if($id==$_GET['menu'])
 	{
-		$bold=" style='font-weight:bold'";
+		$bold=" style='font-weight:bold; color:yellow;'";
 	}
-	echo "<li id='".$id."'".$bold."><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.">\n"; // onclick="activate(\''.$id.'\')"
+	echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.$bold.">\n"; // onclick="activate(\''.$id.'\')"
 	echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['title']."</a>\n";
 			if($id==$_GET['menu'])
 			{
