@@ -194,8 +194,9 @@ function fNoUspehAll() {
 /**ShowAnswerServer
  * показ в ul пяти последних сообщений сервера
  * передавать надо 1 сообщение в функцию
+ * @param str в качестве аргумента передаем строку сообщение для показа на данной странице всего будет отображено 5 последних сообщений
  */
-function ShowAnswerServer() {
+function ShowAnswerServer(str) {
     if(arguments.length > 0){
         var strAppendLi = arguments[0];
         var countLi = $('#answerServer li').length;
@@ -268,7 +269,34 @@ var countTimeOnThisPage = 0 ;
 var coutnReqGetTimeFromServer = 0;
 var $elemForDislayTimeFromServer = $('.nav.navbar-nav li:last-child a');
 var intervalForClear;
-function getTimeFromServer() {
+// function getTimeFromServer() {
+//     $.ajax({
+//         type: 'post',
+//         url: '/timeZone.php',
+//         data: 'getTimeServer',
+//         success: function(data){
+//             coutnReqGetTimeFromServer++;
+//             // console.log('вызов № '+coutnReqGetTimeFromServer);
+//             // console.log('getTimeFromServer()='+data);
+//             dateFromServer = data;
+//             $elemForDislayTimeFromServer.html(dateFromServer);
+//         }
+//     });
+// };
+function showInDomElement(elem) {
+    return function () {
+        //заполним новым значением  даты сервера переменную dateFromServer
+        getTimeFromServer();
+        elem.html(dateFromServer);
+        $('#rezShow').text('вы на сайте '+ ++countTimeOnThisPage + ' минут');
+        // console.log(' вы сидите на этой странице уже '+ countTimeOnThisPage++ +' sec');
+        clearInterval(intervalForClear);
+    }
+}
+/**
+ * функция запроса времени с сервера пока не запущена чтобы запустить надо обрамить ее в "$();"
+ */
+$(function getTimeFromServer() {
     $.ajax({
         type: 'post',
         url: '/timeZone.php',
@@ -281,34 +309,22 @@ function getTimeFromServer() {
             $elemForDislayTimeFromServer.html(dateFromServer);
         }
     });
-}
-function showInDomElement(elem) {
-    return function () {
-        //заполним новым значением  даты сервера переменную dateFromServer
-        getTimeFromServer();
-        elem.html(dateFromServer);
-        $('#rezShow').text('вы на сайте '+ ++countTimeOnThisPage + ' минут');
-        // console.log(' вы сидите на этой странице уже '+ countTimeOnThisPage++ +' sec');
-        clearInterval(intervalForClear);
-    }
-}
-$(function () {
     //запросим даныые о времени через ajax и запишем их в dateFromServer
-    getTimeFromServer();
+    // getTimeFromServer();
     //отобразим dateFromServer на элементе $elemForDislayTimeFromServer
     $elemForDislayTimeFromServer.html(dateFromServer);
     //запустим это функцию запроса времени и отображения на элементе раз в минуту
     intervalForClear = setInterval(showInDomElement($elemForDislayTimeFromServer),1000*60);
 });
 //подключение файла js/checkInput.js к этому файлу
-(function include(url) {
+$(function include(url) {
     var script = document.createElement('script');
     script.src = "js/checkInput.js";
     // script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
     // alert('проверь');
             console.log("Загружен файл js/checkInput.js");
-})();
+});
 // include();
 //     $.getScript("js/checkInput.js", function(){
 //         alert('проверь');
