@@ -39,6 +39,7 @@ document.getElementById("send").onclick=function() {
 				 formData.append("mode","install");
                  xhr.send(formData);
 				 var result=xhr.responseText;
+				 location.reload();
 			 };
 
 document.getElementById("delete").onclick=function() {
@@ -49,6 +50,7 @@ document.getElementById("delete").onclick=function() {
 				 formData.append("mode","remove");
                  xhr.send(formData);
 				 var result=xhr.responseText;
+				 location.reload();
 			 };
 			 
 function sha256() {
