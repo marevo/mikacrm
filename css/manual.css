@@ -21,6 +21,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    /*vertical-align: middle;*/
 }
 */
 /* HTML5 display-role reset for older browsers */
@@ -455,9 +456,10 @@ tbody tr :nth-child(3):hover{
 table a{
     display: block;
     /*border: black 1px solid;*/
-    border-radius: 4px;
-    padding: 6px;
+    border-radius: 3px;
+    padding: 4px;
     text-decoration: none;
+    color:black;
 }
 
 table tbody a:hover{
@@ -604,7 +606,7 @@ table a{
 }
 /*цвет подсказки */
 .backgroundAlertRed{
-    background-color: #c78187;
+    background-color:#e7a1a7;
     border: 1px solid darkred;
 }
 /* /viewOneOrder.php*/
@@ -707,8 +709,12 @@ table a{
     text-decoration: none;
 
 }
+
 /*ширина модального окна при вопросе удаления */
-#modalWinForDeleteMat .modal-dialog, #modalWinForDeleteSupp .modal-dialog, #modalwinfordeleteclient .modal-dialog{
+#modalWinForDeleteMat .modal-dialog,
+#modalWinForDeleteSupp .modal-dialog,
+#modalwinfordeleteclient .modal-dialog,
+#modalWinForDeleteContact .modal-dialog {
     width: 600px;
 }
 

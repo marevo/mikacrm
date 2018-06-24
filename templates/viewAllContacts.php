@@ -12,13 +12,12 @@
         <div class="row rowSearch" ><!-- строка поиска-->
             <!--  сторка для поиска заказов по клиенту и по названию заказа -->
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><input type="text" id="inputFindContact" placeholder="по названию ..доп характеристикам"/></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать </button></div>
-                </div>
+                <input type="text" id="inputFindContact" placeholder="по названию ..доп характеристикам"/>
+                <button id="btnSearchContactLikeNameORLikeAddCharacteristic" class="btn-primary">искать</button>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="makeNewContactClient" title="создать новый контакт">
-                <button class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый контакт</button>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"  >
+                <button id="makeNewContactClient" title="создать новый контакт" class="btn btn-primary"><span class='glyphicon glyphicon-plus'></span> новый контакт</button>
+                <button id="restoreLastDeletedContact" class="btn btn-primary" title="восстановить последний удаленный контакт"><span class='glyphicon glyphicon-cloud-upload'></span> восстановить контакт</button>
             </div>
         </div><!-- конец блока строки поиска  -->
         <div class="row backForDiv divForTable">
@@ -54,7 +53,7 @@
 <div id="modalWinForDeleteContact" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header text-center">удалить контакт навсегда!
+            <div class="modal-header text-center "> удаление контакта
                 <button class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="modal-body">
@@ -62,7 +61,7 @@
                     <div class="row" style="background-color: #c0c7d2;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-12 text-center">хотите удалить этот контакт навсегда ?</div>
+                                <div class="col-lg-12 text-center text-danger">хотите удалить этот контакт навсегда ?</div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 text-center " id="modalNameContact"> название контакта</div>

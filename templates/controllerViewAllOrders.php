@@ -77,7 +77,7 @@ if(isset($_POST['showTrashedOrders'])){
                 .$rowItem[name].'</td><td>'
                 .$rowItem[nameClient].'</td><td>'
                 .$rowItem[orderPrice].'</td>'
-                .$isReady.$isAllow.$payment.'<td><a data-id = '.$rowItem[idOrder].' href=\'viewOneOrder.php?id='.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-edit\'> просмотр</span></a></td><td></td></tr>';
+                .$isReady.$isAllow.$payment.'<td><a data-id = '.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-eye-open\'></span></a></td><td></td></tr>';
 
         endforeach;
         //получили строки удаленных заказов для добавления в таблицу
@@ -144,7 +144,7 @@ if(isset($_POST['searchOrderForNameClient'])){
                     .$rowItem[name].'</td><td>'
                     .$rowItem[nameClient].'</td><td>'
                     .$rowItem[orderPrice].'</td>'
-                    .$isReady.$isAllow.$payment.'<td><a href=\'viewOneOrder.php?id='.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-edit\'> просмотр</span></a></td>'
+                    .$isReady.$isAllow.$payment.'<td><a id='.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-eye-open\'></span></a></td>'
                 .'<td>'.$isTrash.'</td></tr>';
 
             endforeach;
@@ -212,7 +212,7 @@ if(isset($_POST['searchOrderForName'])){
                     .$rowItem[name].'</td><td>'
                     .$rowItem[nameClient].'</td><td>'
                     .$rowItem[orderPrice].'</td>'
-                    .$isReady.$isAllow.$payment.'<td><a data-id='.$rowItem[idOrder].' href=\'viewOneOrder.php?id='.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-edit\'> просмотр</span></a></td>'
+                    .$isReady.$isAllow.$payment.'<td><a data-id='.$rowItem[idOrder].'\' ><span class=\'glyphicon glyphicon-eye-open\'></span></a></td>'
                     .'<td>'.$isTrash.'</td></tr>';
 
             endforeach;
@@ -228,11 +228,10 @@ if(isset($_POST['searchOrderForName'])){
 }
 
 //поиск по подобию
-
 if(isset($_POST['includeFormNewOrder'])){
 //    include 'formAddNewOrder.php';
     \App\FastViewTable::showAnswerServer("пришел запрос на загрузку в главный модуль формы создания нового заказа");
-    include 'formAddNewOrder.php';
+    include_once ('formAddNewOrder.php');
 //    $formOneOrder = file_get_contents ('formAddNewOrder.php');
 //    $ifEx = file_exists('formANO.php') ;
 //    var_dump($ifEx);
@@ -244,7 +243,7 @@ if(isset($_POST['includeFormNewOrder'])){
 }
 
 if(isset($_GET['includeViewOneOrder'])){
-    echo 'пришел запрос на подтяжку в #main_modul показа одного заказа с параметром id заказ    viewOneOrder.php?id=32';
+    //echo 'пришел запрос на подтяжку в #main_modul показа одного заказа с параметром id заказ    viewOneOrder.php?id=32';
     if(isset($_GET['tarHref'])){
         $tarHref = htmlspecialchars($_GET['tarHref']);
         include 'viewOneOrder.php';

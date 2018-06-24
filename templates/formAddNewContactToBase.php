@@ -35,23 +35,26 @@ require_once ('../../autoload.php');
                                 <td class="text-left"><input  name="insertContactToBase"  value="sendMarkerToaddNewContactToBase"/></td>
                             </tr>
                             <tr><td class="text-right"><label for="nameContact">название контакта</label></td>
-                                <td class="text-left"><input maxlength="200" size="55" name="nameContact" id="idNameContact" placeholder="Иванов Иван Иванович чп Иванов Чернигов max 200 символов" required /></td>
+                                <td class="text-left">
+                                    <input maxlength="200" size="55" name="nameContact" id="idNameContact"
+                                           placeholder="Иванов Иван Иванович чп Иванов Чернигов (max 200 символов)"  /></td>
                             </tr>
 <!--                            <tr><td class="text-right"><label for="contactPerson">контактное лицо фио</label></td>-->
 <!--                                <td class="text-left"><input maxlength="100" size="55"  name="contactPerson" placeholder="Иванов Иван Иванович"  /></td>-->
 <!--                            </tr>-->
                             <tr><td class="text-right"><label for="phone">телефон</label></td>
-                                <td><input type="tel" name="phone" placeholder="телефон"  pattern="\d{5,10}" title="формат телефона от 5 до 10 цифр !"/></td></tr>
+                                <td><input type="tel" name="phone" placeholder="телефон"  title="формат телефона от 5 до 10 цифр !" /></td></tr>
                             <tr><td class="text-right"><label for="email">email</label></td>
                                 <td><input type="email" name="email"   placeholder="ivan@ivan.ua" title="формат email ivan@ivan.ua или ivan@ivan.ua.com"/></td>
                             </tr>
 
-                            <tr><td class="text-right"></td><td><input type="submit"  name="submitFromFormOneContact"/></td>
+                            <tr><td class="text-right"></td><td><input type="submit" id="idsubmitFromFormOneContact"  name="submitFromFormOneContact"/></td>
                             </tr>
 
                             </tbody>
                         </table>
                     </form>
+                    
                     <script type="text/javascript">
                         //                        $('form select').on('change',function () {
                         //                            if($(this).val() == 0) {
@@ -63,66 +66,80 @@ require_once ('../../autoload.php');
                         //                                $('.alert').remove();
                         //                            return false;
                         //                        });
-                        //обработка полей textarea  на макс кол символов и отсутсвие пробелов по краям
-                        $('#idNameContact').on('blur',function () {
-                            $(this).parent('.alert').remove();
-                            $(this).val($.trim($(this).val()));
-                            console.log('убрали пробелы');
-                            if(this.name == 'nameContact'){
-                                if($(this).val().length > 200 ) {
-                                    var elem = $(this);
-                                    elem.value = elem.value.substr(0, 200);
-                                    console.log('обрезали длину названия и описания контакта до 200 символов');
-                                }
-                            }
-                            return false;
-                        });
-                        //обработка полей телефона и имейла
-                        $('form input').on('blur',function (event) {
-//                            удалили старые предупреждения о не правильном формате номера телефона
-//                            $('[class~=alertDelete]').remove();
-                            if(this.name == 'phone'){
-                                if( $(this).val().length <0 ){
-                                    $(this).parent().find('[class~=alertDelete]').remove();
-                                    $(this).before('<div class="alertDelete backgroundAlertRed">поле обязательно для заполнения</div>');
-                                }
-                                else
-                                    {
-                                    $(this).prev().remove();
-                                    $(this).parent().find('[class~=alertDelete]').remove();
-                                    console.log('заносили данные в поля телефона phone');
-                                    var inputPhoneValue = $(this).val();
-        //                               eсли не прошли тест на правильность - вставим предупреждение
-                                    if(testOnPhone(inputPhoneValue) == false){
-                                        $(this).parent().find('[class~=alertDelete]').remove();
-                                        $(this).before('<div class="alertDelete backgroundAlertRed">формат номера от 5 до 10 цифр</div>');
-                                    }else {
-        //                                   $(this).prev().remove();
-                                        $(this).parent().find('[class~=alertDelete]').remove();
-                                    }
-                                }
-                            }
-                            if(this.name == 'email' && $(this).val().length>0){
-                                console.log('заносили данные в полe email');
-                                var inputEmailValue = $(this).val();
-                                if(testOnEmail(inputEmailValue) == false){
-                                    $(this).parent().find('[class~=alertDelete]').remove();
-                                    $(this).before('<div class="alertDelete backgroundAlertRed">не правильный формат email - исправьте</div>');
-                                }else {
-//                                 $(this).prev().remove();
-                                    $(this).parent().find('[class~=alertDelete]').remove();
+                        //обработка полей textarea  на min & max кол символов и отсутсвие пробелов по краям
+//                        var newNameContactSubmit = false; //флаговая переменная для определения валидности в поле имя
+//                        $('#idNameContact').on('blur', function (event) {
+//                            var elemInput = $(this);
+//                            //запустим функцию проверки на пустоту и на min max количество символов в поле input #idNameContact
+//                            newNameContactSubmit = checkNotEmtyAndLengthTrue(elemInput, 3, 200);
+//                        });
+////
+//                        //обработка полей телефона и имейла
+//                        var newPhoneContactSubmit = false;//флаговая переменная для определения валидности в поле телефон
+//                        var newEmailContactSubmit = false;//флаговая переменная для определения валидности в поле email
+//                        $('form input').on('blur',function (event) {
+//                            //проверка на валидность введения телефона в ajax_post_get.js function testOnPhoneExpand(elemInput)
+//                            if(this.name == 'phone'){
+//                                var phoneField = $(this);
+//                                newPhoneContactSubmit = testOnPhoneExpand(phoneField);
+//                            }
+//                            if (this.name == 'email') {
+//                                $(this).parent().find('[class~=alertDelete]').remove();
+//                                if ($(this).val().length == 0) {
+//                                    console.log('email клиента не задан');
+//                                    newEmailContactSubmit = true;
+//                                }
+//                                else {
+//                                    var inputEmail = $(this);
+//                                    newEmailContactSubmit = testOnEmailExpand(inputEmail);
+//                                }
+//                            }
+//                        });
 
-                                }
-
-                            }
-                        });
-                        //обязательные поля для заполнения название клиента, телефон, адрес
+                        //обязательные поля для заполнения название клиента, телефон
                         $('form').submit(function () {
-                            if ($(this).find('[name=nameContact]').val() == "" || $(this).find('[name=nameContact]').prev().hasClass('alert alert-info') ) {
-                                $(this).find('[name=nameContact]').prev().remove();
-                                $(this).find('[name=nameContact]').before('<div class="alert alert-info">имя контакта обязательно!</div>');
+                            var elemInputNameContact = $(this).find($('#idNameContact'));
+//                            var newNameContactSubmit = checkNotEmtyAndLengthTrue(elemInputNameContact , 3, 200);
+//                            console.log("newNameContactSubmit = "+ newNameContactSubmit);
+                            var elemInputPhoneContact = $(this).find('[name = "phone"]');
+//                            var newPhoneContactSubmit = testOnPhoneExpand(elemInputPhoneContact);
+//                            console.log("elemInputPhoneContact "+ newPhoneContactSubmit);
+                            var elemInputEmailContact = $(this).find('[name ="email"]');
+//                            var newEmailContactSubmit = ($(elemInputEmailContact).val()=='' ||  testOnEmailExpand( elemInputEmailContact) );
+//                            console.log("newEmailContactSubmit =" + newEmailContactSubmit);
+//                            console.log("$(elemInputEmailContact).val()=='' =" + $(elemInputEmailContact).val()=='');
+                            if(checkNotEmtyAndLengthTrue(elemInputNameContact , 3, 200)
+                                && testOnPhoneExpand(elemInputPhoneContact)
+                                && ($(elemInputEmailContact).val()=='' || testOnEmailExpand(elemInputEmailContact)  )
+                            ){
+                                //newNameContactSubmit = newPhoneContactSubmit = newEmailContactSubmit = false;
+                                console.log(' variable checked');
+//                                return false;
+                                $.ajax({
+                                    type: $(this).attr('method'),
+                                    url: $(this).attr('action'),//ссылка куда идут данные,
+                                    data: $(this).serializeArray(),//сериализирует в виде асоциативного массива
+                                    success: function ( data) {
+//                                     fUspehAll('удачно');
+                                        $('.divForAnswerServer').html(data);
+//                                     return false;
+                                        $(this).find('.alert').remove();
+//        alert('улетели данные ' + $(this).serializeArray());
+                                        console.log($(this).serializeArray());
+
+                                        //var timerId = setTimeout(function() {location.reload(); clearTimeout(timerId); }, 1000);
+                                       // $(this).find('.alert').remove();
+//                                        вернемся на показ всех контактов
+                                         location.reload();
+                                         return false;
+                                    }
+                                });
+                                $(this).find('.alert').remove();
                                 return false;
                             }
+//                          если дойдет сюда значит поля не валидные
+                            console.log("не валидные поля");
+                            return false;
 //                            if($(this).find('[name=address]').val() ==""){
 //                                $(this).find('[name=address]').prev().remove();
 //                                $(this).find('[name=address]').before('<div class="alert alert-info">надо заполнить адрес (хотябы название города/села)</div>');
@@ -136,21 +153,8 @@ require_once ('../../autoload.php');
                             //не пустим пока на сервер для добавления нового клиента
 //                            console.log('отправки на добавку нового клиента в базу нет - удалите return false на строку ниже ');
 //                            return false;
-                            $.ajax({
-                                type: $(this).attr('method'),
-                                url: $(this).attr('action'),//ссылка куда идут данные,
-                                data: $(this).serializeArray(),//сериализирует в виде асоциативного массива
-                                success: function ( data) {
-//                                     fUspehAll('удачно');
-                                    $('.divForAnswerServer').html(data);
-//                                     return false;
-                                    $(this).find('.alert').remove();
-//        alert('улетели данные ' + $(this).serializeArray());
-                                    console.log($(this).serializeArray());
-                                }
-                            });
-                            $(this).find('.alert').remove();
-                            return false;
+
+
                         });
                     </script>
                 </div>

@@ -4,10 +4,18 @@
 var req;
 var elem    //!!! - ГЛОБАЛЬНАЯ (т.к. для post_send(get_send) и func_response) elem - ЭЛЕМЕНТ ДЛЯ ВЫВОДА
 //################################################# ФОРМИРОВАНИЕ И ОТПРАВКА POST
+
+/**
+ * @elemm куда вернуть результат запроса
+ * @method тип запроса post or get
+ * @program файл который бедет обрабатывать запрос
+ * @param_arr массив названий переменных
+ * @value_arr массив значений переменных
+ *  */
 function jquery_send(elemm, method, program, param_arr, value_arr) {
     var str='';                                                                //!!! - начальный str=''
     for(var i=0; i<param_arr.length; i++) {                                    //!!! - массивы - перебор
-        str+=param_arr[i]+'='+encodeURIComponent(value_arr[i])+'&';             //!!! - накапливаем str
+        str+= param_arr[i]+'='+ encodeURIComponent(value_arr[i])+'&';             //!!! - накапливаем str
     }
     $.ajax(
         {
@@ -183,8 +191,12 @@ function fNoUspehAll() {
     }
 }
 //*/функции отображения на клиенте сообщений сервера в #answerServer
-
-function ShowAnswerServer() {
+/**ShowAnswerServer
+ * показ в ul пяти последних сообщений сервера
+ * передавать надо 1 сообщение в функцию
+ * @param str в качестве аргумента передаем строку сообщение для показа на данной странице всего будет отображено 5 последних сообщений
+ */
+function ShowAnswerServer(str) {
     if(arguments.length > 0){
         var strAppendLi = arguments[0];
         var countLi = $('#answerServer li').length;
@@ -218,11 +230,37 @@ function testOnPhone(phone) {
     return regExpPhone.test(phone);
 }
 
+//расширенная функция для проверки валидности телефона и если валидность не пройдена то вылезет подсказка
+function testOnPhoneExpand(elemInputPhone){
+    $(elemInputPhone).parent().find('[class~=alertDelete]').remove();
+    var inputPhoneValue =$(elemInputPhone).val();
+    if(testOnPhone(inputPhoneValue) == false){
+        $(elemInputPhone).parent().find('[class~=alertDelete]').remove();
+        $(elemInputPhone).before('<div class="alertDelete backgroundAlertRed">формат номера от 5 до 10 цифр</div>');
+        return false;
+    }else {
+        //                                   $(this).prev().remove();
+        $(elemInputPhone).parent().find('[class~=alertDelete]').remove();
+        return true;
+    }
+}
 function testOnEmail(email){
     // var regExpEmail =/^([\w\._]+)@\1\.([a-z]{2,6}\.?)$/;
     // var regExpEmail =/^(((\w+).)?(\w+))@(\w+)(\.\w+)+$/
     var regExpEmail =/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
     return regExpEmail.test(email);
+}
+//расширенная функция для проверки валидности email если валидность не пройдена, то вылезет подсказка
+function testOnEmailExpand(elemInputEmail){
+    $(elemInputEmail).parent().find('[class~=alertDelete]').remove();
+    var inputEmailValue =$(elemInputEmail).val();
+    if(testOnEmail(inputEmailValue) == false){
+        $(elemInputEmail).parent().find('[class~=alertDelete]').remove();
+        $(elemInputEmail).before('<div class="alertDelete backgroundAlertRed">что-то типа name@domen.ua</div>');
+    } else {
+        //                                   $(this).prev().remove();
+        $(elemInputEmail).parent().find('[class~=alertDelete]').remove();
+    }
 }
 //на загрузку document повесим вызов времени с сервера
 //определим переменную которая будет содержать время сервера
@@ -231,7 +269,34 @@ var countTimeOnThisPage = 0 ;
 var coutnReqGetTimeFromServer = 0;
 var $elemForDislayTimeFromServer = $('.nav.navbar-nav li:last-child a');
 var intervalForClear;
-function getTimeFromServer() {
+// function getTimeFromServer() {
+//     $.ajax({
+//         type: 'post',
+//         url: '/timeZone.php',
+//         data: 'getTimeServer',
+//         success: function(data){
+//             coutnReqGetTimeFromServer++;
+//             // console.log('вызов № '+coutnReqGetTimeFromServer);
+//             // console.log('getTimeFromServer()='+data);
+//             dateFromServer = data;
+//             $elemForDislayTimeFromServer.html(dateFromServer);
+//         }
+//     });
+// };
+function showInDomElement(elem) {
+    return function () {
+        //заполним новым значением  даты сервера переменную dateFromServer
+        getTimeFromServer();
+        elem.html(dateFromServer);
+        $('#rezShow').text('вы на сайте '+ ++countTimeOnThisPage + ' минут');
+        // console.log(' вы сидите на этой странице уже '+ countTimeOnThisPage++ +' sec');
+        clearInterval(intervalForClear);
+    }
+}
+/**
+ * функция запроса времени с сервера пока не запущена чтобы запустить надо обрамить ее в "$();"
+ */
+$(function getTimeFromServer() {
     $.ajax({
         type: 'post',
         url: '/timeZone.php',
@@ -244,25 +309,30 @@ function getTimeFromServer() {
             $elemForDislayTimeFromServer.html(dateFromServer);
         }
     });
-}
-function showInDomElement(elem) {
-    return function () {
-        //заполним новым значением  даты сервера переменную dateFromServer
-        getTimeFromServer();
-        elem.html(dateFromServer);
-        $('#rezShow').text('вы на сайте '+ ++countTimeOnThisPage + ' минут');
-        // console.log(' вы сидите на этой странице уже '+ countTimeOnThisPage++ +' sec');
-        clearInterval(intervalForClear);
-    }
-}
-$(function () {
     //запросим даныые о времени через ajax и запишем их в dateFromServer
-    getTimeFromServer();
+    // getTimeFromServer();
     //отобразим dateFromServer на элементе $elemForDislayTimeFromServer
     $elemForDislayTimeFromServer.html(dateFromServer);
     //запустим это функцию запроса времени и отображения на элементе раз в минуту
     intervalForClear = setInterval(showInDomElement($elemForDislayTimeFromServer),1000*60);
 });
+//подключение файла js/checkInput.js к этому файлу
+$(function include(url) {
+    var script = document.createElement('script');
+    script.src = "js/checkInput.js";
+    // script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+    // alert('проверь');
+            console.log("Загружен файл js/checkInput.js");
+});
+// include();
+//     $.getScript("js/checkInput.js", function(){
+//         alert('проверь');
+//         console.log("Загружено.");
+// //используем скрипт здесь
+//     });
+
+
 
 
 //на загрузку document повесим вызов времени с сервера

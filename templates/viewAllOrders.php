@@ -125,9 +125,7 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <button class="btn btn-primary" id="viewTrashedOrders" title="показать удаленные заказы">
-                    <span class="glyphicon glyphicon-eye-open"></span>
-                    <span class="glyphicon glyphicon-trash"></span>
-                    корзина
+                    <span class="glyphicon glyphicon-trash"></span> корзина
                 </button>
                 <button class="btn btn-primary addNewOrder" id="makeNewOrder" title="создать новый заказ">
                     <span class='glyphicon glyphicon-plus'></span> новый заказ
