@@ -73,9 +73,9 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
             }
             //для отображения предоплаты дадим расшифровку
             $payment = '';
-            if ($rowItem[payment] == '' || $rowItem[payment] == 0)
+            if ($rowItem[sumPayment] == '' || $rowItem[sumPayment] == 0)
                 $payment = "<td><span class='orderNoSuccessCell'>0</span></td>";
-            else $payment = "<td><span class='orderSuccessCell'>$rowItem[payment]</span></td>";
+            else $payment = "<td><span class='orderSuccessCell'>$rowItem[sumPayment]</span></td>";
             //для отображения полной оплаты
 
             $tableAll .= "
