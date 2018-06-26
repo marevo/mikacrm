@@ -16,12 +16,8 @@ else{
 $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
 //echo var_dump($supp);
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
 <title> просмотр/правка данных поставщика </title>
 <?php     //require_once('../head.html'); ?>
-<body>
-<div class="container">
     <!--<div class="row">
         <?php// require_once('header.html'); ?>
     </div>
@@ -38,7 +34,7 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div>
         <!--            конец доп блока слева-->
-        <div class="col-lg-12 backForDiv">
+        <div class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>
             <!--  блок отображения что меняем и кнокпки обновить страницу и кнопка править(покажет поля для внесения новых значений)  -->
@@ -100,7 +96,7 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
 
         </div>
     </div>
-</div>
+
 <script>
 
     $(function () {
@@ -141,6 +137,5 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
         return false;
     });
 </script>
-</body>
-</html>
+
 <?php

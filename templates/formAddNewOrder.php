@@ -18,26 +18,11 @@ function clientsOptions(){
 }
 //функция вставки в базу нового заказа
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
-<?php//include('../head.html') ?>
-<body>
-<div class="container">
-   <!-- <div class="row">
-        <?php //require_once('header.html'); ?>
-    </div>
-    <div class="row"><!-- навигация 
-        <?php //include('../navigation.html');?>
-        <script>
-showLi('создать заказ')
-        </script>
-
-    </div>-->
     <div class="row">
         <!--<div class="col-lg-2 backForDiv">
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div>-->
-        <div class="col-lg-12 backForDiv">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">
             <!--строка показа времени и показа результатов ответа сервера  -->
             <?php  include_once '../App/html/forDisplayTimeShowAnswerServer.html' ;?>
             <div class="row">
@@ -204,12 +189,8 @@ $(function () {
                         });
                     </script>
                 </div>
-            </div><!-- .row ->
+            </div><!-- .row -->
         </div>
     </div>
-</div>
 
-
-</body>
-</html>
 

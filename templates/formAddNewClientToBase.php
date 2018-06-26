@@ -8,11 +8,6 @@
 //require '../autoload.php';
 //функция подгрузки из базы поставщиков по имени
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
-<?php //include('../head.html') ?>
-<body>
-<div class="container">
     <!--<div class="row">
         <?php //require_once('header.html'); ?>
     </div>
@@ -184,4 +179,4 @@
             </div><!-- .row -->
         </div>
     </div><!-- .row -->
-</div><!-- .container -->
+
