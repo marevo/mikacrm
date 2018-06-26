@@ -113,3 +113,14 @@ if(isset($_POST['searchSuppliersLikeName'])){
         }
     }
 }
+
+//подтяжка email phone для контакта при привязке к клиенту нужного контакта
+if(isset($_POST['getClientForOneContact'])){
+    if(isset($_POST['valueClient'])){
+        $idClient = intval($_POST['valueClient']);
+        $objClient = \App\Models\Client::findObjByIdStatic($idClient);
+        if($objClient){
+            echo "<script> $('[name=phone]').val($objClient->phone0);$('[name=email]').val('$objClient->email0');</script>";
+        }
+    }
+}
