@@ -69,7 +69,7 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
                                     }
                                     else echo "база клиентов пуста(";
                                     ?>
-
+                                <button class="btn btn-sm btn-primary" id="btnForSelect" style="visibility:hidden;" >заполнить</button>
                             </td></tr>
                         <tr><td>телефон</td><td><?php echo $cont->phone ?></td><td class="tdDisplayNone">
                                 <input name="phone" maxlength="50" type="text" value="<?php echo $cont->phone ?>"/></td></tr>
