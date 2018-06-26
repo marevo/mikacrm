@@ -25,7 +25,7 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
         этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
     </div>
     <!--            конец доп блока слева-->
-    <div class="col-lg-12 backForDiv">
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 backForDiv">
         <!--строка показа времени и показа результата добавки материала в базу  -->
         <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>
         <div class="row headingContent">

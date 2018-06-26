@@ -5,32 +5,15 @@
  * Date: 29.08.2017
  * Time: 17:51
  */
-
 //require '../autoload.php';
 //функция подгрузки из базы поставщиков по имени
-
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
-<?php //include('../head.html') ?>
 
-<body>
-<div class="container">
-    <!--<div class="row">
-        <?php //require_once('header.html'); ?>
-    </div>
-    <div class="row"><!-- навигация 
-        <?php //include('../navigation.html');?>
-        <script>
-            showLi('добавить поставщика в базу')
-        </script>
-        <!-- конец навигации 
-    </div>-->
     <div class="row">
         <!--<div class="col-lg-2 backForDiv">
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div>-->
-        <div class="col-lg-12 backForDiv">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php  include_once '../html/forDisplayTimeShowAnswerServer.html'?>
             <div class="row">
@@ -206,4 +189,4 @@
             </div><!-- .row -->
         </div>
     </div><!-- .row -->
-</div><!-- .container -->
+
