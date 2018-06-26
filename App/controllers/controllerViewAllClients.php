@@ -75,7 +75,7 @@ if(isset($_POST['includeFormNewClient'])){
 }
 
 if(isset($_POST['includeViewOneClient'])){
-    echo 'пришел запрос на подтяжку в #main_modul показа одного клиента с параметром id клиент    ';
+    //echo 'пришел запрос на подтяжку в #main_modul показа одного клиента с параметром id клиент    ';
     if(isset($_POST['idClient'])){
         $idClient = htmlspecialchars($_POST['idClient']);
     }

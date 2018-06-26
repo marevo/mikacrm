@@ -33,7 +33,7 @@ $mat = \App\Models\Material::findObjByIdStatic($idMaterial);
                 <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>
                 <div class="row headingContent">
                     <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">правка материала <?php echo $mat->name;?></div>
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button id="btnUpdateShow" > обновить </button></div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button id="btnUpdateShow" class="btn btn-sm btn-primary" > вернуться </button></div>
                     <?php
                     $ifExistOrderWithThisMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder_2($mat->id);
                     if(! $ifExistOrderWithThisMaterial){
