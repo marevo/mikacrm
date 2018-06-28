@@ -18,7 +18,6 @@ $(function () {
     //ORDER.newValue = $('#forClearNameClient option:checked').val();
     //при выборе не нулевого селекта надо показать кнопку для заполнения полей телефона, email
     $('[name=selectIdClient]').on("change", function (event) {
-        debugger;
         var tarSelect = event.target;
         var tarSelectValue = $(tarSelect).val();
         if(tarSelectValue > 0){
