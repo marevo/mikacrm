@@ -287,7 +287,7 @@ function showInDomElement(elem) {
     return function () {
         //заполним новым значением  даты сервера переменную dateFromServer
         getTimeFromServer();
-        elem.html(dateFromServer);
+        $(elem).text(''+dateFromServer+'');
         $('#rezShow').text('вы на сайте '+ ++countTimeOnThisPage + ' минут');
         // console.log(' вы сидите на этой странице уже '+ countTimeOnThisPage++ +' sec');
         clearInterval(intervalForClear);

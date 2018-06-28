@@ -15,12 +15,12 @@ use App\ModelLikeTable;
 class Task extends ModelLikeTable
 {
     public $id;
-    public $name;
+    public $name;//название содержание
     public $content;
     public $deadline;//до какой даты надо сделать
-    public $idUser;
-    public $priority;
-    public $status;
+    public $idUser;//по умолчанию null
+    public $priority;//приоритет приоритет 0-сверх срочно, -1 срочно, 2-обычно,		
+    public $status;//статус выполнения 0-не готова(по умолчанию) 1- назначена, 2-не назначена, 3-готова
     public $dateAppointment;//дата назначения задачи
     public $dateCompletion;//дата выполнения
 
