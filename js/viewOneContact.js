@@ -34,9 +34,6 @@ $(function () {
        ['getClientForOneContact', 'valueClient'],['',$('[name=selectIdClient]').val()] );
         return false;
     });
-   
-
-
 });
 
 $('form').submit(function () {

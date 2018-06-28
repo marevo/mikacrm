@@ -15,8 +15,7 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
     <!--            конец доп блока слева-->
     <div class="col-lg-12 backForDiv">
         <div class="row headingContent"><!--строка для отображения названия страницы где находится пользователь -->
-            <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center "> все материалы</div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"> все материалы</div>
         </div>
         <div class="row rowSearch"><!-- строка поиска-->
             <!--  сторка для поиска заказов по клиенту и по названию заказа -->

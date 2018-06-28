@@ -2,11 +2,7 @@
 //можем здесь писать если просто вывод или пока что при подключении будет autoload.php в head.html
 require '../autoload.php';
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
-<?php //include('../head.html');?>
-<body>
-<div class="container" id="cont">
+
     <!--<div class="row">
         <?php //require_once('header.html'); ?>
     </div>
@@ -36,6 +32,3 @@ require '../autoload.php';
         </div>
     </div>
 
-</div>
-</body>
-</html>

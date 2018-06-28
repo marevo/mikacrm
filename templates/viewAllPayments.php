@@ -10,13 +10,6 @@ use App\Models\Payment;
 use App\Models\Client;
 use App\Models\Order;
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
-<?php
-//include('../head.html');
-?>
-<body>
-<div class="container">
     <div class="row">
         <?php //require_once('header.html'); ?>
     </div>
@@ -191,8 +184,6 @@ use App\Models\Order;
     <!-- модальное окно добавления оплаты для любого заказа найденного в базе -->
     <?php include_once ('modalFormAddNewPaymentToBase.html')?>
 
-</div>
-</body>
-</html>
+
 <script src="/js/viewAllPayments.js"></script>
 
