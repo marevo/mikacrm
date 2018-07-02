@@ -40,21 +40,8 @@ function fIsInstall($isInstall){
         return "<tr><td>статус установки</td><td class='orderNoSuccessCell' data-name='isInstall'>в процессе установки </td></tr>";
 }
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
+
 <title> просмотр данных заказа </title>
-<?php //include('../head.html') ?>
-<body>
-<div class="container">
-    <!--<div class="row">
-        <?php //require_once('header.html'); ?>
-    </div>
-    <div class="row"><!-- навигация 
-        <?php //include('../navigation.html');?>
-        <script>
-showLi('');
-        </script>
-    </div>-->
     <div class="row">
         <!--рабочее место слева для будущего меню
         <div class="col-lg-2 backForDiv">
@@ -85,23 +72,20 @@ showLi('');
              ";
             ?>
         <!--рабочее место справа-->
-        <div class="col-lg-10 backForDiv ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv ">
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php  include_once '../App/html/forDisplayTimeShowAnswerServer.html'?>
             <!--  блок отображения что меняем и кнокпки обновить страницу и кнопка править(покажет поля для внесения новых значений)  -->
             <div class="row headingContent">
-                <div class="col-lg-2 text-left "><h6> просмотр/правка заказа</h6></div>
-                <div class="col-lg-6 text-center "><h4> <?php echo $order->name; ?> для <?php echo $nameClient; ?></h4></div>
-<!--                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button class="btn btn-sm btn-default" id="btnUpdateShow" >обновить</button></div>-->
-                <div class="col-lg-2  text-center"">
-                <button class="btn btn-sm btn-primary btnAddMatetialToOrder" title="добавить материал к заказу">
-                    <span class="glyphicon glyphicon-plus-sign"></span> материал
-                </button>
+                <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">просмотр/правка
+                    заказа <?php echo $order->name; ?> для <?php echo $nameClient; ?></div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
+                    <button class="btn btn-sm btn-primary btnAddMatetialToOrder" title="добавить материал к заказу">
+                        <span class="glyphicon glyphicon-plus-sign"></span> материал</button>
                 </div>
-                <div class="col-lg2  text-center">
+                <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center'>
                     <button class="btn btn-sm btn-primary btnViewModalPayment" title="просмотр всех оплат по заказу">
-                        <span class="glyphicon glyphicon-eye-open "></span> оплаты
-                    </button>
+                        <span class="glyphicon glyphicon-eye-open "></span> оплаты</button>
                 </div>
             </div>
             
@@ -472,8 +456,6 @@ showLi('');
         }
 
     }
-
-
     //*/функция вставки в изменяемое поле форму с кнопками
     //напишем функцию, что вернет нужный form с нужным input в зависимости от типа поля nameField для вставки его в наш кликнутый td
     function inputForm(nameField) {
@@ -816,8 +798,6 @@ var ORDER_NEW ;
     include_once '../App/html/modalWindowAddMaterToOrderFast.html';
     ?>
 
-</div>
 <!-- container-->
 <script src="js/viewOneOrder.js"></script>
-</body>
-</html>
+

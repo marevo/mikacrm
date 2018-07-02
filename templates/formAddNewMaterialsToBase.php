@@ -44,7 +44,7 @@ function suppliersOptions(){
                                 <td><label for="InputValuerSearchSupplier"> поиск поставщика по имени или допхарактеристике</label></td>
                                 <td><input type="text" name="InputValuerSearchSupplier" class="fontSizeMedium" size="35" maxlength="35" value=""
                                            placeholder="поиск поставщика не менен 3 символов" title="введите не менене 3 символов и нажмите кнопку искать"/>
-                                    <button class="btn btn-primary" name="btnSearchSupplier"><span class="glyphicon glyphicon-search"> искать</span></button></td></tr>
+                                    <button class="btn btn-sm btn-primary" name="btnSearchSupplier"><span class="glyphicon glyphicon-search"> искать</span></button></td></tr>
 
                             <tr><td class="text-right"><label for="idSupplier">поставщик</label></td>
                                     <td><select name="idSupplier" class="fontSizeMedium"><option value="0"> поставщик...доп характеристики</option>

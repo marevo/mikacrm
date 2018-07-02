@@ -16,12 +16,8 @@ else{
 $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
 //echo var_dump($supp);
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
 <title> просмотр/правка данных поставщика </title>
 <?php     //require_once('../head.html'); ?>
-<body>
-<div class="container">
     <!--<div class="row">
         <?php// require_once('header.html'); ?>
     </div>
@@ -38,13 +34,13 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div>
         <!--            конец доп блока слева-->
-        <div class="col-lg-12 backForDiv">
+        <div class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>
             <!--  блок отображения что меняем и кнокпки обновить страницу и кнопка править(покажет поля для внесения новых значений)  -->
             <div class="row headingContent">
                 <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">правка поставщика <?php echo $supp->name;?></div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button class="btn btn-sm btn-default" id="btnUpdateShow" >обновить</button></div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button class="btn btn-sm btn-primary" id="btnUpdateShow" >вернуться</button></div>
                 <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center'><button class='btn btn-sm btn-primary' id='btnEnableUpdate' >править</button></div>
                 <!--   если не использовоались материалы этого поставщика, то можно разрешить его редактирование -->
                 <!-- это пока не задействовано, разрешаем update данных поставщика -->
@@ -100,7 +96,7 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
 
         </div>
     </div>
-</div>
+
 <script>
 
     $(function () {
@@ -141,6 +137,5 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
         return false;
     });
 </script>
-</body>
-</html>
+
 <?php

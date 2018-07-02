@@ -9,8 +9,7 @@
 use App\Models;
 use App\Models\User;
 ?>
-<!DOCTYPE HTML>
-<html lang="ru-RU">
+
 <?php
 //include('../head.html');
 $isAdmin = false;
@@ -66,8 +65,7 @@ function createTbAllUsers($isAdmin,$allUsersInBase)
 }
 
 ?>
-<body>
-<div class="container">
+
    <!-- <div class="row">
         <?php //require_once('header.html'); ?>
     </div>
@@ -220,9 +218,7 @@ function createTbAllUsers($isAdmin,$allUsersInBase)
         </div><!--modal-dialog-->
     </div><!--modal-fade -->
     <!-- модальное окно правки данных user  -->
-</div>
-</body>
-</html>
+
 <script src="/js/viewAllUsers.js"></script>
 
 

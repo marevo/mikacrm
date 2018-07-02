@@ -73,9 +73,9 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
             }
             //для отображения предоплаты дадим расшифровку
             $payment = '';
-            if ($rowItem[payment] == '' || $rowItem[payment] == 0)
+            if ($rowItem[sumPayment] == '' || $rowItem[sumPayment] == 0)
                 $payment = "<td><span class='orderNoSuccessCell'>0</span></td>";
-            else $payment = "<td><span class='orderSuccessCell'>$rowItem[payment]</span></td>";
+            else $payment = "<td><span class='orderSuccessCell'>$rowItem[sumPayment]</span></td>";
             //для отображения полной оплаты
 
             $tableAll .= "
@@ -106,8 +106,7 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
 <div class="row"><!-- основной блок контета состоит из 12 колонок слева  -->
     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 classPaddingRight_0">
         <div class="row headingContent">
-            <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center "> заказы </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"> заказы </div>
         </div>
         <div class="row rowSearch"><!-- строка поиска-->
             <!--  сторка для поиска заказов по клиенту и по названию заказа -->

@@ -25,12 +25,12 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
         этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
     </div>
     <!--            конец доп блока слева-->
-    <div class="col-lg-12 backForDiv">
+    <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12 backForDiv">
         <!--строка показа времени и показа результата добавки материала в базу  -->
         <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>
         <div class="row headingContent">
             <div class="col-lg-10  col-md-10 col-sm-10 col-xs-10   text-center ">правка контакта <?php echo $cont->name;?></div>
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button class="btn btn-sm btn-primary" id="btnUpdateShow" > обновить </button></div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><button class="btn btn-sm btn-primary" id="btnUpdateShow" > вернуться </button></div>
             <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center'><button class='btn btn-sm btn-primary' id='btnEnableUpdate' >править</button></div>
         </div>
         <div class="row">
@@ -69,7 +69,7 @@ $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
                                     }
                                     else echo "база клиентов пуста(";
                                     ?>
-
+                                <button class="btn btn-sm btn-primary" id="btnForSelect" style="visibility:hidden;" >заполнить</button>
                             </td></tr>
                         <tr><td>телефон</td><td><?php echo $cont->phone ?></td><td class="tdDisplayNone">
                                 <input name="phone" maxlength="50" type="text" value="<?php echo $cont->phone ?>"/></td></tr>
