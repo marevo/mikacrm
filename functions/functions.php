@@ -75,8 +75,20 @@ function activate (id/*,handler*/) {
 	{
 		$bold=" style='font-weight:bold; color:yellow;'";
 	}
-	echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.$bold.">\n"; // onclick="activate(\''.$id.'\')"
-	echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['title']."</a>\n";
+	
+		$lang="&lang=".$_GET['lang'];
+		if($_GET['lang']=='ru')
+		{
+			echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['text']."&menu=".$id.$bold."&lang=ru>\n"; // onclick="activate(\''.$id.'\')"
+	        echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['text']."</a>\n";
+		}
+		else
+		{
+			echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.$bold."&lang=en>\n"; // onclick="activate(\''.$id.'\')"
+	        echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['title']."</a>\n";
+		}
+	
+	
 			if($id==$_GET['menu'])
 			{
 			    $show_parents=true;
@@ -104,15 +116,23 @@ function activate (id/*,handler*/) {
         $mysql_username = 'root';
 		$mysql_database = 'reclam';
 		$mysql_password = NULL;
-		$sql="SELECT handler FROM menu WHERE title='".$title."';";
+		if($_GET['lang']=='ru')
+		{
+			$sql="SELECT handler FROM menu WHERE text='".$title."';";
+		}
+		else
+		{
+		    $sql="SELECT handler FROM menu WHERE title='".$title."';";
+		}
 		$mysqli = mysqli_connect($mysql_host, $mysql_username,$mysql_password,$mysql_database);
+		mysqli_set_charset($mysqli,'utf8');
 //		mysql_select_db($mysql_database);
 		$result = mysqli_query($mysqli,$sql);
 		if(!$result) {
 			return NULL;
 		}
 	    $row = mysqli_fetch_row($result);
-
+        mysqli_close($mysqli);
 		//return($row['handler']);
 		//return $sql;
 		return $row[0];

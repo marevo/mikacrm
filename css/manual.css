@@ -149,7 +149,7 @@ img{
 }
 #main_cont {
 	margin-top:100px;
-	
+	position:static;
 }
 #main_modul {
 	margin-left: 250px;
