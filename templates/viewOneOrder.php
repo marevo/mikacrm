@@ -129,6 +129,8 @@ function fIsInstall($isInstall){
                 $('#addPayment').html('<span class="glyphicon glyphicon-plus"></span>'); //не забыть
                 //включим зеленый свет светофора(может быть вызвано опять поле добавки оплаты)
                 svetofor1 = 'green';
+                //*проверка уберем красное выделение привимого блока
+                $('#forClear').removeClass('forClear');
                 return false;
             }
             if(target.nodeName == 'TR' )
@@ -138,6 +140,7 @@ function fIsInstall($isInstall){
                 console.log('сработала одна из кнопок отправить/передумал в данном случае :'+ $(target).val() );{}
 //  вызываем функцию обработки этих кнопок по ним или отправим или не отправми на сервер запрос об изменениях
                 zaprosInput();
+                $('#forClear').removeClass('forClear');
                 return false;
             }
             if(target.nodeName != 'TD'){
