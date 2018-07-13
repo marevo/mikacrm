@@ -23,9 +23,11 @@ else
 ?>
 <body>
 
-<div class="container">
-    <div class="row navbar navbar-inverse navbar-fixed-top" id="header">
+<div class="container" >
+    <div class="row navbar navbar-fixed-top" id="header" >
         <!--   wrapper      подтянем header сайта-->
+<!--		<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id="affix_header">
+		<div id="myAffixHeader" data-spy="affix" data-offset-top="0">-->
         <?php
             if($_GET['lang']=='ru')
             {				
@@ -36,8 +38,10 @@ else
 				require_once ('./templates/header_en.php');
             }				
 		?>	
+<!--		</div>
+	</div>-->
 	</div>
-	<div class="row navbar-fixed-top" id="main_cont"><!-- middle  -->
+	<div class="row" id="main_cont"><!-- middle  -->
 	<!--для шифровки пароля<?echo password_hash ( "password2" , PASSWORD_BCRYPT);?>-->
         <!--    подтянем menu сайта-->
         <?php require_once ('./navigation.php'); ?>
@@ -64,6 +68,13 @@ else
         }
     });
 });
-*/
+id="myAffix"
+data-spy="affix" data-offset-top="0"*/
+$(function(){
+  $('#myAffixHeader').width($('#affix_header').width());
+  $(window).resize(function(){
+    $('#myAffixHeader').width($('#affix_header').width());
+  });
+});
 </script>
 <?}?>

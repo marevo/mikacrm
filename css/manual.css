@@ -33,6 +33,7 @@ menu, nav, section {
 }
 body {
 	line-height: 1;
+	padding-top: 65px;
 }
 ol, ul {
 	list-style: none;
@@ -84,14 +85,22 @@ tbody td{
 }
 #header{
     background-color: #04B486;
-	margin-left: 0px;
+	/*margin-left: 0px;*/
     left: 0px;
     right: 0px;
     height: 100px;
 	z-index: 100;
 	
 }
-#pod{
+.affix {
+  top: 0;
+}
+@media (max-width: 1200px) {
+  .affix {
+    position: static;
+  }
+}
+.pod{
 	  background-color: #04B486;
 	  height: 100%;
 	  /*display: flex;
@@ -128,8 +137,10 @@ tbody td{
 /*width: 840px;*/
 }
 .container {
+	width: 100%;
     margin-left: 0px;
     margin-right: 0px;
+	margin-top: -65px;
 }
 #fon{
 	background-color: 	#F0F0F0;
@@ -148,8 +159,8 @@ img{
 	margin-bottom: 30px;
 }
 #main_cont {
-	margin-top:100px;
-	position:static;
+	margin-top:80px;
+	/*position:static;*/
 }
 #main_modul {
 	margin-left: 250px;
