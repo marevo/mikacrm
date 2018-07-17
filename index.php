@@ -28,15 +28,8 @@ else
         <!--   wrapper      подтянем header сайта-->
 <!--		<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id="affix_header">
 		<div id="myAffixHeader" data-spy="affix" data-offset-top="0">-->
-        <?php
-            if($_GET['lang']=='ru')
-            {				
-		        require_once ('./templates/header_ru.php');
-            }
-            else
-            {
-				require_once ('./templates/header_en.php');
-            }				
+        <?php		
+		    require_once ('./templates/header.php');				
 		?>	
 <!--		</div>
 	</div>-->

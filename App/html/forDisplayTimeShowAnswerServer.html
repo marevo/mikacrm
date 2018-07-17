@@ -1,11 +1,14 @@
 <!--структура для отображения времени и результатов запросов к серверу-->
+<?
+   $strings=parse_ini_file($_SERVER['DOCUMENT_ROOT'].'/locales/'.$_GET['lang'].'.ini');
+?>
 <div class="row forDisplayTimeShowAnswerServer">
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  forDisplayTime text-center ">
-        сегодня: <div class="dateToday"></div>
+        <?echo $strings['today']?> <div class="dateToday"></div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="rezZaprosaKServer" >
-        <div class=" uspeh text-center "><span class="glyphicon glyphicon-import "> успешно</span></div>
-        <div class=" noUspeh text-center "><span class="glyphicon glyphicon-alert "> ошибка обратитесь к разработчику</span></div>
+        <div class=" uspeh text-center "><span class="glyphicon glyphicon-import "> <?echo $strings['successful']?></span></div>
+        <div class=" noUspeh text-center "><span class="glyphicon glyphicon-alert "> <?echo $strings['error_developer']?></span></div>
         <!-- в поле с классом divForAnswerServer будем получать ответы сервера (script ) -->
         <div class="divForAnswerServer"></div>
     </div>

@@ -112,6 +112,10 @@ tbody td{
 	align-items: center;
 	align-items: stretch;
 }
+.pod_lang{
+	    line-height: 5;
+	
+}
 .pod_user{
 	    line-height: 5;
 	

@@ -77,28 +77,26 @@ function activate (id/*,handler*/) {
 	}
 	
 		$lang="&lang=".$_GET['lang'];
-		if($_GET['lang']=='ru')
+		
+		echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.$bold.$lang.">\n"; // onclick="activate(\''.$id.'\')"
+		if($_GET['lang']=='en')
 		{
-			echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['text']."&menu=".$id.$bold."&lang=ru>\n"; // onclick="activate(\''.$id.'\')"
-	        echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['text']."</a>\n";
+	        echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['title']."</a>\n";
+        }
+		else
+		{
+			echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['text']."</a>\n";
+		}
+		if($id==$_GET['menu'])
+		{
+			$show_parents=true;
+			view_menu($arr,$arr[$parent_id][$i]['id'],false,$level+1);
 		}
 		else
 		{
-			echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.$bold."&lang=en>\n"; // onclick="activate(\''.$id.'\')"
-	        echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['title']."</a>\n";
+			$show_parents=view_menu($arr,$arr[$parent_id][$i]['id'],true,$level+1);
 		}
-	
-	
-			if($id==$_GET['menu'])
-			{
-			    $show_parents=true;
-				view_menu($arr,$arr[$parent_id][$i]['id'],false,$level+1);
-			}
-		    else
-			{
-				$show_parents=view_menu($arr,$arr[$parent_id][$i]['id'],true,$level+1);
-			}
-			echo "</li>\n";
+		echo "</li>\n";
 			
 		}
 		echo "</ul>\n";
@@ -116,14 +114,8 @@ function activate (id/*,handler*/) {
         $mysql_username = 'root';
 		$mysql_database = 'reclam';
 		$mysql_password = NULL;
-		if($_GET['lang']=='ru')
-		{
-			$sql="SELECT handler FROM menu WHERE text='".$title."';";
-		}
-		else
-		{
-		    $sql="SELECT handler FROM menu WHERE title='".$title."';";
-		}
+		
+		$sql="SELECT handler FROM menu WHERE title='".$title."';";
 		$mysqli = mysqli_connect($mysql_host, $mysql_username,$mysql_password,$mysql_database);
 		mysqli_set_charset($mysqli,'utf8');
 //		mysql_select_db($mysql_database);
@@ -137,4 +129,5 @@ function activate (id/*,handler*/) {
 		//return $sql;
 		return $row[0];
 	}
+	
 ?>
