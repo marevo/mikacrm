@@ -130,6 +130,7 @@ $('#modalViewAllMaterialsToThisOrder').on('hide.bs.modal',function () {
     $('#forClear').removeClass('forClear').removeAttr('id');
     //очистим таблицу всех материалов
     $('#tableAllMaterialsForOrder').html('');
+    //обновим данные в цена комплектующих из базы данных
 });
 
 //вызов функции для запроса всех материалов в этом заказе для показа их в модальном окне

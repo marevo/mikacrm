@@ -267,7 +267,8 @@ function testOnEmailExpand(elemInputEmail){
 var dateFromServer ='';
 var countTimeOnThisPage = 0 ;
 var coutnReqGetTimeFromServer = 0;
-var $elemForDislayTimeFromServer = $('.nav.navbar-nav li:last-child a');
+// var $elemForDislayTimeFromServer = $('.nav.navbar-nav li:last-child a');
+var $elemForDislayTimeFromServer = $('.forDisplayTime ');
 var intervalForClear;
 // function getTimeFromServer() {
 //     $.ajax({
@@ -296,26 +297,26 @@ function showInDomElement(elem) {
 /**
  * функция запроса времени с сервера пока не запущена чтобы запустить надо обрамить ее в "$();"
  */
-$(function getTimeFromServer() {
-    $.ajax({
-        type: 'post',
-        url: '/timeZone.php',
-        data: 'getTimeServer',
-        success: function(data){
-            coutnReqGetTimeFromServer++;
-            // console.log('вызов № '+coutnReqGetTimeFromServer);
-            // console.log('getTimeFromServer()='+data);
-            dateFromServer = data;
-            $elemForDislayTimeFromServer.html(dateFromServer);
-        }
-    });
-    //запросим даныые о времени через ajax и запишем их в dateFromServer
-    // getTimeFromServer();
-    //отобразим dateFromServer на элементе $elemForDislayTimeFromServer
-    $elemForDislayTimeFromServer.html(dateFromServer);
-    //запустим это функцию запроса времени и отображения на элементе раз в минуту
-    intervalForClear = setInterval(showInDomElement($elemForDislayTimeFromServer),1000*60);
-});
+// $(function getTimeFromServer() {
+//     $.ajax({
+//         type: 'post',
+//         url: '/timeZone.php',
+//         data: 'getTimeServer',
+//         success: function(data){
+//             coutnReqGetTimeFromServer++;
+//             // console.log('вызов № '+coutnReqGetTimeFromServer);
+//             // console.log('getTimeFromServer()='+data);
+//             dateFromServer = data;
+//             $($elemForDislayTimeFromServer).html(dateFromServer);
+//         }
+//     });
+//     //запросим даныые о времени через ajax и запишем их в dateFromServer
+//     // getTimeFromServer();
+//     //отобразим dateFromServer на элементе $elemForDislayTimeFromServer
+//     $($elemForDislayTimeFromServer).html(dateFromServer);
+//     //запустим это функцию запроса времени и отображения на элементе раз в минуту
+//     intervalForClear = setInterval(showInDomElement($elemForDislayTimeFromServer),1000*60);
+// });
 //подключение файла js/checkInput.js к этому файлу
 $(function include(url) {
     var script = document.createElement('script');

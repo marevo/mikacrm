@@ -296,10 +296,13 @@ if(isset($_GET['update'])){
 //изменение цены комплектующих заказа
         case 'manufacturingPrice':
             $or = Order::findObjByIdForViewOneOrder($idOrder);
+            //считаем старое значение стоимости комплектующих из базы данных
+            $or->manufacturingPrice = $or->getManufacturingPriceCount();
+//            проставим новое значение стоимости заказа исходя из подсказок системы и соображений пользователя
             $or->manufacturingPrice = $valueField;
             $res = $or->update();
             if($res == true){
-                echo "<script>ORDER['$nameField']= '$valueField';</script>";
+                echo "<script>ORDER['$nameField']= '$or->manufacturingPrice';</script>";
                 echo"<script>fUspeh();</script>";
             }
             if($res == false){
