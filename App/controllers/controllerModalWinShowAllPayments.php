@@ -244,12 +244,15 @@ if(isset($_POST['sendDeletePaymentForOrderFromModalWinFromViewAllPayments'])){
 //             отобразим в основном окне просмотра одного заказа новую сумму оплат в поле data-name=sumAllPayments
             //запросим заново сумму всех платежей $idOrder нашли выше строка 291
             $payment =  \App\Models\Payment::getSumAllPaymentsForOrder($idOrder);
-            if(is_null($payment)){
-                $payment='';
-                echo "<script type='text/javascript'>
-                   $('[data-name=\'sumAllPayments\']').html('');
-                 </script>;";
-            }
+
+
+
+if(is_null($payment)){
+    $payment='';
+    echo "<script type='text/javascript'>
+$('[data-name=\'sumAllPayments\']').html('');
+</script>;";
+}
             echo "<script type='text/javascript'>
                 ORDER['sumAllPayments'] = $payment;
                 allocateOrderField();
