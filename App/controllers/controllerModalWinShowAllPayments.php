@@ -157,7 +157,7 @@ if(isset($_POST['sendPaymentForOrderFromModalWinFromViewAllPayments'])){
 
 //запрос из окна просмотра заказа viewOneOrder.php запрос из модального окна на удаление оплаты
 if(isset($_POST['sendDeletePaymentForOrderFromModalWin'])){
-    \App\ModelLikeTable::showUspeh('запрос на удаление');
+    \App\ModelLikeTable::showUspeh('запрос на удаление оплаты в модальном окне всех оплат');
     if(isset($_POST['idPaymentForDelete'])){
         $idPaymentForDelete = intval($_POST['idPaymentForDelete']);
         $idOrder = \App\Models\Payment::findObjByIdStatic($idPaymentForDelete)->idOrder;
@@ -244,7 +244,12 @@ if(isset($_POST['sendDeletePaymentForOrderFromModalWinFromViewAllPayments'])){
 //             отобразим в основном окне просмотра одного заказа новую сумму оплат в поле data-name=sumAllPayments
             //запросим заново сумму всех платежей $idOrder нашли выше строка 291
             $payment =  \App\Models\Payment::getSumAllPaymentsForOrder($idOrder);
-
+            if(is_null($payment)){
+                $payment='';
+                echo "<script type='text/javascript'>
+                   $('[data-name=\'sumAllPayments\']').html('');
+                 </script>;";
+            }
             echo "<script type='text/javascript'>
                 ORDER['sumAllPayments'] = $payment;
                 allocateOrderField();
