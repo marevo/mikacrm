@@ -280,7 +280,7 @@ $manufacturingPriceCount = $order->getManufacturingPriceCount();
            console.log('click on button for viewAllPaymentForThisOrder');
            // вызов модального окна просмотра оплат
             $('#modalViewAllPaymentsToThisOrder').modal('show');
-            
+            allocateOrderField();
             return false;
         });
         //добавим клик в модальном #modalViewAllPaymentsToThisOrder окне на кнопке #idBtnAddPayment добавить оплату 

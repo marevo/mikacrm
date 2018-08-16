@@ -165,15 +165,37 @@ if(isset($_POST['sendDeletePaymentForOrderFromModalWin'])){
         $res = \App\Models\Payment::deleteObj($idPaymentForDelete);
         if($res){
             $payment =  \App\Models\Payment::getSumAllPaymentsForOrder($idOrder);
-            echo "  
-            <script>
-            ORDER['sumAllPayments'] = $payment;
-            allocateOrderField();
-            setTimeout(function() {
-               $('#modalViewAllPaymentsToThisOrder').modal('hide');
-            },1000);
-            </script>
-        ";
+           if( is_null($payment)){
+               $payment='';
+               echo "<script>
+               $('[data-name=\'sumAllPayments\']').html('');
+             </script>";
+           }
+                echo "  
+                    <script>
+                    ORDER['sumAllPayments'] = '$payment';
+                    allocateOrderField();
+                    setTimeout(function() {
+                       $('#modalViewAllPaymentsToThisOrder').modal('hide');
+                    },1000);
+                 $('[data-name=\'sumAllPayments\']').html($payment);
+
+                    </script> 
+                ";
+
+//            }else{
+//                echo "
+//                    <script>
+//                    ORDER['sumAllPayments'] = '';
+//                    allocateOrderField();
+//                    setTimeout(function() {
+//                       $('#modalViewAllPaymentsToThisOrder').modal('hide');
+//                    },1000);
+//                    $('[data-name]=sumAllPayments').html($payment);
+//                    </script>
+//                ";
+//            }
+
             \App\ModelLikeTable::showUspeh('оплата удалена успешно');
         }else{
             \App\ModelLikeTable::showNoUspeh('ошибка удаления платежа id='+$idPaymentForDelete +'обратисеь к разработчику');
@@ -219,7 +241,23 @@ if(isset($_POST['sendDeletePaymentForOrderFromModalWinFromViewAllPayments'])){
             // то для упрощения скроем и покажем модальное окно через функцию js modalAllPaymentsForThisOrder_HIDE_SHOW()
 //            echo "<script>$('#modalViewAllPaymentsToThisOrder').modal('hide');</script>";
               echo "<script>modalAllPaymentsForThisOrder_HIDE_SHOW();</script>";
-//
+//             отобразим в основном окне просмотра одного заказа новую сумму оплат в поле data-name=sumAllPayments
+            //запросим заново сумму всех платежей $idOrder нашли выше строка 291
+            $payment =  \App\Models\Payment::getSumAllPaymentsForOrder($idOrder);
+
+            echo "<script type='text/javascript'>
+                ORDER['sumAllPayments'] = $payment;
+                allocateOrderField();
+            </script>;";
+            echo "<script type='text/javascript'>
+                $('#modalViewAllPaymentsToThisOrder').modal('hide');
+                setTimeout(function() {
+                    $('#modalViewAllPaymentsToThisOrder').modal('show');
+                },1000);
+             </script>;";
+            echo"<script type='text/javascript'>
+ $('[data-name=\'sumAllPayments\']').html($payment);
+</script>";
 //            echo "<script> setTimeout(function(){$('#modalViewAllPaymentsToThisOrder').modal('show')},1000);</script>";
 //            echo "<script> $('#modalViewAllPaymentsToThisOrder').modal('show');</script>";
 

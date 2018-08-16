@@ -35,7 +35,7 @@ if(isset($_POST['searchLike'])){
                 //найдем idMaterial для каждого поставщика, чтобы узнать есть или нет эти материалы в заказах и
                 // разрешать удалять только тех поставщиков, чьих материалов нет в заказах
                 if(\App\Models\MaterialsToOrder::ifExistThisSupplierInAnyMaterilsToOrder($item->id)){
-//                                есть материал этото поставщика хотябы в одном заказе поэтому не будем разрешать удалять поставщика
+//                    есть материал этото поставщика хотябы в одном заказе поэтому не будем разрешать удалять поставщика
                     $tableAllSuppTbody .= "<tr><td class='tdDisplayNone'>$item->id</td><td>$item->name</td><td>$item->addCharacteristic</td><td class='tdDisplayNone'>$item->contactPerson</td><td>$item->phone0</td><td class='tdDisplayNone'>$item->email0</td><td>$item->address</td><td class='tdDisplayNone'> ".$item->getDeliveryDays()." </td><td class='tdDisplayNone'><a href='$item->site' target='_blank'>$item->site</a></td><td  class='text-center'><a data-id_supplier= $item->id href='viewOneSupplier.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td><td></td></tr>";
                 }
                 else{
