@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 23 2018 г., 19:03
+-- Время создания: Сен 05 2018 г., 13:58
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.0.14
 
@@ -11389,7 +11389,9 @@ INSERT INTO `clients` (`id`, `name`, `contactPerson`, `phone0`, `phone1`, `email
 (2, 'фирма Рога и Копыта 2', 'Владимир Кузякин', '0949999990', NULL, 'rogaandcopyta@gmail.com', 'Чернигов', '1990-06-23'),
 (3, 'фирма Рога и Копыта ', '', 'null', '', '', 'Чернигов', '0000-00-00'),
 (4, 'имя несуществующий клиент( нужно для проверки)', 'контакт-не существует', 'null', 'null', 'null', 'Чернигов', '0000-00-00'),
-(6, 'Евич Илья', 'Евич Илья Андреевич', '0931107156', '', '', 'Чернигов, Козацкая', '0000-00-00');
+(6, 'Евич Илья', 'Евич Илья Андреевич', '0931107156', '', '', 'Чернигов, Козацкая', '0000-00-00'),
+(8, 'Павел', '', '', '', '', 'Л', '0000-00-00'),
+(9, 'мужичок клиент', 'мужичок', '09887767', '', '', 'чернигов', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -11413,7 +11415,9 @@ INSERT INTO `contactsclients` (`id`, `name`, `id_clients`, `phone`, `email`) VAL
 (1, 'самуил', 1, '+380944444444', 'samuil@sam.com'),
 (2, 'Вася Пупкин', 1, '093-999-999-0', NULL),
 (4, 'Иванов', 6, '0939990999', ''),
-(5, 'Петров Петр Петрович', 0, '0462044044', 'petya@gmail.com');
+(5, 'Петров Петр Петрович', 0, '0462044044', 'petya@gmail.com'),
+(7, 'Павел', 0, '0933691459', ''),
+(8, 'мужичок', 9, '09998877', '');
 
 -- --------------------------------------------------------
 
@@ -11524,6 +11528,8 @@ INSERT INTO `materialstoorder` (`id`, `idOrder`, `idMaterials`, `countNeed`, `pr
 CREATE TABLE `menu` (
   `id` tinyint(3) UNSIGNED NOT NULL,
   `parent_id` tinyint(4) NOT NULL DEFAULT '0',
+  `i_module` int(11) DEFAULT NULL,
+  `i_role` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `text` varchar(255) NOT NULL,
   `handler` varchar(255) NOT NULL DEFAULT '',
@@ -11534,14 +11540,14 @@ CREATE TABLE `menu` (
 -- Дамп данных таблицы `menu`
 --
 
-INSERT INTO `menu` (`id`, `parent_id`, `title`, `text`, `handler`, `image`) VALUES
-(3, 0, 'Contacts', 'Контакты', 'templates/viewAllContacts.php', 'icon-vcard'),
-(4, 0, 'Clients', 'Клиенты', 'templates/viewAllClients.php', 'fa-user'),
-(5, 0, 'Orders', 'Заказы', 'templates/viewAllOrders.php', 'fa-shopping-basket'),
-(6, 0, 'Suppliers', 'Поставщики', 'templates/viewAllSuppliers.php', 'icon-truck'),
-(7, 0, 'Materials', 'Материалы', 'templates/viewAllMaterials.php', 'icon-package'),
-(8, 0, 'Reports', 'Отчёты', 'templates/viewAllReports.php', 'fa-bar-chart'),
-(9, 0, 'Modules', 'Управление модулями', 'templates/viewAllModyles.php', 'icon-box-add');
+INSERT INTO `menu` (`id`, `parent_id`, `i_module`, `i_role`, `title`, `text`, `handler`, `image`) VALUES
+(3, 0, NULL, 2, 'Contacts', 'Контакты', 'templates/viewAllContacts.php', 'icon-vcard'),
+(4, 0, NULL, 2, 'Clients', 'Клиенты', 'templates/viewAllClients.php', 'fa-user'),
+(5, 0, NULL, 2, 'Orders', 'Заказы', 'templates/viewAllOrders.php', 'fa-shopping-basket'),
+(6, 0, NULL, 2, 'Suppliers', 'Поставщики', 'templates/viewAllSuppliers.php', 'icon-truck'),
+(7, 0, NULL, 2, 'Materials', 'Материалы', 'templates/viewAllMaterials.php', 'icon-package'),
+(8, 0, NULL, 2, 'Reports', 'Отчёты', 'templates/viewAllReports.php', 'fa-bar-chart'),
+(9, 0, NULL, 1, 'Modules', 'Модули', 'templates/viewAllModyles.php', 'icon-box-add');
 
 -- --------------------------------------------------------
 
@@ -11602,7 +11608,8 @@ INSERT INTO `orders` (`id`, `name`, `descriptionOrder`, `source`, `idClient`, `o
 (32, 'новый заказ 18:50-04-12-2017', 'без описания нового заказа 18:50-04-12-2017', 0, 4, '0.00', '0.00', 0, 0, 0, '2017-12-04', '2017-12-18', 0, 0),
 (33, 'зак от 23.02.18:18-00', 'зак от 23.02.18:18-00 для фирмы Рога и Копыта 2', 0, 2, '0.00', '0.00', 0, 0, 0, '2018-02-23', '2018-03-09', 0, 1),
 (34, 'Форма просмотра данных', 'Для просмотра и редактирования ранее добавленных данных', 1, 6, '0.00', '0.00', 0, 0, 0, '2018-03-17', '2018-03-31', 0, 0),
-(35, 'ппп', 'ппп', 2, 1, '0.01', '0.02', 0, 0, 0, '2018-06-16', '2018-06-30', 0, 1);
+(35, 'ппп', 'ппп', 2, 1, '0.01', '0.02', 0, 0, 0, '2018-06-16', '2018-06-30', 0, 1),
+(36, 'заказ для мужичка лайтбокс', 'вывеска над балконом светящееся', 0, 9, '0.00', '0.00', 0, 0, 0, '2018-06-24', '2018-07-08', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -11651,7 +11658,28 @@ INSERT INTO `payments` (`id`, `idOrder`, `idClient`, `date`, `sumPayment`) VALUE
 (72, 32, 4, '2018-02-20', '1.00'),
 (73, 32, 4, '2018-02-20', '1.00'),
 (81, 33, 2, '2018-02-26', '0.02'),
-(82, 33, 2, '2018-02-26', '2.00');
+(82, 33, 2, '2018-02-26', '2.00'),
+(83, 36, 9, '2018-06-24', '10.00'),
+(84, 36, 9, '2018-06-24', '10.00');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1, 'Администратор'),
+(2, 'ФЛП');
 
 -- --------------------------------------------------------
 
@@ -11717,6 +11745,7 @@ CREATE TABLE `tasks` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `i_role` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
   `login` varchar(50) NOT NULL,
   `password` char(128) NOT NULL,
@@ -11732,9 +11761,9 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `login`, `password`, `gmail`, `secretQuestion`, `secretAnswer`, `session`, `updated`, `rightUser`) VALUES
-(1, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d'),
-(2, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '?', '!', 'o5rdm54bm7m1lvfvuhsd9jp9d4', '1529769698', NULL);
+INSERT INTO `users` (`id`, `i_role`, `name`, `login`, `password`, `gmail`, `secretQuestion`, `secretAnswer`, `session`, `updated`, `rightUser`) VALUES
+(1, 2, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d'),
+(2, 1, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '?', '!', 'i12atuvr4te0vnqjntt7dtbfq5', '1536137584', NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -11779,7 +11808,9 @@ ALTER TABLE `materialstoorder`
 -- Индексы таблицы `menu`
 --
 ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `i_module` (`i_module`),
+  ADD KEY `i_role` (`i_role`);
 
 --
 -- Индексы таблицы `modules`
@@ -11803,6 +11834,12 @@ ALTER TABLE `payments`
   ADD KEY `payments_ibfk_2` (`idClient`);
 
 --
+-- Индексы таблицы `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -11824,7 +11861,8 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `nameUser` (`name`),
   ADD UNIQUE KEY `loginUser` (`login`),
   ADD UNIQUE KEY `passwordUser` (`password`) USING BTREE,
-  ADD UNIQUE KEY `gmailUser` (`gmail`);
+  ADD UNIQUE KEY `gmailUser` (`gmail`),
+  ADD KEY `i_role` (`i_role`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -11834,12 +11872,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `contactsclients`
 --
 ALTER TABLE `contactsclients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `materials`
 --
@@ -11864,12 +11902,17 @@ ALTER TABLE `modules`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT для таблицы `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+--
+-- AUTO_INCREMENT для таблицы `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `suppliers`
 --
@@ -11903,6 +11946,13 @@ ALTER TABLE `materialstoorder`
   ADD CONSTRAINT `materialstoorder_ibfk_2` FOREIGN KEY (`idMaterials`) REFERENCES `materials` (`id`) ON UPDATE CASCADE;
 
 --
+-- Ограничения внешнего ключа таблицы `menu`
+--
+ALTER TABLE `menu`
+  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`i_module`) REFERENCES `modules` (`id`),
+  ADD CONSTRAINT `menu_ibfk_2` FOREIGN KEY (`i_role`) REFERENCES `roles` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `orders`
 --
 ALTER TABLE `orders`
@@ -11914,6 +11964,12 @@ ALTER TABLE `orders`
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`idOrder`) REFERENCES `orders` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `clients` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`i_role`) REFERENCES `roles` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
