@@ -22,7 +22,7 @@
         <div class="row backForDiv divForTable">
             <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php
-                $tableAllContact = "<table  id ='tbViewAllContacts'>
+                $tableAllContact = "<table  id ='tbViewAllContacts' class='table-bordered'>
                                           <thead>
                                           <tr><td>название + доп характеристики</td><td>клиент контакта</td><td>телефон</td><td>email</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
                 $allContactInBase = \App\Models\Contacts::findAllOrderByName();

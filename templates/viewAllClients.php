@@ -49,7 +49,7 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
                 //найдем всех клиентов и отобразим их через таблицу
                 $allClientsInBase = \App\Models\Client::findAllOrderByName();
                 if ($allClientsInBase) {
-                    $tableAllClients = "<table id='tbViewAllClients'><thead><tr><td class='tdDisplayNone'>id</td>" .
+                    $tableAllClients = "<table id='tbViewAllClients' class='table-bordered'><thead><tr><td class='tdDisplayNone'>id</td>" .
                         "<td>название</td><td>контакт</td><td>телефон 1</td><td class='tdDisplayNone'>телефон 2</td><td class='tdDisplayNone'>email</td>" .
                         "<td>адрес</td>" .
                         "<td class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .

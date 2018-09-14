@@ -55,7 +55,7 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
                 //найдем всех поставщиков и отобразим их через таблицу
                 $allSuppliersInBase = \App\Models\Supplier::findAll();
                 if (!empty ($allSuppliersInBase)) {
-                    $tableAllSupp = "<table id='tbViewAllSuppliers'><thead><tr><td class='tdDisplayNone'>id</td>" .
+                    $tableAllSupp = "<table id='tbViewAllSuppliers' class='table-bordered'><thead><tr><td class='tdDisplayNone'>id</td>" .
                         "<td>название</td><td>доп характ</td><td class='tdDisplayNone'>контакт</td><td>телефон</td><td class='tdDisplayNone'>email</td>" .
                         "<td>адрес поставщика</td><td class='tdDisplayNone'>день доставки</td><td class='tdDisplayNone'>сайт</td>" .
                         "<td  class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .

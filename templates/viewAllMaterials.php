@@ -38,7 +38,7 @@ include_once 'App/html/forDisplayTimeShowAnswerServer.html'
                 //                найдем все материалы с названиями поставщиков
                 $allMaterialsInBase = \App\Models\Material::selectForView();
                 if (!empty ($allMaterialsInBase)) {
-                    $tableAllMat = "<table id ='tbViewAllMaterials'><thead><tr><td style='display: none;'>id</td><td>название</td><td>доп характ</td><td>ед изм</td><td>форма поставки</td><td>цена за ед</td><td style='display: none;'>id поставщика</td><td>поставщик</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class=\"glyphicon glyphicon-trash\"></span></td></tr></thead><tbody>";
+                    $tableAllMat = "<table id ='tbViewAllMaterials' class='table-bordered'><thead><tr><td style='display: none;'>id</td><td>название</td><td>доп характ</td><td>ед изм</td><td>форма поставки</td><td>цена за ед</td><td style='display: none;'>id поставщика</td><td>поставщик</td><td><span class='glyphicon glyphicon-eye-open'></span></td><td><span class=\"glyphicon glyphicon-trash\"></span></td></tr></thead><tbody>";
                     foreach ($allMaterialsInBase as $item) {
 //                                получим не false если есть этот материал хотябы в одном заказе
                         $ifExistOrderWithIdMaterial = \App\Models\MaterialsToOrder::ifExistThisMaterialInAnyOneOrder_2(intval($item['id']));
