@@ -296,10 +296,13 @@ if(isset($_GET['update'])){
 //изменение цены комплектующих заказа
         case 'manufacturingPrice':
             $or = Order::findObjByIdForViewOneOrder($idOrder);
+            //считаем старое значение стоимости комплектующих из базы данных
+            $or->manufacturingPrice = $or->getManufacturingPriceCount();
+//            проставим новое значение стоимости заказа исходя из подсказок системы и соображений пользователя
             $or->manufacturingPrice = $valueField;
             $res = $or->update();
             if($res == true){
-                echo "<script>ORDER['$nameField']= '$valueField';</script>";
+                echo "<script>ORDER['$nameField']= '$or->manufacturingPrice';</script>";
                 echo"<script>fUspeh();</script>";
             }
             if($res == false){
@@ -397,9 +400,10 @@ if(isset($_POST['getAllMaterialsForOrder'])){
 if(isset($_POST['getAllMaterialsFromBase'])){
     if(isset($_POST['idOrder'])){
         $idOrder = intval($_POST['idOrder']);
+        //нахождение всех материалов, что есть в базе и ранжирование их по названию ( по алфавиту)
         $allMaterialsFromBase = Material::findAllOrderByName();
         if($allMaterialsFromBase == false){
-            echo"<thead></thead><tbody>пока нет добавленных к заказу материалов</tbody>";
+            echo"<thead></thead><tbody>пока нет  материалов</tbody>";
             die();
         }
         else{
@@ -452,46 +456,32 @@ if(isset($_POST['searchMaterialsForName'])){
         $nameMaterialLike = htmlspecialchars($_POST['nameMaterialLike']);
 //        echo "название пришло: $nameMaterialLike";
         $searchedMaterials = Material::searchAllForLikeName($nameMaterialLike);
-        echo ("нашли материалы $searchedMaterials");
-        var_dump("$searchedMaterials");
+       // echo ("нашли материалы $searchedMaterials");
+        //var_dump("$searchedMaterials");
         if($searchedMaterials == false){
             echoNoUspeh();
             echo"<thead></thead><tbody>пока нет материалов с таким названием</tbody>";
         }
-        else
-        {
-            $table ="<thead><tr>
-            <td class='tdDisplayNone'>id материала</td>
-            <td>название материала</td>
-            <td>доп характеристики</td>
-            <td class='tdDisplayNone'>единица измериния</td><!-- м - поставка в метарах погонных-->
-            <td>форма поставки</td><!--допусим труба идет поставкой длиной 2.86 м -->
-            <td>цена за единицу</td> <!--цена за единицу поставки в метрах погонных -->
-            <td class='tdDisplayNone'>id поставщика</td>
-            <td>поставщик</td>
-            <td>количество</td>
-            <td><span class = 'glyphicon glyphicon-plus'>нажмите добавить напротив нужного материала</span></td>
-            </tr></thead><tbody>";
-            foreach ($searchedMaterials as $value){
-                $table.= "
+        else {
+            $tableTbody = "";
+            foreach ($searchedMaterials as $value) {
+                $tableTbody .= "
                <tr><td class='tdDisplayNone'> $value->id </td>
                <td> $value->name </td>
                <td> $value->addCharacteristic </td>
-               <td class='tdDisplayNone'> $value->measure </td>
-               <td>$value->deliveryForm $value->measure  </td>
-               <td> $value->priceForMeasure</td>
-               <td class='tdDisplayNone'> $value->id_suppliers <a href='viewOneSupplier.php?id=$value->id_suppliers'>посмотреть поставщика</a></td>
-               <td> ".Supplier::findObjByIdStatic($value->id_suppliers)->name ." </td>
-               <td><input size='7' placeholder='количество' class='inputToControle'/></td>
-               <td><button class='btn btn-primary addMaterialToOrder'><span class = 'glyphicon glyphicon-plus'> добавить<br/> к заказу</span></button> </td>
+               <td> $value->measure </td>
+               <td> $value->deliveryForm </td>
+               <td> $value->priceForMeasure </td>
+               <td class='tdDisplayNone'> $value->id_suppliers </td>
+               <td> " . Supplier::findObjByIdStatic($value->id_suppliers)->name . " </td>
                </tr>";
             }
-            $table.="</tbody>";
-            echo "$table";
+        }
+//выбросим ответ в tableFildMaterialToAddToOrder tbody
+        echo "$tableTbody";
             echoUspeh();
         }
     }
-}
 //*добавление материала к заказу
 if(isset($_POST['addCountMaterialToOrder'])){
 //    echo "запрос в базу на добавление материала к заказу";//не забыть удалить

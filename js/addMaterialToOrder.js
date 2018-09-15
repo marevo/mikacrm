@@ -70,8 +70,10 @@ function getAllMaterialsFromBase() {
 function serchAllMaterialsForName() {
     var nameMater = $.trim($('#idInputNameMaterial').val());
     if(nameMater != ""){
+        //если есть не пусто в поиске то пошлем запрос на поиск материалов по названию и выведем результаты в эту же таблицу
+        // где раньше были все материалы в базе но в тег tbody #tableFildMaterialToAddToOrder tbody
         console.log('посылаем вызов в базу с nameMater:'+nameMater);
-        jquery_send('#tbSearchMaterialOnName','post','../controllerOneOrder.php',
+        jquery_send('#tableFildMaterialToAddToOrder tbody','post','../controllerOneOrder.php',
             ['searchMaterialsForName','nameMaterialLike'],['',nameMater]
         );
     }

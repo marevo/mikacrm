@@ -29,7 +29,7 @@ function clientsOptions(){
                 <div class="col-lg-12   col-md-12 col-sm-12 col-xs-12 bg-primary  h2 text-center text-info">создание и добавление в базу нового заказа</div>
             </div>
             <div class="row"><!--форма добавления нового заказа в базу -->
-                <div class="col-lg-8 сol-md-8 col-sm 10 col-xs-12 divForTableInFormAdd">
+                <div class="col-lg-12 сol-md-12 col-sm-12 col-xs-12 divForTableInFormAdd">
                         <form  id="formOneOrder"   method="post" action="../App/controllers/controllerAddNewOrderToBase.php">
                             <table>
                                 <thead>
@@ -45,7 +45,7 @@ function clientsOptions(){
                                 <tr><td class="text-right"><label for="descriptionOrder">описание заказа заказа</label></td>
                                     <td class="text-left"><textarea type="text" name="descriptionOrder" maxlength="3000"
                                                                     placeholder= "подробное описание заказа максимум 3000 символов"
-                                                                    cols="100" rows="5"  required></textarea></td>
+                                                                    cols="80" rows="5"  required></textarea></td>
                                 </tr>
                                 <tr>
                                     <td><label for="InputValuerSearchClient" поиск клиента по имени</td>

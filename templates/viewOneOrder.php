@@ -39,6 +39,8 @@ function fIsInstall($isInstall){
     if($isInstall == 1)
         return "<tr><td>статус установки</td><td class='orderNoSuccessCell' data-name='isInstall'>в процессе установки </td></tr>";
 }
+//функция подсчета стоимости добавленных материалов
+$manufacturingPriceCount = $order->getManufacturingPriceCount();
 ?>
 
 <title> просмотр данных заказа </title>
@@ -58,7 +60,7 @@ function fIsInstall($isInstall){
      idClient : '$order->idClient',
      nameClient : '$nameClient',
      orderPrice : '$order->orderPrice',
-     manufacturingPrice : '$order->manufacturingPrice',
+     manufacturingPrice : '$manufacturingPriceCount',
      isCompleted : '$order->isCompleted',
      isReady : '$order->isReady',
      isInstall : '$order->isInstall',
@@ -278,7 +280,7 @@ function fIsInstall($isInstall){
            console.log('click on button for viewAllPaymentForThisOrder');
            // вызов модального окна просмотра оплат
             $('#modalViewAllPaymentsToThisOrder').modal('show');
-            
+            allocateOrderField();
             return false;
         });
         //добавим клик в модальном #modalViewAllPaymentsToThisOrder окне на кнопке #idBtnAddPayment добавить оплату 
@@ -394,6 +396,9 @@ function fIsInstall($isInstall){
                             tdToAllocate.text('можно');
                             break;
                     }
+                }
+                if(k== 'manufacturingPrice'){
+                    
                 }
                 if(k== 'isTrash'){
                     switch (ORDER[k]) {

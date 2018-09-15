@@ -17,23 +17,8 @@ $supp = \App\Models\Supplier::findObjByIdStatic($idSupplier);
 //echo var_dump($supp);
 ?>
 <title> просмотр/правка данных поставщика </title>
-<?php     //require_once('../head.html'); ?>
-    <!--<div class="row">
-        <?php// require_once('header.html'); ?>
-    </div>
-    <div class="row"> навигация
-        <?php //require_once('../navigation.html');?>
-        <script>
-            showLi('поставщик');
-        </script>
-    </div>            <!-- конец навигации -->
 
     <div class="row">
-        <!--            начало доп блока слева
-        <div class="col-lg-2 backForDiv">
-            этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
-        </div>
-        <!--            конец доп блока слева-->
         <div class="col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php  include_once '../../App/html/forDisplayTimeShowAnswerServer.html'?>

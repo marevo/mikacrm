@@ -74,7 +74,7 @@ $('#modalViewAllMaterialsToThisOrder').on('shown.bs.modal',function () {
 //обработка click в таблице tableAllMaterialsForOrder
 function clickTableAllMaterialsForOrder() {
     var target = event.target;
-    console.log('кликнули в модальном окне таблице id=tableAllMaterialsForOrde rвсех материалов в заказе');
+    console.log('кликнули в модальном окне таблице id=tableAllMaterialsForOrder всех материалов в заказе');
     // проверим был клик в input
     //*** правка количества материала в заказе
     if(target.nodeName =='INPUT'){
@@ -130,6 +130,7 @@ $('#modalViewAllMaterialsToThisOrder').on('hide.bs.modal',function () {
     $('#forClear').removeClass('forClear').removeAttr('id');
     //очистим таблицу всех материалов
     $('#tableAllMaterialsForOrder').html('');
+    //обновим данные в цена комплектующих из базы данных
 });
 
 //вызов функции для запроса всех материалов в этом заказе для показа их в модальном окне
