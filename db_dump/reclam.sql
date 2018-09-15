@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 05 2018 г., 13:58
+-- Время создания: Сен 15 2018 г., 16:40
 -- Версия сервера: 5.5.53
 -- Версия PHP: 7.0.14
 
@@ -11750,6 +11750,7 @@ CREATE TABLE `users` (
   `login` varchar(50) NOT NULL,
   `password` char(128) NOT NULL,
   `gmail` varchar(100) NOT NULL,
+  `phone` varchar(13) NOT NULL,
   `secretQuestion` varchar(100) DEFAULT NULL,
   `secretAnswer` varchar(100) DEFAULT NULL,
   `session` varchar(32) DEFAULT NULL,
@@ -11761,9 +11762,9 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `i_role`, `name`, `login`, `password`, `gmail`, `secretQuestion`, `secretAnswer`, `session`, `updated`, `rightUser`) VALUES
-(1, 2, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d'),
-(2, 1, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '?', '!', 'i12atuvr4te0vnqjntt7dtbfq5', '1536137584', NULL);
+INSERT INTO `users` (`id`, `i_role`, `name`, `login`, `password`, `gmail`, `phone`, `secretQuestion`, `secretAnswer`, `session`, `updated`, `rightUser`) VALUES
+(1, 2, 'Михаил Рево', 'adminMarevo', '$2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.', 'marevo1972@gmai.com', '', 'фамилия матери', 'Попова', '49d5tdrfndtll1cuiqh52m23c1', '1507840254', 'c r u d'),
+(2, 1, 'Екатерина', 'user', '$2y$10$DgCREMkZ/gHo5XB1VIlY4O8ujrkDTHG19sqFaoPJ8Am.QSQjKrede', 'k.pristupa90@gmail.com', '+380633995553', '?', '!', '47l46o6lc08ok1ft4ojb50rpc2', '1537018617', NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -11892,12 +11893,12 @@ ALTER TABLE `materialstoorder`
 -- AUTO_INCREMENT для таблицы `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT для таблицы `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
