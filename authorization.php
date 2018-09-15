@@ -41,6 +41,7 @@
 	</div>
 </div>
 <script>    
+    //Обработчик формы авторизации
 	function authorize() {
 		// создать объект для формы
         var formData = new FormData(document.forms.authorization);
@@ -59,7 +60,9 @@
 				console.log(xhr.responseText);
 			}
 		}
+//Авторизоваться можно по нажатию на кнопку
 document.getElementById("authorization").onclick=authorize;
+//а также по нажатию на клавишу Enter
 document.onkeyup = function(e){
 			e = e || window.event;
 		if(e.keyCode==13)

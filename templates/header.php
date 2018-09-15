@@ -36,8 +36,6 @@
 					</div>
 	</div>
    </div>
-			
-				<div id="completed_successfully" style="display:none">Успешно завершено</div>
 <script type="text/javascript">
 document.getElementById("exit").onclick=function(){
 	var xhr = new XMLHttpRequest();

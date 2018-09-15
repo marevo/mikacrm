@@ -1,10 +1,13 @@
 <?
 chdir($_SERVER["DOCUMENT_ROOT"]);
 require_once 'autoload.php';
+
+//Функция проверки валидности текущей сессии
 function check_session()
 {
 	$sid=session_id();
     $res=\App\Models\User::getCurrentUserBySession($sid);
+	//Если срок действия сессии не истёк - продлеваем сессию
 	if($res && time()-$res[0]->updated<1800)
 	{
 		
@@ -18,17 +21,16 @@ function check_session()
 			return $res; //Отладочная информация в случае ошибки
 		}
 	}
+	//Иначе не авторизируем пользователя
 	else
 	{
 		return "unauthorized";
-//		echo $sid;
- //       echo $res[0]-;
 	}
 }
+//Обработка запроса авторизации
 if($_POST["action"]=="create")
 {
 	session_start();
-//	$sid=session_id();
     $res=\App\Models\User::getCurrentUserByLogin($_POST["login"]);
 	if($res && password_verify($_POST["password"],$res[0]->password))
 	{
@@ -44,9 +46,10 @@ if($_POST["action"]=="create")
 	}
 	else
 	{
-		echo "authorized";
+		echo "unauthorized";
 	}
 }
+//Обработка запроса на выход
 else if($_POST["action"]=="delete")
 {
 	if(session_start())
