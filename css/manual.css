@@ -160,7 +160,7 @@ img{
 	float: right;
 }
 .menu_list{
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 }
 #main_cont {
 	margin-top:80px;
@@ -204,7 +204,7 @@ margin-top: 20px;
 margin-bottom: 20px;
 }
 ul#menu_list li:first-child{
-margin-top: 50px;
+
 }
 body{
 	font: 14px/20px Arial, sans-serif;
