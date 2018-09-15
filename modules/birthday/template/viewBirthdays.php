@@ -1,0 +1,26 @@
+  <div class="row">
+            <div class="col-lg-10 backForDiv divForTable">
+			    <form name="birthday_dates" action="/controllerBirthday.php" method="POST">
+                    <div class="form-group">
+                    <label for="inputDate">Введите начальную дату:</label>
+                    <input type="date" class="form-control" name="start_date">
+					<label for="inputDate">Введите конечную дату:</label>
+                    <input type="date" class="form-control" name="end_date">
+					<input type="button" value="Вывести" id="clients_by_birtday">
+                    </div>
+                </form>
+				<div id="birthday_module">
+				</div>
+            </div>
+        </div>
+<script>
+document.getElementById("clients_by_birtday").onclick = function() {
+						//console.log("test");
+						var formData = new FormData(document.forms.birthday_dates);
+						var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.open( "POST", "modules/birthday/controller/controllerBirthday.php", false ); // false for synchronous request
+	                    xmlHttp.overrideMimeType("text/plain; charset=utf8");
+                        xmlHttp.send( formData );
+                        document.getElementById("birthday_module").innerHTML=xmlHttp.responseText;
+					};
+ </script> 
