@@ -65,4 +65,18 @@ class User extends ModelLikeTable
 		$res = $db->execute($query, $values);
         return $res;
 	}
+	public static function saveProfile(string $login, string $name, string $email, string $phone,string $password)
+	{
+		$db = new Db();
+		$values = [];
+		$values [':name']=$name;
+		$values [':gmail']=$email;
+		$values [':phone']=$phone;
+		$values [':password']=$password;
+        $query = "UPDATE ".self::TABLE." SET name = :name, gmail = :gmail, phone = :phone, $password = :password WHERE login = '".$login."' ; ";
+		$res = $db->execute($query, $values);
+//		echo session_id();
+	//	echo time();
+        return $res;
+	}
 }

@@ -50,7 +50,9 @@
 		document.getElementById("main_modul").innerHTML = xhr.responseText;
 		document.getElementById("name_profile").value='<?echo $res[0]->name;?>';
 		document.getElementById("email_profile").value='<?echo $res[0]->gmail;?>';
+		document.getElementById("phone_profile").value='<?echo $res[0]->phone;?>';
 }
+
    var zoomed=true;
    function zoomInY(targetBlock)
    {

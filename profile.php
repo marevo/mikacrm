@@ -5,11 +5,11 @@
 <form role="form" name="profile">
 <div class="input-group">
 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-<input type="text" class="form-control" placeholder="Имя пользователя" required autofocus id="name_profile"/>
+<input type="text" class="form-control" placeholder="Имя пользователя" required autofocus id="name_profile" name="name"/>
 </div>
 <div class="input-group">
 <span class="input-group-addon"><span class="icon-phone2"></span></span>
-<input type="text" class="form-control" placeholder="Телефон" required name="phone"/>
+<input type="text" class="form-control" placeholder="Телефон" required name="phone" id="phone_profile"/>
 </div>
 <div class="input-group">
 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -23,8 +23,19 @@
 <span class="input-group-addon"><span class="fa-key"></span></span>
 <input type="password" class="form-control" placeholder="Повтор пароль" required name="password"/>
 </div>
-<button type="button" class="btn btn-success">Сохранить</button>
+<button type="button" class="btn btn-success" id="save_profile">Сохранить</button>
 </form>
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+document.getElementById("save_profile").onclick=function() {
+var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/handlers/profile.php", false);
+	    xhr.overrideMimeType("text/plain; charset=utf8");
+		var formData = new FormData("profile");
+        formData.append('login','<?echo $res[0]->login?>');
+        xhr.send(formData);
+}
+</script>
