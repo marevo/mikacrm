@@ -75,8 +75,6 @@ $manufacturingPriceCount = $order->getManufacturingPriceCount();
             ?>
         <!--рабочее место справа-->
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv ">
-            <!--строка показа времени и показа результата добавки материала в базу  -->
-            <?php  include_once '../App/html/forDisplayTimeShowAnswerServer.html'?>
             <!--  блок отображения что меняем и кнокпки обновить страницу и кнопка править(покажет поля для внесения новых значений)  -->
             <div class="row headingContent">
                 <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">просмотр/правка

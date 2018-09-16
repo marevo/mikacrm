@@ -15,9 +15,6 @@ else
 ?>
 <!DOCTYPE html>
 <html>
-<!--<head>-->
-<!-- подключим к странице head.php заголовки и линковку-->
-<!--</head>-->
 <?php
       require_once ('./head.php');
 ?>
@@ -25,22 +22,14 @@ else
 
 <div class="container" >
     <div class="row navbar navbar-fixed-top" id="header" >
-        <!--   wrapper      подтянем header сайта-->
-<!--		<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id="affix_header">
-		<div id="myAffixHeader" data-spy="affix" data-offset-top="0">-->
         <?php		
 		    require_once ('./templates/header.php');				
 		?>	
-<!--		</div>
-	</div>-->
 	</div>
-	<div class="row" id="main_cont"><!-- middle  -->
-	<!--для шифровки пароля<?echo password_hash ( "password2" , PASSWORD_BCRYPT);?>-->
+	<div class="row" id="main_cont">
+	
         <!--    подтянем menu сайта-->
         <?php require_once ('./navigation.php'); ?>
-<!--         <div class="footer">-->
-<!--                <div> статус: admin/user<br>имя пользователя/ник</div>-->
-<!--         </div>-->
     </div>
 </div>
 </body>

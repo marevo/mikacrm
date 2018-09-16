@@ -1,8 +1,6 @@
 <?php
 //можем здесь писать если просто вывод или пока что при подключении будет autoload.php в head.html
 require_once 'autoload.php';
-//строка показа времени и показа результата добавки материала в базу
-include_once 'App/html/forDisplayTimeShowAnswerServer.html'
 ?>
 
 <div class="row"><!-- основной блок контета состоит из  12 колонок -->

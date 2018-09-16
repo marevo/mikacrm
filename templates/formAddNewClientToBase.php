@@ -23,11 +23,6 @@
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div>-->
         <div class="col-lg-12 backForDiv">
-            <!--строка показа времени и показа результата добавки материала в базу  -->
-            <?php
-             include_once '../html/forDisplayTimeShowAnswerServer.html' ;
-            ?>
-
             <div class="row">
                 <div class="col-lg-12   col-md-12 col-sm-12 col-xs-12 bg-primary  h2 text-center text-info">добавление клиента в базу</div>
 
