@@ -25,7 +25,10 @@
         <div class="col-lg-12 backForDiv">
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php
-             include_once '../html/forDisplayTimeShowAnswerServer.html' ;
+
+             //include_once '../html/forDisplayTimeShowAnswerServer.html' ;
+            error_reporting(0);
+//            die('просмотри' . get_called_class().'---'. pathinfo());
             ?>
 
             <div class="row">

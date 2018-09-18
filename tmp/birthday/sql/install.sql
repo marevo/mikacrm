@@ -1,0 +1,2 @@
+INSERT INTO `menu` SET `parent_id`=(SELECT id FROM menu WHERE title='Clients'),`title`='Birthdays', `handler`='modules/birthday/template/viewBirthdays.php', `image`='fa-birthday-cake ' ;
+INSERT INTO modules SET name="birthdays";
