@@ -100,9 +100,6 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
 
 <title>заказы</title>
 
-<!--подключение строки с показом времени и результатов запросов на сервер -->
-<?php include_once('App/html/forDisplayTimeShowAnswerServer.html'); ?>
-
 <div class="row"><!-- основной блок контета состоит из 12 колонок слева  -->
     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 classPaddingRight_0">
         <div class="row headingContent">

@@ -1,6 +1,4 @@
 <?php
-//--строка показа времени и показа результата добавки материала в базу
-require_once ('App/html/forDisplayTimeShowAnswerServer.html');
 require_once ('entities/headingContent.php');
 
 ?>

@@ -1,4 +1,5 @@
 <!--структура для отображения времени и результатов запросов к серверу-->
+<<<<<<< HEAD
 <?php
 if( isset($_GET['lang'] )){
     if(file_exists($_SERVER['DOCUMENT_ROOT'].'/locales/'.$_GET['lang'].'.ini')){
@@ -7,6 +8,10 @@ if( isset($_GET['lang'] )){
            echo('такого файла нет:'. $_SERVER['DOCUMENT_ROOT'].'/locales/'.$_GET['lang'].'.ini');
        }
 }else  echo "язык ". $_GET['lang'] . "не передан (";
+=======
+<?
+   //$strings=parse_ini_file($_SERVER['DOCUMENT_ROOT'].'/locales/'.$_GET['lang'].'.ini');
+>>>>>>> 19d91a3ee54abeef45e91035f63a987c5bcc9d06
 ?>
 <div class="row forDisplayTimeShowAnswerServer">
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  forDisplayTime text-center ">
