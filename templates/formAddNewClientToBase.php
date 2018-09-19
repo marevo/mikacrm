@@ -8,16 +8,7 @@
 //require '../autoload.php';
 //функция подгрузки из базы поставщиков по имени
 ?>
-    <!--<div class="row">
-        <?php //require_once('header.html'); ?>
-    </div>
-    <div class="row"><!-- навигация
-        <?php //include('../navigation.html');?>
-        <script>
-            showLi('добавить клиента')
-        </script>
-         конец навигации 
-    </div>-->
+   
     <div class="row">
         <!--<div class="col-lg-2 backForDiv">
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
