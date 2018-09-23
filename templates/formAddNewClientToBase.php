@@ -14,17 +14,17 @@
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div>-->
         <div class="col-lg-12 backForDiv">
-<<<<<<< HEAD
+
             <!--строка показа времени и показа результата добавки материала в базу  -->
             <?php
 
              //include_once '../html/forDisplayTimeShowAnswerServer.html' ;
-            error_reporting(0);
+//            error_reporting(0);
 //            die('просмотри' . get_called_class().'---'. pathinfo());
             ?>
 
-=======
->>>>>>> 19d91a3ee54abeef45e91035f63a987c5bcc9d06
+
+
             <div class="row">
                 <div class="col-lg-12   col-md-12 col-sm-12 col-xs-12 bg-primary  h2 text-center text-info">добавление клиента в базу</div>
 

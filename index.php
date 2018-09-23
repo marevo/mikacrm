@@ -2,7 +2,7 @@
 session_start();
 require 'autoload.php';
 include "handlers/session.php";
-$res=check_session();
+$res = check_session();
 if($res=='unauthorized')
 {
 	include "authorization.php";
@@ -20,7 +20,7 @@ else
 ?>
 <body>
 
-<div class="container" >
+<div class="container">
     <div class="row navbar navbar-fixed-top" id="header" >
         <?php		
 		    require_once ('./templates/header.php');				
