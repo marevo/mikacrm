@@ -22,12 +22,12 @@ else
 
 <div class="container">
     <div class="row navbar navbar-fixed-top" id="header" >
-        <?php		
-		    require_once ('./templates/header.php');				
-		?>	
+        <?php
+		    require_once ('./templates/header.php');
+		?>
 	</div>
 	<div class="row" id="main_cont">
-	
+
         <!--    подтянем menu сайта-->
         <?php require_once ('./navigation.php'); ?>
     </div>
@@ -52,11 +52,11 @@ else
 });
 id="myAffix"
 data-spy="affix" data-offset-top="0"*/
-$(function(){
-  $('#myAffixHeader').width($('#affix_header').width());
-  $(window).resize(function(){
-    $('#myAffixHeader').width($('#affix_header').width());
-  });
-});
+//$(function(){
+//  $('#myAffixHeader').width($('#affix_header').width());
+//  $(window).resize(function(){
+//    $('#myAffixHeader').width($('#affix_header').width());
+//  });
+//});
 </script>
 <?}?>

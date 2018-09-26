@@ -78,11 +78,11 @@ function createTbAllUsers($isAdmin,$allUsersInBase)
             showLi('пользователи');
         </script>
     </div><!-- конец навигации -->
-    <div class="row"><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
+<!--    <div class="row">--><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
         <!--<div class="col-lg-2 backForDiv"> <!-- начало доп блока слева
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
         </div><!-- конец доп блока слева-->
-        <div class="col-lg-12 backForDiv">
+<!--        <div class="col-lg-12 backForDiv">-->
 
             <div class="row headingContent"><!--строка для отображения названия страницы где находится пользователь -->
                 <div class="col-lg-10   col-md-10 col-sm-10 col-xs-10   text-center ">пользователи</div>
@@ -137,8 +137,8 @@ function createTbAllUsers($isAdmin,$allUsersInBase)
                     ?>
                 </div>
             </div>
-        </div>
-    </div>
+<!--        </div>-->
+<!--    </div>-->
 
     <!-- модальное окно для удаления user  -->
     <div id="modalWinForDeleteUser" class="modal fade" role="dialog" aria-hidden="true">

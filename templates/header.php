@@ -1,44 +1,44 @@
-﻿   <div class='col-lg-2 col-md-2 col-sm-2 col-xs-2' id="logo">
+﻿   <div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 ' id="logo">
 				<div id="myAffix1" data-spy="affix" data-offset-top="0">
 					<img src="\img\1_Primary_logo_on_transparent_322x63.png"/>
 				</div>
+       <div class="dateToday"></div>
    </div>
    <div class='col-lg-7 col-md-7 col-sm-7 col-xs-7' id="status">
        <div id="myAffix2" data-spy="affix" data-offset-top="0">
-           <?php include_once('App/html/forDisplayTimeShowAnswerServer.html'); ?>
+           <?php include_once('App\html\forDisplayTimeShowAnswerServer.html'); ?>
 		</div>
    </div>
-   <div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' id="pod">
-       <div class='row pod_row' id="myAffix3" data-spy="affix" data-offset-top="0">
-           <div class=' col-lg-4 col-md-4 col-sm-4 col-xs-4 pod_lang'>
+   <div class='col-lg-3 col-md-3 col-sm-3 col-xs-3 pod_row' id="pod"  id="myAffix3" data-spy="affix" data-offset-top="0">
+<!--       <div class='row pod_row' id="myAffix3" data-spy="affix" data-offset-top="0">-->
+           <div class='pod_lang'>
+<!--           <div class=' col-lg-4 col-md-4 col-sm-4 col-xs-4 pod_lang'>-->
                <a id="en">EN</a>
                <a id="ru">RU</a>
            </div>
-           <div class=' col-lg-4 col-md-4 col-sm-4 col-xs-4 pod_user'>
+<!--           <div class=' col-lg-4 col-md-4 col-sm-4 col-xs-4 pod_user'>-->
+           <div class='pod_user'>
                <a>
-                   <i class="fa-user">
-                   <?
+                   <i class="fa-user"></i> <?
                    require_once 'autoload.php';
                    $sid = session_id();
                    $res = \App\Models\User::getCurrentUserBySession($sid);
                    echo $res[0]->name;
                    ?>
-                   </i>
                </a>
            </div>
            <div class=' col-lg-4 col-md-4 col-sm-4 col-xs-4 pod_exit'>
                <a id="exit" href="#">
                    <i class="icon-exit3"></i>
-                   <?
-                   if( isset($_GET['lang'] ) && is_file(__DIR__ . '/../locales/' . $_GET['lang'] . '.ini')) {
+                   <?php
+                   if (isset($_GET['lang']) && is_file(__DIR__ . '/../locales/' . $_GET['lang'] . '.ini')) {
                        $strings = parse_ini_file(__DIR__ . '/../locales/' . $_GET['lang'] . '.ini');
                        echo $strings['exit'];
                    }
-
                    ?>
                </a>
            </div>
-       </div>
+<!--       </div>-->
    </div>
 <script type="text/javascript">
 document.getElementById("exit").onclick=function(){

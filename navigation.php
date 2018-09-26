@@ -1,5 +1,5 @@
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="fon">
-	<div class="row" >
+
+
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 navbar navbar-inverse navbar-fixed-top" id="left-sidebar"><!--navbar navbar-inverse navbar-fixed-top-->
 			<!--меню сайта--> 
 			<img class="img-circle img-sm" hspace="20" vspace="20"/> 
@@ -37,8 +37,8 @@
 				}
 			?>
 		</div>
-	</div>
-</div>
+
+
 <script type="text/javascript">
     document.getElementById("profile").onclick=function() {
 		// создать объект для формы

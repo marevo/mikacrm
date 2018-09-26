@@ -1,30 +1,5 @@
-﻿@charset "utf8";
+﻿
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
 body {
 	line-height: 1;
 }
@@ -223,31 +198,18 @@ margin-bottom: 20px;
     background-color:#d7d7c8;
 }
 
-.nav li a{
-    /*border-radius:2em;*/
-}
-.header li{
-    /*border-radius: 2rem;*/
-    /*background-color:#8bc34a;*/
-}
-body{
-    /*background-color: ghostwhite;*/
-	font: 14px/20px Arial, sans-serif;
-    /*background-color: #99ccd2;*/
-    /*width: 1024px;*/
-   
-    /*overflow: auto;*/
-    /*padding:20px; */
-}
+
+
+
 .contentpaneopen img {
-margin:10px;
-}
+     margin:10px;
+ }
 .img-icon{
     max-height: 24px;
     vertical-align:top;
     margin-right: 4px;
-	/*background-position: -90px -40px;*/
-}
+    background-position: -90px -40px;
+}*/
 .footer{
 	position: relative;
     height: 100px;
@@ -320,8 +282,8 @@ margin:10px;
 	/*font-family: 'fontawesome';*/
 	font: normal normal normal 18px/1 FontAwesome;
 	content: "\f007";
-	width:15;
-	height:15;
+	width:15px;
+	height:15px;
 	
 }
 .fa-bar-chart:before{
@@ -539,15 +501,7 @@ table {
                         justify-content: center;
                         align-items: center;*/
                     }
-/*table a{
-    min-width: 100px;
-    display: block;
-    border: black 1px solid;
-    border-radius: 4px;
-    padding: 6px;
-    /*padding :5px 15px;*/
-    text-decoration: none;
-}
+
 #rezZaprosaKServer{
      /*height: 50px;*/
     background-color: #9acfea;

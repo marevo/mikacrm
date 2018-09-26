@@ -100,8 +100,8 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
 
 <title>заказы</title>
 
-<div class="row"><!-- основной блок контета состоит из 12 колонок слева  -->
-    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 classPaddingRight_0">
+<!--<div class="row">--><!-- основной блок контета состоит из 12 колонок слева  -->
+<!--    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 classPaddingRight_0">-->
         <div class="row headingContent">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"> заказы </div>
         </div>
@@ -152,10 +152,45 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
                 ?>
             </div>
         </div>
-    </div>
-</div>
+<!--    </div>-->
+<!--</div>-->
 <!-- подключение модального окна которое будет всплывать при нажатии кнопки удалить-->
 <?php include_once './App/html/viewAllOrdersModal.html'; ?>
 <?php // include_once '/App/html/viewAllOrdersModal.html';?>
 <script src='/js/viewAllOrders.js'></script>
+<script>
+
+    $(document).ready(function () {
+        var headContent = $('.headingContent');
+        var headConWidth = $(headContent).css('width');
+        var thead= $('thead');
+        var theadWidth = $(thead).css('width');
+        var headContentWidth = $(headContent).css('width');
+        var rowSearch = $('.rowSearch');
+
+        $(window).resize( function () {
+            headContentWidth = $(headContent).css('width');
+            var cssValues = {
+                width:$(headContent).css('width') ,
+                height:$(headContent).css('height'),
+                zIndex:10,
+                backgroundColor:'red',
+                position:'fixed',
+                top:'120px',
+                marginLeft:0
+            };
+
+            var divForRowSearch = document.createElement('DIV');
+            $(divForRowSearch).css(cssValues).addClass('deleteDIV');
+            $('.deleteDIV').remove();
+            $(headContent).append(divForRowSearch);
+//
+
+            $(rowSearch).css('width', headContentWidth).css('position','fixed').css('top', '200px').css('z-index','6');
+            headConWidth = $(headContent).css('width');
+            console.log(headConWidth);
+        });
+
+    });
+</script>
 

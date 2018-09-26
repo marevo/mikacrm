@@ -1,5 +1,5 @@
-<div class="row"><!-- основной блок контета состоит из 12 колонок слева  -->
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  backForDiv">
+<!--<div class="row">--><!-- основной блок контета состоит из 12 колонок слева  -->
+<!--    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  backForDiv">-->
         <!--строка для отображения названия страницы где находится пользователь -->
         <div class="row headingContent">
             <div class="col-lg-12   col-md-12 col-sm-12 col-xs-12   text-center "> контакты </div>
@@ -42,8 +42,8 @@
                 ?>
             </div>
         </div>
-    </div>
-</div><!-- row end-->
+<!--    </div>-->
+<!--</div>--><!-- row end-->
 <!-- модальное окно для удаления   -->
 <div id="modalWinForDeleteContact" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">

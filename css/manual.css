@@ -1,29 +1,6 @@
 ﻿@charset "utf8";
 
-/*html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, 
-li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-    /*vertical-align: middle;*/
-}
-*/
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header,
@@ -60,13 +37,14 @@ main, nav, section, summary {
 .wrapper{
 	margin: 0 auto;
 }
-thead td {
-    background-color: #efefef;
+thead td , tbody{
+    background-color: #c0c7d2;
     padding: 10px;
 }
 
 tbody td{
-   padding: 4px;
+    background-color: #efefef;
+    padding: 4px;
 }
  li {
     list-style-type: none; /* Убираем маркеры */
@@ -85,6 +63,7 @@ tbody td{
 }
 #header{
     background-color: #04B486;
+    /*background-color:  #398b50;*/
 	/*margin-left: 0px;*/
     left: 0px;
     right: 0px;
@@ -108,22 +87,29 @@ tbody td{
 	margin-top: 20px;*/
 }
 .pod_row{
+    position: fixed;
+    top: 40px;
+    left: 0;
 	display: flex;
-	align-items: center;
-	align-items: stretch;
+	/*align-items: center;*/
+    margin-top: 40px;
+	/*align-items: stretch;*/
 }
-.pod_lang{
-	    line-height: 5;
+        .pod_lang{
+                /*line-height: 5;*/
+            margin-right: 10px;
+            min-width: 50px;
+        }
+        .pod_user{
+                /*line-height: 5;*/
+            min-width: 100px;
 	
 }
-.pod_user{
-	    line-height: 5;
-	
-}
-.pod_exit{
-	    line-height: 5;
-	
-}
+        .pod_exit{
+                /*line-height: 5;*/
+            /*min-width: 40px;*/
+            /*margin-left: 10px!important;*/
+        }
 .middle:after {
 	display: table;
 	clear: both;
@@ -136,6 +122,13 @@ tbody td{
 	
 	padding-top: 20px;	
 	
+}
+.dateToday{
+    font-size: large;
+    color: aliceblue;
+    position: fixed;
+    top: 60px;
+    left: 30px;
 }
 #cont{
 /*width: 840px;*/
@@ -155,7 +148,7 @@ img{
 }
 #exit {
 	/*margin-left: 800px;*/
-	padding-right: 50px;
+	min-width: 50px;
 	
 	float: right;
 }
@@ -167,14 +160,16 @@ img{
 	/*position:static;*/
 }
 #main_modul {
-	margin-left: 250px;
+	margin-left: 240px;
+    /*padding-left: 0;*/
 }
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
 #left-sidebar {
 	font: 18px/24px Arial, sans-serif;
-	max-width: 230px;
-	min-width: 230px;
+	/*max-width: 230px;*/
+	/*min-width: 230px;*/
+    width: 240px;
 	min-height: 1200px;
 	margin-top: 100px;
 	background-image: linear-gradient(to right,#038A67 0,#04B486 100%);	
@@ -335,7 +330,7 @@ margin:10px;
 	height:15px;
 }
 .classPaddingRight_0{
-    padding-right: 0;
+    /*padding-right: 0;*/
 }
 .backForDiv{
     padding-right: 0px;
@@ -344,8 +339,9 @@ margin:10px;
 }
 /* класс позволяет ограничить размер высоты и ширины таблицы для удобства просмотра таблиц что имеют большую ширину и высоту*/
 .divForTable {
-    /*overflow: auto;*/
-   /*max-height:400px;*/
+    overflow: auto;
+   /*max-height:550px;*/
+    max-height: calc(100% - 50%);
     /*width: 100%;*/
 }
 .divForTable div{
@@ -672,11 +668,14 @@ table a{
     justify-content: center;
     align-items: center;
     background-color: #f9f1d7;
+    font-size: large;
+    margin-top: 20px;
 /*background-color: #2aabd2;*/
 }
              .headingContent:first-child{
-                 /*display: flex;*/
+                 display: flex;
                  font-size: large;
+                 margin-top: 20px;
              }
              .headingContent  div{
                  margin-right: 20px;

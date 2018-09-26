@@ -1,8 +1,8 @@
-<div class="row"><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
+<!--<div class="row"> --> <!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
     <!--<div class="col-lg-2 backForDiv"> <!-- начало доп блока слева
         этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
     </div> конец доп блока слева-->
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">
+<!--    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 backForDiv">-->
         <?php
         //                получим из таблицы всех поставщиков и покажем через вызов быстрого показа в трэйте FastViewTable.php
         //echo \App\Models\Client::showAllFromTable('tableClient',\App\Models\Client::findAll());
@@ -72,8 +72,8 @@
                 ?>
             </div>
         </div>
-    </div>
-</div><!-- row end-->
+<!--    </div>-->
+<!--</div>--><!-- row end-->
 <!-- модальное окно для удаления   -->
 <div id="modalWinForDeleteClient" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
