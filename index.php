@@ -21,11 +21,13 @@ else
 <body>
 
 <div class="container">
-    <div class="row navbar navbar-fixed-top" id="header" >
-        <?php
-		    require_once ('./templates/header.php');
-		?>
-	</div>
+    <nav class="navbar navbar-default  navbar-fixed-top">
+        <div class="row " id="header">
+            <?php
+            require_once('./templates/header.php');
+            ?>
+        </div>
+    </nav>
 	<div class="row" id="main_cont">
 
         <!--    подтянем menu сайта-->

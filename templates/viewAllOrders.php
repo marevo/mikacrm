@@ -159,7 +159,7 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
 <?php // include_once '/App/html/viewAllOrdersModal.html';?>
 <script src='/js/viewAllOrders.js'></script>
 <script>
-
+/*
     $(document).ready(function () {
         var headContent = $('.headingContent');
         var headConWidth = $(headContent).css('width');
@@ -191,6 +191,6 @@ function showFromFields($idTable, $arrAll = [], $filds_nameToView)
             console.log(headConWidth);
         });
 
-    });
+    }); */
 </script>
 

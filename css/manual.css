@@ -9,8 +9,8 @@ menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
-	padding-top: 65px;
+	/*line-height: 1;*/
+	/*padding-top: 65px;*/
 }
 ol, ul {
 	list-style: none;
@@ -68,7 +68,7 @@ tbody td{
     left: 0px;
     right: 0px;
     height: 100px;
-	z-index: 100;
+	/*z-index: 100;*/
 	
 }
 .affix {
@@ -137,7 +137,7 @@ tbody td{
 	width: 100%;
     margin-left: 0px;
     margin-right: 0px;
-	margin-top: -65px;
+	/*margin-top: -65px;*/
 }
 #fon{
 	background-color: 	#F0F0F0;
@@ -161,6 +161,7 @@ img{
 }
 #main_modul {
 	margin-left: 240px;
+    max-width: 100%;
     /*padding-left: 0;*/
 }
 /* Left Sidebar
@@ -333,16 +334,17 @@ margin:10px;
     /*padding-right: 0;*/
 }
 .backForDiv{
-    padding-right: 0px;
+    /*padding-right: 0px;*/
     /*background-color: #2aabd2;*/
     /*border: #d0d299 solid 1px;*/
 }
 /* класс позволяет ограничить размер высоты и ширины таблицы для удобства просмотра таблиц что имеют большую ширину и высоту*/
 .divForTable {
     overflow: auto;
-   /*max-height:550px;*/
-    max-height: calc(100% - 50%);
+   max-height:550px;
+    /*max-height: calc(100% - 50%);*/
     /*width: 100%;*/
+    /*height:calc(100% - 93px);*/
 }
 .divForTable div{
     /*table-layout: fixed;*/
@@ -709,9 +711,8 @@ table a{
 }
 /*viewAllMaterials.php*/
 
-#tbViewAllMaterials tbody td span, #tbViewAllSuppliers tbody td span, #tbViewAllClients tbody td span{
+#tbViewAllMaterials tbody td span, #tbViewAllSuppliers tbody td span, #tbViewAllClients tbody td span, #tbViewAllContacts tbody td span{
 /*#tbViewAllMaterials tbody td:last-child span, .iconInTd{*/
-    display: block;
     border: 1px solid black;
     border-radius: 3px;
     padding: 5px;
@@ -761,22 +762,22 @@ table a{
 .facebook:hover,.twitter:hover { color:#fff; }
 #logo{
 	height: 100%;
-	 background-color: #04B486;
+    background-image: url("../img/1_Primary_logo_on_transparent_322x63.png");
+    background-color: #04B486;
+    background-repeat: no-repeat;
+    /*z-index:10;*/
+
 	/*margin-top:10px;*/
 }
 .vertical-align-middle{
     display:inline-block;
     vertical-align: middle;
+
 }
 .tableParent{
     /*background-color: #2aabd2;*/
 }
-#tbViewAllContacts tbody .glyphicon{
-    display: block;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 5px;
-}
+
 /* выравниевание по вертикали div с кнопкой создать*/
 .rowSearch {
     display: flex;
