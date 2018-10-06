@@ -6,19 +6,19 @@ require_once 'autoload.php';
 function check_session()
 {
 	$sid=session_id();
-    $res=\App\Models\User::getCurrentUserBySession($sid);
+    $currentUserBySessionId =\App\Models\User::getCurrentUserBySession($sid);
 	//Если срок действия сессии не истёк - продлеваем сессию
-	if($res && time()-$res[0]->updated<1800)
+	if($currentUserBySessionId && time()- $currentUserBySessionId->updated<1800)
 	{
 		
-		$updated=\App\Models\User::createSession($res[0]->login);
+		$updated=\App\Models\User::createSession($currentUserBySessionId->login);
 		if($updated)
 		{
 		    return "authorized";
 		}
 		else
 		{
-			return $res; //Отладочная информация в случае ошибки
+			return $currentUserBySessionId; //Отладочная информация в случае ошибки
 		}
 	}
 	//Иначе не авторизируем пользователя
@@ -28,20 +28,24 @@ function check_session()
 	}
 }
 //Обработка запроса авторизации
-if($_POST["action"]=="create")
+if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create")
 {
 	session_start();
-    $res=\App\Models\User::getCurrentUserByLogin($_POST["login"]);
-	if($res && password_verify($_POST["password"],$res[0]->password))
+	$login = htmlspecialchars($_POST["login"]);
+	$password = htmlspecialchars($_POST["password"]);
+	$currentUserByLogin =\App\Models\User::getCurrentUserByLogin($login);
+//	проверка пароля от клиента с паролем из базы данных текущего пользователя
+	if($currentUserByLogin && password_verify( $password, $currentUserByLogin->password))
 	{
-		$updated=\App\Models\User::createSession($_POST["login"]);
+		//если пароли совпадают то создаем сессию
+		$updated =\App\Models\User::createSession( $login );
 		if($updated)
 		{
 		    echo "authorized";
 		}
 		else
 		{
-			echo $res;
+			echo $currentUserByLogin;
 		}
 	}
 	else

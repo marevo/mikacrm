@@ -10,7 +10,7 @@ namespace App\Models;
 use App\ModelLikeTable;
 use App\Db;
 
-class User extends ModelLikeTable
+class UserMarevo extends ModelLikeTable
 {
     public $id;
     public $name;

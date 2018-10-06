@@ -29,7 +29,9 @@ function activate (id/*,handler*/) {
 }
 </script>
 <?
+//получение меню из базы данных
     function get_menu(){
+//		задать получение подключения к базе через класс Db !надо исправить
 		$mysql_host = 'localhost';
         // MySQL username
         $mysql_username = 'root';
@@ -42,10 +44,10 @@ function activate (id/*,handler*/) {
 			return NULL;
 		}
 		$arr_cat = array();
-		if(mysqli_num_rows($result) != 0) {
-			for($i = 0; $i < mysqli_num_rows($result);$i++) {
-				$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-				if(empty($arr_cat[$row['parent_id']])) {
+		if(mysqli_num_rows($result) != 0) {//если есть строки в запросе меню
+			for($i = 0; $i < mysqli_num_rows($result);$i++) {//проход по строкам меню
+				$row = mysqli_fetch_array($result,MYSQLI_ASSOC);//берем строку
+				if(empty($arr_cat[$row['parent_id']])) {//если есть дочерние, то создаем массив дочерних пунктов меню
 					$arr_cat[$row['parent_id']] = array();
 				}
 				$arr_cat[$row['parent_id']][] = $row;
@@ -71,7 +73,7 @@ function activate (id/*,handler*/) {
 		for($i = 0; $i < count($arr[$parent_id]);$i++) {
 			$id=$parent_id . "sub" . $i;
 	$bold="";
-	if($id==$_GET['menu'])
+	if($id == $_GET['menu'])
 	{
 		$bold=" style='font-weight:bold; color:yellow;'";
 	}
@@ -108,7 +110,9 @@ function activate (id/*,handler*/) {
 		}
 		return $show_parents;
 	}
+//запрос данных меню для вывода
 	function get_handler_by_menu_title($title){
+//		
 		$mysql_host = 'localhost';
         // MySQL username
         $mysql_username = 'root';
