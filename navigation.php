@@ -62,6 +62,9 @@
                             //если нет никаких прав то надо переключить на ветку регистрации
                             $pageNoIndex = 'templates/formRegistration.php';
                             $pageNoIndex = 'templates/formNoOrderThisUser.php';
+
+
+
                         }
 
                     }
