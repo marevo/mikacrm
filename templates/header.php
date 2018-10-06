@@ -22,8 +22,12 @@
                    <i class="fa-user"></i> <?
                    require_once 'autoload.php';
                    $sid = session_id();
-                   $res = \App\Models\User::getCurrentUserBySession($sid);
-                   echo $res[0]->name;
+                   $currentUser = \App\Models\User::getCurrentUserBySession($sid);
+//                   если есть такой пользователь (по id сессии) в базе 
+                   if($currentUser){
+                       echo $currentUser->name;
+                   }
+                   
                    ?>
                </a>
            </div>
@@ -57,7 +61,8 @@ function set_completed_handler(timeout){
 	document.getElementById("completed_successfully").style="display: block";
 	setTimeout(hide_completed,timeout);
 }
- /*$(function(){
+ /*
+ $(function(){
   $('#myAffix1').width($('#logo').width());
   $(window).resize(function(){
     $('#myAffix1').width($('#logo').width());

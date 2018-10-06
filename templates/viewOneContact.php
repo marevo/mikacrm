@@ -10,12 +10,15 @@ $idContact=1;
 if(isset($_POST['idOneContact'])){
 //    если передали id значит работаем с ним иначе будем брать в else по умолчанию id=1
     $idContact = intval($_POST['idOneContact']);
-    \App\FastViewTable::showUspeh("есть контакт с id = $idContact");
+//    \App\FastViewTable::showUspeh("ищем контакт с id = $idContact");
+    \App\FastViewTable::showUspeh("ищем контакт");
 }
 else{
-    \App\FastViewTable::showNoUspeh("ошибка в id = $idContact");
+//    \App\FastViewTable::showNoUspeh("ошибка в id = $idContact");
+    \App\FastViewTable::showNoUspeh("ошибка в поиске контакта обратитесь к разработчику");
 }
 $cont = \App\Models\Contacts::findObjByIdStatic($idContact);
+if($cont) \App\FastViewTable::showUspeh("нашли контакт $cont->name ");
 //var_dump($cont);
 ?>
 <title> просмотр/правка данных контакта </title>

@@ -63,25 +63,9 @@ function createTbAllUsers($isAdmin,$allUsersInBase)
         return "<table id='tbViewAllUsers'><thead></thead><tbody><tr><td>вас нет прав просмотра :(</td></tr></tbody></table>";
     }
 }
-
 ?>
 
-   <!-- <div class="row">
-        <?php //require_once('header.html'); ?>
-    </div>
-            добавление панели навигации
-    <div class="row"><!-- навигация 
-        <?php
-        //require_once('../navigation.html');
-        ?>
-        <script>
-            showLi('пользователи');
-        </script>
-    </div><!-- конец навигации -->
-<!--    <div class="row">--><!-- основной блок контета состоит из 2 колонок слева и 10 колонок справа -->
-        <!--<div class="col-lg-2 backForDiv"> <!-- начало доп блока слева
-            этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
-        </div><!-- конец доп блока слева-->
+   
 <!--        <div class="col-lg-12 backForDiv">-->
 
             <div class="row headingContent"><!--строка для отображения названия страницы где находится пользователь -->

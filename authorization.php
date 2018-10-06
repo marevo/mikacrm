@@ -1,6 +1,7 @@
 <?
     require_once('./head.php');
-//echo password_hash ( "AdMiNmArEvO_1972" , PASSWORD_BCRYPT);
+//создание пароля для логина через функцию password_hash
+//echo password_hash ( "AdMiNmArEvO_1972" , PASSWORD_BCRYPT); //60 символов
 ?>
 <div class="container">
 	<div class="row">

@@ -7,11 +7,17 @@ use App\ModelLikeTable;
 
 class User extends ModelLikeTable
 {
+    public $name; //Имя клиента
     public $login;
-    public $password;//название Клиента
-    public $session;
-    public $updated;
-
+    public $password;//
+    public $gmail;
+    public $session;//varchar(32)
+    public $updated;//время последнего захода в сек для отслеживания сессии
+    public $rightUser; //права пользователя c r u d all super   all & super только для admin
+   /*
+    *  login adminMarevo  password $2y$10$Da0edjR1TuRVWDqtACSrw.XM3I1QjLfPcJh18X62Buq5/HisKo6I.
+    *
+    */
  //   use FastViewTable;
     
     const TABLE = 'users';
@@ -33,17 +39,24 @@ class User extends ModelLikeTable
         $query = "SELECT * FROM ".self::TABLE." WHERE session = '".$session."' ; ";
 
         $res = $db->query($query, self::class );
-        return $res;
+        if($res)
+            return $res[0];
+        else
+            return false;
     }
+    
     public static function getCurrentUserByLogin(string $login)
 	{
         $db = new Db();
         $query = "SELECT * FROM ".self::TABLE." WHERE login = '".$login."' ; ";
 
-        $res = $db->query($query, self::class );
-        return $res;
+        $currentUserByLogin = $db->query($query, self::class );
+        if($currentUserByLogin)
+           return $currentUserByLogin[0];
+        else return false;
 //         return $query;
 	}
+    
 	public static function createSession(string $login)
 	{
 		$db = new Db();

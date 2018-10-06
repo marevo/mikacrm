@@ -1,39 +1,78 @@
-
+//   if($objUser->login == "adminMarevo" && $objUser->password == "AdMiNmArEvO_1972")
 
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 navbar navbar-inverse navbar-fixed-top" id="left-sidebar"><!--navbar navbar-inverse navbar-fixed-top-->
-			<!--меню сайта--> 
+			<!--меню сайта слева--> 
 			<img class="img-circle img-sm" hspace="20" vspace="20"/> 
 			<div class="menu_list">
-				<span class="fa-user" style="margin-left: 20px; margin-top: 10px;">
-				</span>
+				<span class="fa-user" style="margin-left: 20px; margin-top: 10px;"></span>
 				<?
-					require_once 'autoload.php';
+				//вроде autoload.php уже подключен
+//					require_once 'autoload.php';
 					$sid=session_id();
-					$res=\App\Models\User::getCurrentUserBySession($sid);
-					echo $res[0]->name;
+				    $currentUserBySession =\App\Models\User::getCurrentUserBySession($sid);
+				    $currentUserBySession->name;
 				?>
-				<a>
-					<span class="glyphicon glyphicon-cog btn-lg" style="float: right;" id="profile">
-					</span>
-				</a>
+				<a><span class="glyphicon glyphicon-cog btn-lg" style="float: right;" id="profile"></span></a>
 			</div>
 				<ul id="menu_list">
 					<? include "handlers/menu.php"; ?>
 				</ul>
+			<!-- Доп блок для ответов сервера при отладке или для подсказки -->
 			<ul id="answerServer"><li></li></ul>
 		</div>	
+		<!-- конец меню сайта ( слева )--> 
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="main_modul">
 		<!--контент сайта-->
 			<?
 				require_once "functions/functions.php";
-				if($_GET['page'])
-				{
-					$result=get_handler_by_menu_title($_GET['page']);
-					include $result;
-				}
-				else
-				{
-					include "templates/viewAllOrders.php";
+                $pageIndex = "templates/viewAllOrders.php";
+                $pageNoIndex ="";
+				if( isset($_GET['page'])) {
+                    $pageFromGet = htmlspecialchars( $_GET['page']);
+                   // меню и обработчики доступные только админу
+                    // предохранитель к доступу меню для администратора
+                    $titlesForAdmin = ['AdminPanel','viewAllUsers','viewMenu'];
+                    $handlersByMenuForAdmin = ['templates/viewAdminPanel.php','templates/viewAllUsers.php','templates/viewMenu.php'];
+                    $rightCurrentUser = explode(' ',$currentUserBySession->rightUser);
+                    if( in_array($pageFromGet, $titlesForAdmin) &&
+                        ( in_array('all' , $rightCurrentUser ) ||  in_array('super',$rightCurrentUser) ) ){
+                        $pageNoIndex = $resultTemplateViewForAdmin = get_handler_by_menu_title($pageFromGet);
+                    }else{
+                        $titlesForOrdinaryUser = [
+                            'Contacts',
+                            'Clients',
+                            'Orders',
+                            'Suppliers',
+                            'Materials',
+                            'Place_order'
+                        ];
+                        $handlersByMenuForOrdinaryUser = [
+                            'templates/viewAllContacts.php',
+                            'templates/viewAllClients.php',
+                            'templates/viewAllOrders.php',
+                            'templates/viewAllSuppliers.php',
+                            'templates/viewAllMaterials.php',
+                            'templates/formAddNewOrder.php'
+                        ];
+                        if(in_array($pageFromGet, $titlesForOrdinaryUser) &&
+                            ( in_array('c' , $rightCurrentUser ) ||  in_array('r',$rightCurrentUser) || in_array('u',$rightCurrentUser )
+                                || in_array('d',$rightCurrentUser ) ) ){
+                            $pageNoIndex = $resultTemplateViewForOrdinaryUser = get_handler_by_menu_title($pageFromGet);
+                        }else{
+                            //если нет никаких прав то надо переключить на ветку регистрации
+                            $pageNoIndex = 'templates/formRegistration.php';
+                            $pageNoIndex = 'templates/formNoOrderThisUser.php';
+                        }
+
+                    }
+
+                 
+					
+//					include "templates/viewAdminPanel.php" ;
+                    include $pageNoIndex ;
+				} else {
+					//загрузка страницы по умолчанию заказы
+					include $pageIndex;
 				}
 			?>
 		</div>
