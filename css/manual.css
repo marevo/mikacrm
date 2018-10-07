@@ -283,12 +283,38 @@ margin:10px;
 	
 }
 .fa-user:before{
-	/*font-family: 'fontawesome';*/
-	font: normal normal normal 18px/1 FontAwesome;
-	content: "\f007";
-	width:15px;
-	height:15px;
-	
+	font-family: 'fontawesome';
+	/*font: normal normal normal 18px/1 FontAwesome;*/
+    /*font-family: 'icomoon';*/
+    content: "\f007";
+    width:15px;
+    height:15px;
+}
+.menu:before{
+    font-family: 'icomoon';
+    content: "\ec69";
+    width:15px;
+    height:15px;
+}
+.user-plus:before{
+    font-family: 'icomoon';
+    /*font: normal normal normal 18px/1 FontAwesome;*/
+    content:"\eb35";
+    width:15px;
+    height:15px;
+
+}
+.users:before{
+    font-family: 'icomoon';
+    content:"\eb34";
+    width:15px;
+    height:15px;
+}
+.user-tie:before{
+    font-family: 'icomoon';
+    content:"\eb45";
+    width:15px;
+    height:15px;
 }
 .fa-bar-chart:before{
 	/*font-family: 'fontawesome';*/
