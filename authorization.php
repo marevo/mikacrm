@@ -32,7 +32,7 @@
 						<div class="col-xs-6 col-sm-6 col-md-6 vcenter">
 							<button type="submit" class="btn btn-labeled btn-success" id="authorization">
 							<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Войти</button>
-							<button type="button" class="btn btn-labeled btn-danger">
+							<button type="button" id="exit2" class="btn btn-labeled btn-danger">
 							<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Выход</button>
 						</div>
 					</div>
@@ -72,4 +72,15 @@ document.onkeyup = function(e){
 		}
 		return false;
 		}
+
+	// выход
+	document.getElementById("exit2").onclick=function(){
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/handlers/session.php", false);
+		xhr.overrideMimeType("text/plain; charset=utf8");
+		var formData = new FormData();
+		formData.append('action','delete');
+		xhr.send(formData);
+		location.reload();
+	}
 </script>

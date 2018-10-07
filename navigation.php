@@ -66,7 +66,7 @@
                         }
 
                     }
-					
+
 //					include "templates/viewAdminPanel.php" ;
                     include $pageNoIndex ;
 				} else {

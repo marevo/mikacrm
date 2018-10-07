@@ -54,6 +54,7 @@ document.getElementById("exit").onclick=function(){
         xhr.send(formData);
 		location.reload();
 }
+
 function hide_completed(){
 	document.getElementById("completed_successfully").style="display: none";
 }
