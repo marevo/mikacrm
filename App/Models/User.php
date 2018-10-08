@@ -11,6 +11,8 @@ class User extends ModelLikeTable
     public $login;
     public $password;//
     public $gmail;
+    public $secretQuestion;
+    public $secretAnswer;
     public $session;//varchar(32)
     public $updated;//время последнего захода в сек для отслеживания сессии
     public $rightUser; //права пользователя c r u d all super   all & super только для admin
@@ -22,7 +24,7 @@ class User extends ModelLikeTable
     
     const TABLE = 'users';
     const NAME_ID ='login';
-//    static $table = 'clients';
+
     public function isNew()
     {
         // TODO: Implement isNew() method.
@@ -92,4 +94,39 @@ class User extends ModelLikeTable
 	//	echo time();
         return $res;
 	}
+
+    public static function searchObjectsLikeAnyField(  $likeAnyField){
+        $db = new Db();
+        $query  = "SELECT * FROM ".static::TABLE ."
+                   WHERE `name` LIKE '%".$likeAnyField."%' OR 
+                   `login` LIKE '%".$likeAnyField."%' OR
+                   `password` LIKE '%".$likeAnyField."%' OR
+                   `gmail` LIKE '%".$likeAnyField."%' OR
+                   `secretQuestion` LIKE '%".$likeAnyField."%' OR
+                   `secretAnswer` LIKE '%".$likeAnyField."%' OR
+                   `rightUser` LIKE '%".$likeAnyField."%'
+         ;";
+//        echo "query";
+//        die();
+        $res = $db->query($query ,self::class );
+//        var_dump('<br>$res = '.$res.'<br>');
+        return $res;
+
+
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function getTimeIn(){
+        $db = new Db();
+        $query  = "SELECT `updated` FROM ".static::TABLE ." WHERE `login`= \"$this->login\" ;";
+//        echo "query";
+//        die();
+        $res = $db->query($query ,self::class );
+//        var_dump('<br>$res = '.$res.'<br>');
+        $timeUpdate = $res[0]->updated;
+        $timeForView = date("H:m:s m-D-Y",$timeUpdate);
+        return  $timeForView;
+    }
 }

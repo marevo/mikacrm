@@ -1,6 +1,7 @@
+<?php
 //   if($objUser->login == "adminMarevo" && $objUser->password == "AdMiNmArEvO_1972")
 //   if($objUser->login == "admin" && $objUser->password == "password")
-
+?>
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 navbar navbar-inverse navbar-fixed-top" id="left-sidebar"><!--navbar navbar-inverse navbar-fixed-top-->
 			<!--меню сайта слева--> 
 			<img class="img-circle img-sm" hspace="20" vspace="20"/> 
