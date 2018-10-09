@@ -56,16 +56,22 @@
         if (!empty ($allUsersInBase)) {
             $tableAllUsers = "<table id='tbViewAllUsers' class='table-bordered'><thead><tr><td>id</td>" .
                 "<td>название</td><td>логин</td><td>пароль</td><td>email</td><td>вопрос</td>" .
-                "<td>ответ</td><td>сессия</td><td>дата</td><td>права</td>" .
+                "<td>ответ</td><td>сессия</td><td>дата последнего захода</td><td>права</td>" .
                 "<td  class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .
                 "<td class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
-            foreach ($allUsersInBase as $item) {
-                    $timeIn = $item->getTimeIn();
-                    $tableAllUsers .= "<tr><td>$item->id</td>" .
-                        "<td>$item->name</td><td>$item->login</td><td>$item->password</td><td>$item->gmail</td><td>$item->secretQuestion</td>" .
-                        "<td>$item->secretAnswer</td><td>$item->session</td><td>$timeIn</td><td>$item->rightUser</td>" .
-                        "<td class='text-center'><a data-id_supplier = $item->id href='viewOneUser.php?id=$item->id'><span class='glyphicon glyphicon-eye-open'></span></a></td>" .
-                        "<td data-id_user = $item->id class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr>";
+            foreach ($allUsersInBase as $user) {
+                    $timeIn =  $user->updated   ? date("H:i:s m-d-Y", $user->updated) : 'не заходил' ;
+                    $timeStamp = time()- $user->updated  ;
+                    $dateNow = new DateTime( date("Y-m-d H:i:s"));
+                    $dateAge = new DateTime(date("Y-m-d H:i:s",$user->updated) );
+                    $difference = $dateNow->diff($dateAge);
+                    $timeIn = $differenceFormat = $difference->format(' %d days, %h Hour , %i min , %s sec');
+                 $pass = md
+
+                $tableAllUsers .= "<tr><td>$user->id</td>" .
+                        "<td>$user->name</td><td>$user->login</td><td>$user->password</td><td>$user->gmail</td><td>$user->secretQuestion</td>" .
+                        "<td>$user->secretAnswer</td><td>$user->session</td><td>$timeIn</td><td>$user->rightUser</td>" .
+                        "<td data-do='view' data-id = $user->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                 }
             $tableAllUsers .= "</tbody></table>";
         } else {
