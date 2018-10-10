@@ -11,6 +11,9 @@ class User extends ModelLikeTable
     public $login;
     public $password;//
     public $gmail;
+    /**
+     * @var string
+     */
     public $secretQuestion;
     public $secretAnswer;
     public $session;//varchar(32)
@@ -26,7 +29,8 @@ class User extends ModelLikeTable
  //   use FastViewTable;
     
     const TABLE = 'users';
-    const NAME_ID ='login';
+    const NAME_ID ='id';
+//    const NAME_ID ='login';
 
     public function isNew()
     {

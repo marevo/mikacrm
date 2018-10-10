@@ -2,7 +2,7 @@
  * Created by marevo on 20.05.2018.
  */
 $(function () {
-    //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить поставщика
+    //функция обработки клика на таблице будем обрабатыать только ячейки с наличием data-id то есть где можно удалить пользователя
     $('#tbViewAllUsers').on('click',function (event) {
         var target = event.target;
             while (target.tagName != 'TABLE'){
@@ -10,7 +10,7 @@ $(function () {
                 //нашли ячейку где был клик
                 if($(target).data('id_user')){
                     console.log('id for delete '+$(target).data('id_user'));
-                    //вызовем модальное окно для удаления ненужного материала
+                    //вызовем модальное окно для удаления ненужного юзера
                     $('#modalIdUser').text( $(target).data('id_user') );
                     $('#modalNameUser').text( $(target).siblings()[1].textContent );
                     $('#modalWinForDeleteUser').modal('show');
@@ -22,8 +22,8 @@ $(function () {
                     target = target.parentNode;
                 var tarHref = $(target).attr('href');
                 console.log('tarHref=' + tarHref);
-                var idOneUser = $(target).data('id_supplier');
-                console.log('idSupplierForView=' + idOneUser);
+                var idOneUser = $(target).data('id_user');
+                console.log('idUserForView=' + idOneUser);
                 includeViewOneUser(tarHref,idOneUser);
                 return false;
                 // if($(target).find('a').)

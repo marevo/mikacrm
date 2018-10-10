@@ -5,7 +5,6 @@
  * Date: 07.10.2018
  * Time: 20:52
  */
-
 //require_once 'autoload.php';
 ?>
 <div class="row headingContent">
@@ -60,18 +59,17 @@
                 "<td  class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .
                 "<td class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
             foreach ($allUsersInBase as $user) {
-                    $timeIn =  $user->updated   ? date("H:i:s m-d-Y", $user->updated) : 'не заходил' ;
-                    $timeStamp = time()- $user->updated  ;
-                    $dateNow = new DateTime( date("Y-m-d H:i:s"));
-                    $dateAge = new DateTime(date("Y-m-d H:i:s",$user->updated) );
-                    $difference = $dateNow->diff($dateAge);
-                    $timeIn = $differenceFormat = $difference->format(' %d days, %h Hour , %i min , %s sec');
-                 $pass = md
+                $timeIn =  $user->updated   ? date("H:i:s m-d-Y", $user->updated) : 'не заходил' ;
+                $timeStamp = time()- $user->updated  ;
+                $dateNow = new DateTime( date("Y-m-d H:i:s"));
+                $dateAge = new DateTime(date("Y-m-d H:i:s",$user->updated) );
+                $difference = $dateNow->diff($dateAge);
+                $timeIn = $differenceFormat = $difference->format('%d days, %h Hour , %i min , %s sec');
 
                 $tableAllUsers .= "<tr><td>$user->id</td>" .
                         "<td>$user->name</td><td>$user->login</td><td>$user->password</td><td>$user->gmail</td><td>$user->secretQuestion</td>" .
                         "<td>$user->secretAnswer</td><td>$user->session</td><td>$timeIn</td><td>$user->rightUser</td>" .
-                        "<td data-do='view' data-id = $user->id><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
+                        "<td><a data-do='view' data-id_user = $user->id ><span class='glyphicon glyphicon-eye-open'></span></a></td><td data-do='trash' data-id_user = $itemCCIB->id><span class='glyphicon glyphicon-trash'></span></td></tr>";
                 }
             $tableAllUsers .= "</tbody></table>";
         } else {

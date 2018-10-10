@@ -54,15 +54,16 @@ if(isset($_POST['searchLike'])){
 }
 
 //выбросить(подтянуть через include) на страницу форму добавления нового заказчика
-if(isset($_POST['includeFormNewSupplier'])){
+if(isset($_POST['includeFormNewUser'])){
 //    echo "привет->запрос на загрузку формы добавления (создания) нового поставщика";
     include '../../templates/formAddNewSupplierToBase.php';
 }
-if(isset($_POST['includeViewOneSupplier'])){
+if(isset($_POST['includeViewOneUser'])){
     //echo 'пришел запрос на подтяжку в #main_modul показа одного поставщика с параметром id    ';
-    if(isset($_POST['id'])){
-        $idSupp = htmlspecialchars($_POST['id']);
-        include '../../templates/viewOneSupplier.php';
-    }
+    if(isset($_POST['id']))
+        $idUserForViewOneUser = htmlspecialchars($_POST['id']);
+    else
+        $idUserForViewOneUser = "";
+    include '../../templates/viewOneUser.php';
 
 }

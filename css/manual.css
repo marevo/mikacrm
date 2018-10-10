@@ -737,7 +737,11 @@ table a{
 }
 /*viewAllMaterials.php*/
 
-#tbViewAllMaterials tbody td span, #tbViewAllSuppliers tbody td span, #tbViewAllClients tbody td span, #tbViewAllContacts tbody td span{
+#tbViewAllMaterials tbody td span,
+#tbViewAllSuppliers tbody td span,
+#tbViewAllClients tbody td span,
+#tbViewAllContacts tbody td span,
+#tbViewAllUsers tbody td span{
 /*#tbViewAllMaterials tbody td:last-child span, .iconInTd{*/
     border: 1px solid black;
     border-radius: 3px;
