@@ -72,37 +72,60 @@ function updateOneContact($idUserUpdate){
     }
 }
 
-//функция вставки в базу нового контакта
+//функция вставки в базу нового юзера
 //если пришел скрытый маркер insert вставим новый контакт в базу
-if (isset($_POST['insertContactToBase'])){
+if (isset($_POST['insertUserToBase'])){
     \App\FastViewTable::showAnswerServer("пришел маркер на добавку нового контакта в базу");
-    insertNewContactToBase();
+    insertNewUserToBase();
 }
-function insertNewContactToBase(){
-    $objNewContact = new \App\Models\Contacts();
-    if(isset($_POST['nameContact'])){
-        $nameContact = htmlspecialchars($_POST['nameContact']);
-        $objNewContact ->name = $nameContact;
+function insertNewUserToBase(){
+    $objNewUser = new \App\Models\User();
+
+    if(isset($_POST['name'])){
+        $nameOneUser = htmlspecialchars($_POST['name']);
+        if($nameOneUser)
+            $objNewUser->name = $nameOneUser;
     }
-    if(isset($_POST['phone'])){
-        $phoneContact = htmlspecialchars($_POST['phone']);
-        $objNewContact ->phone = $phoneContact;
+    if(isset($_POST['login'])){
+        $loginOneUser = htmlspecialchars($_POST['login']);
+        if($loginOneUser)
+            $objNewUser->login = $loginOneUser;
     }
-    if(isset($_POST['email'])){
-        $emailContact = htmlspecialchars($_POST['email']);
-        $objNewContact ->email = $emailContact;
+    if(isset($_POST['password'])) {
+        $passwordOneUser = htmlspecialchars($_POST['password']);
+        if ($passwordOneUser) {
+            $objNewUser->setPassword($passwordOneUser);
+        }
     }
+    if(isset($_POST['email'])) {
+        $emailOneUser = htmlspecialchars($_POST['email']);
+        if($emailOneUser)
+            $objNewUser->gmail = $emailOneUser;
+    }
+    if(isset($_POST['sQuestion'])){
+        $secretQuestionOneUser = htmlspecialchars($_POST['sQuestion']);
+        if($secretQuestionOneUser){
+            $objNewUser->secretQuestion = $secretQuestionOneUser;
+        }
+    }
+    if(isset($_POST['sAnswer'])){
+        $secretAnswerOneUser = htmlspecialchars($_POST['sAnswer']);
+        if($secretAnswerOneUser){
+            $objNewUser->secretAnswer = $secretAnswerOneUser;
+        }
+    }
+
     //вставим новый контакт в базу
-    $resInsert = $objNewContact -> insert();
+    $resInsert = $objNewUser -> insert();
 //        $resInsert = true;
     if($resInsert){
-        \App\FastViewTable::showUspeh('удачно');
-        \App\FastViewTable::showAnswerServer(" контакт " .$objNewContact ->name ." успешно добавлен в базу ");
+        \App\FastViewTable::showUspeh('новый user создан');
+        \App\FastViewTable::showAnswerServer(" контакт " .$objNewUser ->name ." успешно добавлен в базу ");
         echo"<script type='text/javascript'></script>";
     }
     else{
         \App\FastViewTable::showNoUspeh('не удачно');
-        \App\FastViewTable::showAnswerServer(" не удалось создать контакт ".$objNewContact ->name );
+        \App\FastViewTable::showAnswerServer(" не удалось создать user ".$objNewUser ->name );
     }
 }
 

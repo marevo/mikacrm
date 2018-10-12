@@ -177,7 +177,11 @@ class User extends ModelLikeTable
             
         }
     }
-    
+
+    /**
+     * set new password tho user
+     * @param string $newPassword 
+     */
     public function setPassword( string $newPassword){
         if($newPassword){
             $this->password = password_hash($newPassword,PASSWORD_BCRYPT );

@@ -18,7 +18,7 @@ require_once ('../../autoload.php');
         </div>
         <div class="row"><!--форма добавки пользователя в базу -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pading0">
-                <form  id="formOneContact"   method="post" action="../App/controllers/controllerOneUser.php" >
+                <form  id="formOneUser"   method="post" action="../App/controllers/controllerOneUser.php" >
                     <table>
                         <thead><tr class="trDisplayNone">
                             <td>название поля</td>
@@ -27,26 +27,24 @@ require_once ('../../autoload.php');
                         <!--невидимый маркер для отслеживания запроса добавки нового контакта в базу -->
                         <tr class="trDisplayNone">
                             <td class="text-right">скрытое поле  для отправки маркера</td>
-                            <td class="text-left"><input  name="insertContactToBase"  value="sendMarkerToaddNewUserToBase"/></td>
+                            <td class="text-left"><input  name="insertUserToBase"  value="sendMarkerToaddNewUserToBase"/></td>
                         </tr>
-                        <tr><td class="text-right"><label for="nameContact">название пользователя</label></td>
-                            <td class="text-left">
-                                <input maxlength="150" size="55" name="nameUser" id="idNameUser"
-                                       placeholder="Иванов Иван Иванович (max 150 символов)"  /></td>
+                        <tr><td class="text-right"><label for="idNameUser">название юзера</label></td>
+                            <td class="text-left"><input maxlength="150" size="55" name="name" id="idNameUser"
+                                       placeholder="Иванов Иван Иванович (max 150 символов)"/></td>
                         </tr>
-                        <!--                            <tr><td class="text-right"><label for="contactPerson">контактное лицо фио</label></td>-->
-                        <!--                                <td class="text-left"><input maxlength="100" size="55"  name="contactPerson" placeholder="Иванов Иван Иванович"  /></td>-->
-                        <!--                            </tr>-->
                         <tr><td class="text-right"><label for="login">login</label></td>
-                            <td><input type="tel" name="password" placeholder="пароль"  title="пароль" /></td></tr>
-                        <tr><td class="text-right"><label for="gmail">email</label></td>
-                            <td><input type="email" name="gmail"   placeholder="ivan@ivan.ua" title="формат email ivan@ivan.ua или ivan@ivan.ua.com"/></td>
+                            <td class="text-left">
+                                <input name="login" maxlength="50" type="text" placeholder="login" value=""/></td>
                         </tr>
-                        <tr><td class="text-right"><label for="right">права</label></td>
-                            <td><input type="text" name="right"   placeholder="c r u d " title="c r u d"/></td>
+                        <tr><td class="text-right"><label for="password">password</label></td>
+                            <td><input type="tel" name="password" placeholder="пароль"  title="пароль" /></td>
+                        </tr>
+                        <tr><td class="text-right"><label for="email">email</label></td>
+                            <td><input type="email" name="email"   placeholder="ivan@ivan.ua" title="формат email ivan@ivan.ua или ivan@ivan.ua.com"/></td>
                         </tr>
 
-                        <tr><td class="text-right"></td><td><input type="submit" id="idsubmitFromFormOneUser"  name="submitFromFormOneUser"/></td>
+                        <tr><td class="text-right"></td><td><input type="submit" id="idsubmitFromFormOneUser"  name="submitFromFormOneUser" value="создать"/></td>
                         </tr>
 
                         </tbody>
@@ -54,69 +52,28 @@ require_once ('../../autoload.php');
                 </form>
 
                 <script type="text/javascript">
-                    //                        $('form select').on('change',function () {
-                    //                            if($(this).val() == 0) {
-                    //                                $('.alert .alert-info').remove();
-                    //                                $(this).before('<div class="alert alert-info">выберитите поставщика из выпадающего списка</div>');
-                    //                                return false;
-                    //                            }
-                    //                            else
-                    //                                $('.alert').remove();
-                    //                            return false;
-                    //                        });
-                    //обработка полей textarea  на min & max кол символов и отсутсвие пробелов по краям
-                    //                        var newNameContactSubmit = false; //флаговая переменная для определения валидности в поле имя
-                    //                        $('#idNameContact').on('blur', function (event) {
-                    //                            var elemInput = $(this);
-                    //                            //запустим функцию проверки на пустоту и на min max количество символов в поле input #idNameContact
-                    //                            newNameContactSubmit = checkNotEmtyAndLengthTrue(elemInput, 3, 200);
-                    //                        });
-                    ////
-                    //                        //обработка полей телефона и имейла
-                    //                        var newPhoneContactSubmit = false;//флаговая переменная для определения валидности в поле телефон
-                    //                        var newEmailContactSubmit = false;//флаговая переменная для определения валидности в поле email
-                    //                        $('form input').on('blur',function (event) {
-                    //                            //проверка на валидность введения телефона в ajax_post_get.js function testOnPhoneExpand(elemInput)
-                    //                            if(this.name == 'phone'){
-                    //                                var phoneField = $(this);
-                    //                                newPhoneContactSubmit = testOnPhoneExpand(phoneField);
-                    //                            }
-                    //                            if (this.name == 'email') {
-                    //                                $(this).parent().find('[class~=alertDelete]').remove();
-                    //                                if ($(this).val().length == 0) {
-                    //                                    console.log('email клиента не задан');
-                    //                                    newEmailContactSubmit = true;
-                    //                                }
-                    //                                else {
-                    //                                    var inputEmail = $(this);
-                    //                                    newEmailContactSubmit = testOnEmailExpand(inputEmail);
-                    //                                }
-                    //                            }
-                    //                        });
+                   
 
                     //обязательные поля для заполнения название клиента, телефон
                     $('form').submit(function () {
-                        var elemInputNameUser = $(this).find($('#idNameContact'));
+                        var elemInputNameUser = $(this).find($('#idNameUser'));
 //                            var newNameContactSubmit = checkNotEmtyAndLengthTrue(elemInputNameContact , 3, 200);
 //                            console.log("newNameContactSubmit = "+ newNameContactSubmit);
                         var elemInputLogin = $(this).find('[name = "login"]');
 //                            var newPhoneContactSubmit = testOnPhoneExpand(elemInputPhoneContact);
 //                            console.log("elemInputPhoneContact "+ newPhoneContactSubmit);
                       var elemInputPassword = $(this).find('[name = "password"]');
-//                            var newPhoneContactSubmit = testOnPhoneExpand(elemInputPassword);
-                            console.log("elemInputPhoneContact "+ newPhoneContactSubmit);
-                        var elemInputEmailContact = $(this).find('[name ="gmail"]');
+//                           
+                        var elemInputEmailContact = $(this).find('[name ="email"]');
 //                            var newEmailContactSubmit = ($(elemInputEmailContact).val()=='' ||  testOnEmailExpand( elemInputEmailContact) );
 //                            console.log("newEmailContactSubmit =" + newEmailContactSubmit);
 //                            console.log("$(elemInputEmailContact).val()=='' =" + $(elemInputEmailContact).val()=='');
                         if(checkNotEmtyAndLengthTrue(elemInputNameUser , 5, 150)
                                 &&checkNotEmtyAndLengthTrue(elemInputLogin , 5, 50)
                                 &&checkNotEmtyAndLengthTrue(elemInputPassword , 5, 20)
-                            && testOnPhoneExpand(elemInputPhoneContact)
                             && ($(elemInputEmailContact).val()=='' || testOnEmailExpand(elemInputEmailContact)  )
                         ){
-                            //newNameContactSubmit = newPhoneContactSubmit = newEmailContactSubmit = false;
-                            console.log(' variable checked');
+                            console.log('variable checked');
 //                                return false;
                             $.ajax({
                                 type: $(this).attr('method'),
@@ -132,7 +89,7 @@ require_once ('../../autoload.php');
 
                                     //var timerId = setTimeout(function() {location.reload(); clearTimeout(timerId); }, 1000);
                                     // $(this).find('.alert').remove();
-//                                        вернемся на показ всех контактов
+//                                        вернемся на показ всех user
                                     location.reload();
                                     return false;
                                 }

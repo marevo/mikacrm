@@ -39,7 +39,6 @@ if($oneUserView) \App\FastViewTable::showUspeh("нашли юзера $oneUserVi
                         <tr><td>название юзера</td>
                             <td><?php echo $oneUserView->name ?></td>
                             <td class="tdDisplayNone"><input name="name" type="text"  maxlength="150" title ="новое название <?php echo "$oneUserView->name "?>" value="<?php echo $oneUserView->name ?>"/></td></tr>
-                        <?php ?>
                         <tr><td>права юзера</td>
                             <td>
                                 <?php echo  "$oneUserView->rightUser"; ?>

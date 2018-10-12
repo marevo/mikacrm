@@ -65,7 +65,7 @@ $(function () {
     //функция для создания нового поставщика 
     $('#makeNewUser').on('click',includeFormAddNewUser);
     function includeFormAddNewUser() {
-        jquery_send('#main_modul','post','/controllers/controllerViewAllUsers.php',['includeFormNewUser'],['']);
+        jquery_send('#main_modul','post','../App/controllers/controllerViewAllUsers.php',['includeFormNewUser'],['']);
         //event.stopPropagation();
         //                            document.getElementById("#main_modul").innerHTML= '<?// echo  include ('formAddNewOrder.php');?>//';
         return false;
