@@ -8,52 +8,70 @@
 require_once '../../autoload.php';
 
 //если пришел скрытый маркер udate юзера с id
-if (isset($_POST['updateOneContact'])){
-    $idContactUpdate = intval($_POST['updateOneContact']);
+if (isset($_POST['updateOneUser'])){
+    $idUserUpdate = intval($_POST['updateOneUser']);
 //    \App\FastViewTable::showAnswerServer("пришел маркер на обновление контакта id = $idContactUpdate");
-    updateOneContact($idContactUpdate);
+    updateOneContact($idUserUpdate);
 }
 //функция update контакта с $idContactUpdate = $idCont
-function updateOneContact($idCont){
-    $objOneContact = \App\Models\Contacts::findObjByIdStatic($idCont);
+function updateOneContact($idUserUpdate){
+    $objOneUser = \App\Models\User::findObjByIdStatic($idUserUpdate);
     //если нашли такой контакт
-    if($objOneContact){
-        if(isset($_POST['email']) ){
-            $emailOneContac = htmlspecialchars($_POST['email']);
-            if($emailOneContac)
-                $objOneContact->email = $emailOneContac;
-        }
-        if(isset($_POST['phone'])){
-            $phoneOneContac = htmlspecialchars($_POST['phone']);
-            if($phoneOneContac)
-                $objOneContact->phone = $phoneOneContac;
-        }
+    if($objOneUser){
         if(isset($_POST['name'])){
-            $nameOneContac = htmlspecialchars($_POST['name']);
-            if($nameOneContac)
-                $objOneContact->name = $nameOneContac;
+            $nameOneUser = htmlspecialchars($_POST['name']);
+            if($nameOneUser)
+                $objOneUser->name = $nameOneUser;
         }
-        if(isset($_POST['selectIdClient'])){
-            $idClient = intval($_POST['selectIdClient']);
-            var_dump($idClient);
-            if($idClient!="")
-                $objOneContact->id_clients = $idClient;
-            else
-                $objOneContact->id_clients = 0;
+        //права пользователя +/- добавить удалить
+        if(isset($_POST['selecRightUser'])){
+            $rightUser = htmlspecialchars($_POST['selecRightUser']);
+//            передано не 0 допустим + с добавить возможность создавать сущности
+            if($rightUser){
+                $objOneUser->addRightDeleteRight($rightUser);
+            }
         }
-        $resUpdateContact = $objOneContact -> update();
-        $newNameOneContac = \App\Models\Contacts::findObjByIdStatic($idCont)->name;
-        //если удачно сделали update contact
-        if($resUpdateContact){
-            \App\FastViewTable::showUspeh('контакт удачно обновлен');
-            \App\FastViewTable::showAnswerServer("контакт $newNameOneContac успешно обновлен");
+        if(isset($_POST['login'])){
+            $loginOneUser = htmlspecialchars($_POST['login']);
+            if($loginOneUser)
+                $objOneUser->login = $loginOneUser;
         }
-        else{
-            \App\FastViewTable::showNoUspeh('не удалось обновить контакт');
-            \App\FastViewTable::showAnswerServer("контакт '". $objOneContact->name."' не обновлен");
+        if(isset($_POST['password'])) {
+            $passwordOneUser = htmlspecialchars($_POST['password']);
+            if ($passwordOneUser) {
+                $objOneUser->setPassword($passwordOneUser);
+            }
+        }
+        if(isset($_POST['email'])) {
+            $emailOneUser = htmlspecialchars($_POST['email']);
+            if($emailOneUser)
+                $objOneUser->gmail = $emailOneUser;
+        }
+        if(isset($_POST['sQuestion'])){
+            $secretQuestionOneUser = htmlspecialchars($_POST['sQuestion']);
+            if($secretQuestionOneUser){
+                $objOneUser->secretQuestion = $secretQuestionOneUser;
+            }
+        }
+        if(isset($_POST['sAnswer'])){
+            $secretAnswerOneUser = htmlspecialchars($_POST['sAnswer']);
+            if($secretAnswerOneUser){
+                $objOneUser->secretAnswer = $secretAnswerOneUser;
+            }
+        }
+        $resUpdateUser = $objOneUser->update();
+        //если юзер  удачно обновлен
+        if ($resUpdateUser) {
+            $newNameOneUser = \App\Models\User::findObjByIdStatic($idUserUpdate);
+            \App\FastViewTable::showUspeh('юзер удачно обновлен');
+            \App\FastViewTable::showAnswerServer("юзер $newNameOneUser->name успешно обновлен");
+        } else {
+            \App\FastViewTable::showNoUspeh('не удалось обновить юзер');
+            \App\FastViewTable::showAnswerServer("юзер '" . $objOneUser->name . "' не обновлен");
         }
     }
 }
+
 //функция вставки в базу нового контакта
 //если пришел скрытый маркер insert вставим новый контакт в базу
 if (isset($_POST['insertContactToBase'])){

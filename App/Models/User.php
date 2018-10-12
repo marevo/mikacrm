@@ -31,6 +31,7 @@ class User extends ModelLikeTable
     const TABLE = 'users';
     const NAME_ID ='id';
 //    const NAME_ID ='login';
+    const AllRightForUser = "c r u d all super"; 
 
     public function isNew()
     {
@@ -122,5 +123,67 @@ class User extends ModelLikeTable
 
     }
 
+    /**
+     * return difference between time now and time last visited this User
+     * count last visited age in month, day, hour, second
+     * @return string
+     */
+    public function lastVisitAge(){
+        if(!$this->updated)
+            return 'no visited';
+        $timeIn = $this->updated ? date("H:i:s m-d-Y", $this->updated) : 'не заходил';
+        $dateNow = new \DateTime(date("Y-m-d H:i:s"));
+        $dateVisitedAge = new \DateTime(date("Y-m-d H:i:s", $this->updated));
+        $difference = $dateNow->diff($dateVisitedAge);
+        return $difference->format('%d days, %h Hour , %i min , %s sec');
+    }
+
+    /**
+     * add or deletes right to User strin in format '+ c' - add right create '- r' delete right read
+     * @param  string $rightUser string where all rights of this user are listed
+     * @return bool true in case or like or false in case not luck
+     */
+    public function addRightDeleteRight(string  $rightUser){
+        if($rightUser){
+            //получим массив с перечислением существующих прав этого пользователя
+            $userRightIsNow = explode( ' ', $this->rightUser);
+            // узнаем что нужно добавить или удалить право эт будет перевый член строки $rightUser разбитой через explode
+            $userRightWanted = explode(' ',$rightUser );
+            //проверим первый член массива это будет + или - добавить/удалить
+            if($userRightWanted[0]=='+'){
+                //просит добавить право
+                $rightToAdd = $userRightWanted[1];
+                //если есть член на добавку и такого члена нет в массиве прав
+                if($rightToAdd && !in_array($rightToAdd, $userRightIsNow)){
+                    $userRightIsNow[] = $rightToAdd;
+                    $this->rightUser = implode(' ',$userRightIsNow ) ;
+                    return true;
+                }
+                return false;
+            }
+            if($userRightWanted[0]=='-'){
+                //хотят убрать право
+                $rightToDelete = $userRightWanted[1];
+                //если есть такой член в удаление в массиве текущих прав
+                if($rightToDelete && in_array($rightToDelete, $userRightIsNow)){
+                    //найдем его ключ и удалим член в массиве по этому ключю
+                    $key = array_search($rightToDelete, $userRightIsNow );
+                    unset($userRightIsNow[$key]);
+                    $this->rightUser = implode(' ',$userRightIsNow ) ;
+                    return true;
+                }
+                return false;
+            }
+            
+        }
+    }
     
+    public function setPassword( string $newPassword){
+        if($newPassword){
+            $this->password = password_hash($newPassword,PASSWORD_BCRYPT );
+//            if($this->password){
+//                $this->update();
+//            }
+        }
+    }
 }

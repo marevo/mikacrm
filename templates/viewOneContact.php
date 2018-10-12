@@ -58,7 +58,6 @@ if($cont) \App\FastViewTable::showUspeh("нашли контакт $cont->name "
                                 ?>
                             </td>
                             <td class="tdDisplayNone">
-
                                     <?php
                                     $allClient = \App\Models\Client::findAllOrderByName();
                                     if(false != $allClient) {

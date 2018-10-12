@@ -59,13 +59,7 @@
                 "<td  class='text-center'><span class='glyphicon glyphicon-eye-open'></span></td>" .
                 "<td class='text-center'><span class='glyphicon glyphicon-trash'></span></td></tr></thead><tbody>";
             foreach ($allUsersInBase as $user) {
-                $timeIn =  $user->updated   ? date("H:i:s m-d-Y", $user->updated) : 'не заходил' ;
-                $timeStamp = time()- $user->updated  ;
-                $dateNow = new DateTime( date("Y-m-d H:i:s"));
-                $dateAge = new DateTime(date("Y-m-d H:i:s",$user->updated) );
-                $difference = $dateNow->diff($dateAge);
-                $timeIn = $differenceFormat = $difference->format('%d days, %h Hour , %i min , %s sec');
-
+                $timeIn = $user->lastVisitAge();
                 $tableAllUsers .= "<tr><td>$user->id</td>" .
                         "<td>$user->name</td><td>$user->login</td><td>$user->password</td><td>$user->gmail</td><td>$user->secretQuestion</td>" .
                         "<td>$user->secretAnswer</td><td>$user->session</td><td>$timeIn</td><td>$user->rightUser</td>" .
