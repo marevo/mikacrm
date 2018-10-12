@@ -52,26 +52,23 @@ require_once ('../../autoload.php');
                 </form>
 
                 <script type="text/javascript">
-                   
-
-                    //обязательные поля для заполнения название клиента, телефон
+                    //обязательные поля для заполнения название юзера, login, name, password, email
                     $('form').submit(function () {
                         var elemInputNameUser = $(this).find($('#idNameUser'));
 //                            var newNameContactSubmit = checkNotEmtyAndLengthTrue(elemInputNameContact , 3, 200);
 //                            console.log("newNameContactSubmit = "+ newNameContactSubmit);
-                        var elemInputLogin = $(this).find('[name = "login"]');
+                        var elemInputLoginUser = $(this).find('[name = "login"]');
 //                            var newPhoneContactSubmit = testOnPhoneExpand(elemInputPhoneContact);
 //                            console.log("elemInputPhoneContact "+ newPhoneContactSubmit);
-                      var elemInputPassword = $(this).find('[name = "password"]');
+                        var elemInputPasswordUser = $(this).find('[name = "password"]');
 //                           
-                        var elemInputEmailContact = $(this).find('[name ="email"]');
-//                            var newEmailContactSubmit = ($(elemInputEmailContact).val()=='' ||  testOnEmailExpand( elemInputEmailContact) );
-//                            console.log("newEmailContactSubmit =" + newEmailContactSubmit);
-//                            console.log("$(elemInputEmailContact).val()=='' =" + $(elemInputEmailContact).val()=='');
-                        if(checkNotEmtyAndLengthTrue(elemInputNameUser , 5, 150)
-                                &&checkNotEmtyAndLengthTrue(elemInputLogin , 5, 50)
-                                &&checkNotEmtyAndLengthTrue(elemInputPassword , 5, 20)
-                            && ($(elemInputEmailContact).val()=='' || testOnEmailExpand(elemInputEmailContact)  )
+                        var elemInputEmailUser = $(this).find('[name = "email"]');
+//
+                        if(
+                            checkNotEmtyAndLengthTrue(elemInputNameUser , 5, 150)
+                            && checkNotEmtyAndLengthTrue(elemInputLoginUser, 5, 50)
+                            && checkNotEmtyAndLengthTrue(elemInputPasswordUser, 5, 20)
+                            && testOnEmailExpand(elemInputEmailUser)
                         ){
                             console.log('variable checked');
 //                                return false;

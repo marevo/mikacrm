@@ -7,6 +7,7 @@ use App\ModelLikeTable;
 
 class User extends ModelLikeTable
 {
+    public $id;
     public $name; //Имя клиента
     public $login;
     public $password;//
@@ -36,7 +37,7 @@ class User extends ModelLikeTable
     public function isNew()
     {
         // TODO: Implement isNew() method.
-        if(empty($this->login) || is_null($this->login) ){
+        if(empty($this->id) || is_null($this->id) ){
             return true;
         }
         else{

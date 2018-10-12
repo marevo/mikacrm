@@ -15,7 +15,7 @@ function checkNotEmtyAndLengthTrue(elemInput, minChars, maxChars) {
     $(elemInput).val($.trim($(elemInput).val()));
 
     if($(elemInput).val().length < minChars){
-        $(elemInput).before('<div class="alertDelete backgroundAlertRed">обязательно не менее трех символов</div>');
+        $(elemInput).before('<div class="alertDelete backgroundAlertRed">обязательно не менее ' + minChars + ' символов</div>');
         return false;
     }
     if($(elemInput).val().length > maxChars) {
