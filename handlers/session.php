@@ -34,12 +34,18 @@ if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create")
 	$login = htmlspecialchars($_POST["login"]);
 	$password = htmlspecialchars($_POST["password"]);
 	$currentUserByLogin =\App\Models\User::getCurrentUserByLogin($login);
+//	$sesion_id =
+//	$currentUserByLoginAndBySessionId =\App\Models\User::getCurrentUserByLoginAdnBySessionId($login);
 //	проверка пароля от клиента с паролем из базы данных текущего пользователя
 	if($currentUserByLogin && password_verify( $password, $currentUserByLogin->password))
 	{
-		//если пароли совпадают то создаем сессию
+		//если пароль и логин совпадают найдем юзера и сделаем update его сессии по session_id();
+		$currentUserByLoginAndByPassword =\App\Models\User::getCurrentUserByLoginAdnByPassword($login,	$password);
+		//если пароли совпадают то делаем update в таблице user для данного пользователя
+		$resOrUser = $currentUserByLoginAndByPassword->udpateSession(); 
 		$updated =\App\Models\User::createSession( $login );
-		if($updated)
+//		if($updated)
+		if($resOrUser)
 		{
 		    echo "authorized";
 		}

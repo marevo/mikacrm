@@ -10,7 +10,7 @@
 				<?
 				//вроде autoload.php уже подключен
 //					require_once 'autoload.php';
-					$sid=session_id();
+					$sid = session_id();
 				    $currentUserBySession =\App\Models\User::getCurrentUserBySession($sid);
 				    $currentUserBySession->name;
 				?>

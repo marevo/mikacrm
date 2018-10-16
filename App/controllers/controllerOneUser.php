@@ -28,7 +28,7 @@ function updateOneContact($idUserUpdate){
             $rightUser = htmlspecialchars($_POST['selecRightUser']);
 //            передано не 0 допустим + с добавить возможность создавать сущности
             if($rightUser){
-                $objOneUser->addRightDeleteRight($rightUser);
+                $objOneUser-> addRightDeleteRight($rightUser);
             }
         }
         if(isset($_POST['login'])){
@@ -116,7 +116,8 @@ function insertNewUserToBase(){
     }
 
     //вставим новый контакт в базу
-    $resInsert = $objNewUser -> insert();
+//    $resInsert = $objNewUser -> insert();
+    $resInsert = $objNewUser -> save();
 //        $resInsert = true;
     if($resInsert){
         \App\FastViewTable::showUspeh('новый user создан');

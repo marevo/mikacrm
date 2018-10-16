@@ -36,7 +36,7 @@ class User extends ModelLikeTable
 
     public function isNew()
     {
-        // TODO: Implement isNew() method.
+        
         if(empty($this->id) || is_null($this->id) ){
             return true;
         }
@@ -67,13 +67,39 @@ class User extends ModelLikeTable
         else return false;
 //         return $query;
 	}
+
+    public static function getCurrentUserByLoginAdnBySessionId(string $login , $password ){
     
+    }
+
+    /**
+     * return user by login and password from base
+     * @param string $login
+     * @param string $password
+     * @return User
+     */
+    public static function getCurrentUserByLoginAdnByPassword(string $login , string $password ){
+        $db = new Db();
+        $password = password_hash($password,PASSWORD_BCRYPT);
+        $query = "SELECT * FROM ".self::TABLE." WHERE `login` = '$login' AND `password` = '$password'  ; ";
+        $res = $db->query($query, self::class);
+        return $res[0];
+    }
+    
+    public function udpateSession(){
+        $this->session = session_id();
+        $this->updated = time();
+        $res = $this->save();
+        if($res)
+            return $this;
+        else return false;
+    }
 	public static function createSession(string $login)
 	{
 		$db = new Db();
 		$values = [];
-		$values [':session']=session_id();
-		$values [':updated']=time();
+		$values [':session'] = session_id();
+		$values [':updated'] = time();
         $query = "UPDATE ".self::TABLE." SET session = :session, updated = :updated WHERE login = '".$login."' ; ";
 		$res = $db->execute($query, $values);
 //		echo session_id();
@@ -175,7 +201,6 @@ class User extends ModelLikeTable
                 }
                 return false;
             }
-            
         }
     }
 
