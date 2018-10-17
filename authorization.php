@@ -1,7 +1,7 @@
 <?
-    require_once('./head.php');
+   // require_once('./head.php');
 //создание пароля для логина через функцию password_hash
-//echo password_hash ( "AdMiNmArEvO_1972" , PASSWORD_BCRYPT); //60 символов
+//echo password_hash ( "$resOrUser" , PASSWORD_BCRYPT); //60 символов
 ?>
 <div class="container">
 	<div class="row">
@@ -40,7 +40,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div><!-- end container -->
 <script>    
     //Обработчик формы авторизации
 	function authorize() {
@@ -52,15 +52,24 @@
         xhr.open("POST", "/handlers/session.php", false);
 	    xhr.overrideMimeType("text/plain; charset=utf8");
         xhr.send(formData);
-			if(xhr.responseText=="authorized")
-			{
+        var answerServer = xhr.response;
+      if(answerServer){
+            var  ObjUserAuthorization = JSON.parse(answerServer);
+            console.log('зашел авторизированный пользователь '+ ObjUserAuthorization['name'] + ' ' + ObjUserAuthorization['authorized'] );
+            var containerToDelete = document.getElementsByClassName('container')[0];
+//            containerToDelete.innerHTML = '';
+//            console.log('убрали форму авторизации');
+        }
+
+//        if (xhr.responseText == "authorized") {
+        if (ObjUserAuthorization['authorized'] == "true") {
 				location.reload();
-			}
-			else if(xhr.responseText!="unauthorized")
-			{
-				console.log(xhr.responseText);
-			}
-		}
+        }
+        else if (xhr.responseText != "unauthorized") {
+            console.log(xhr.responseText);
+        }
+
+    }
 //Авторизоваться можно по нажатию на кнопку
 document.getElementById("authorization").onclick=authorize;
 //а также по нажатию на клавишу Enter

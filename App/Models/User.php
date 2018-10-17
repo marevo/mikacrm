@@ -85,13 +85,22 @@ class User extends ModelLikeTable
         $res = $db->query($query, self::class);
         return $res[0];
     }
-    
-    public function udpateSession(){
+
+    /**
+     * делает update в таблице users по времени и сессии и в случае успеха возращает User - юзера для которого был сделан update сессии
+     * @return $this|bool
+     */
+    public function updateSession(){
         $this->session = session_id();
         $this->updated = time();
         $res = $this->save();
-        if($res)
+        if($res){
+//            вводим дополнительное поле authorized это поле покажет авторизировался пользователь ? или нет
+            $this->authorized = 'true';
+            $this->updated = (string)$this->updated;
             return $this;
+        }
+           
         else return false;
     }
 	public static function createSession(string $login)

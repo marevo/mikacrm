@@ -1,12 +1,18 @@
 <?
-session_start();
+//session_start();
 require 'autoload.php';
+require_once('./head.php');
+include "authorization.php";
+
+
+
 include "handlers/session.php";
 //из handlers\session.php проверим на наличие сессии и времени не просрочки сессии и найдем юзера по этим параметрам
+
 $res = check_session();
 if($res=='unauthorized')
 {
-	include "authorization.php";
+//    include "authorization.php";
 }
 else
 {

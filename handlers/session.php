@@ -27,31 +27,39 @@ function check_session()
 		return "unauthorized";
 	}
 }
-//Обработка запроса авторизации
+
+
+//Обработка запроса авторизации первый раз зайдя на сайт и жмет кнопку #authorization
+//сессия еще не создана!
 if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create")
 {
 	session_start();
 	$login = htmlspecialchars($_POST["login"]);
 	$password = htmlspecialchars($_POST["password"]);
+    //найдем User который отправил запрос на авторизацию и проверим его пароль
 	$currentUserByLogin =\App\Models\User::getCurrentUserByLogin($login);
 //	$sesion_id =
 //	$currentUserByLoginAndBySessionId =\App\Models\User::getCurrentUserByLoginAdnBySessionId($login);
 //	проверка пароля от клиента с паролем из базы данных текущего пользователя
 	if($currentUserByLogin && password_verify( $password, $currentUserByLogin->password))
 	{
-		//если пароль и логин совпадают найдем юзера и сделаем update его сессии по session_id();
-		$currentUserByLoginAndByPassword =\App\Models\User::getCurrentUserByLoginAdnByPassword($login,	$password);
-		//если пароли совпадают то делаем update в таблице user для данного пользователя
-		$resOrUser = $currentUserByLoginAndByPassword->udpateSession(); 
-		$updated =\App\Models\User::createSession( $login );
-//		if($updated)
+		//если пароли совпадают то делаем update в таблице user для данного пользователя и вернем 
+        //в случае успеха самого текущего юзера в случае не успеха false
+		$resOrUser = $currentUserByLogin->updateSession(); 
+//		$updated =\App\Models\User::createSession( $login );
 		if($resOrUser)
 		{
-		    echo "authorized";
+//            вернем обЪект json текущего юзера authorization.php
+//            $objAuthorizedUserId = {'id' => $resOrUser->id,};
+            $resOrUser->password = $password;
+           $jsonUser = json_encode($resOrUser,JSON_UNESCAPED_UNICODE);
+            echo $jsonUser;
 		}
 		else
 		{
-			echo $currentUserByLogin;
+            $NoAuthorizedUser = ['user'=> 'enter Login','password'=>'enter password','authorizen'=>'false' ];
+            $jsonNoAuthorizedUser = json_encode($NoAuthorizedUser);
+            echo $jsonNoAuthorizedUser;
 		}
 	}
 	else

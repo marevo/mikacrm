@@ -262,10 +262,10 @@ abstract class ModelLikeTable
      */
     public  function save(){
         if($this->isNew()){
-            $this->insert();
+            return $this->insert();
         }else{
             if(!$this->isNew()){
-                $this->update();
+              return  $this->update();
             }
         }
         \App\FastViewTable::showNoUspeh('не сработал метод обратитесь к разработчику');
