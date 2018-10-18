@@ -32,15 +32,40 @@ class User extends ModelLikeTable
     const TABLE = 'users';
     const NAME_ID ='id';
 //    const NAME_ID ='login';
-    const AllRightForUser = "c r u d all super"; 
+    const AllRightForUser = "c r u d all super";
 
-    public function isNew()
+    /**
+     * function create _SESSION['users_onSite
+     * and add or update ['id_user'=> idUser, 'id_session'=>session_id()]
+     * @return bool true in case
+     */
+    public function createOrUpdate_SESSION_UsersOnSite()
     {
-        
-        if(empty($this->id) || is_null($this->id) ){
+        if (!isset($_SESSION['users_onSite'])) {
+            //если нет переменной на сервере с данными о юзерах на сайте
+            //создадим такую переменную
+            $_SESSION['users_onSite'][$this->id] =  session_id();
+            return true;
+        } else {
+            //есть переменная об юзерах на сайте $_SESSION['users_onSite']
+            //проверим ее содержимое на наличие в ключе значения userId
+            foreach ($_SESSION['users_onSite'] as $userId => $SessionId) {
+                if ($userId == $this->id) {//значит этот юзер уже есть в массиве сессии и надо обновить его значение сессии
+                    $_SESSION['users_onSite'][$userId] = session_id();
+                    return true;
+                }
+            }
+            // юзера с таки userId не было в этом массиве $_SESSION['users_onSite']
+            //значит добавим его в массив $_SESSION['users_onSite']
+            $_SESSION['users_onSite'][$this->id ] =  session_id();
             return true;
         }
-        else{
+    }
+
+    public function isNew(){
+        if (empty($this->id) || is_null($this->id)) {
+            return true;
+        } else {
             return false;
         }
     }
@@ -55,11 +80,15 @@ class User extends ModelLikeTable
         else
             return false;
     }
-    
-    public static function getCurrentUserByLogin(string $login)
+
+    /**
+     * @param string $loginUser
+     * @return User or false
+     */
+    public static function getCurrentUserByLogin(string $loginUser)
 	{
         $db = new Db();
-        $query = "SELECT * FROM ".self::TABLE." WHERE login = '".$login."' ; ";
+        $query = "SELECT * FROM ".self::TABLE." WHERE login = '".$loginUser."' ; ";
 
         $currentUserByLogin = $db->query($query, self::class );
         if($currentUserByLogin)
@@ -94,6 +123,12 @@ class User extends ModelLikeTable
             return $this;
         else return false;
     }
+
+    /**
+     * создает новую сессию для юзера
+     * @param string $login
+     * @return bool  will return true if successful or false in case failure 
+     */
 	public static function createSession(string $login)
 	{
 		$db = new Db();
@@ -104,8 +139,13 @@ class User extends ModelLikeTable
 		$res = $db->execute($query, $values);
 //		echo session_id();
 	//	echo time();
+        $userByLogin = self::getCurrentUserByLogin($login);
+        if($userByLogin){
+            $userByLogin->createOrUpdate_SESSION_UsersOnSite();
+        }
         return $res;
 	}
+    
 	public static function deleteSession(string $session)
 	{
 		$db = new Db();

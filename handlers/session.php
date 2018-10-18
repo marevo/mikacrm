@@ -3,13 +3,11 @@ chdir($_SERVER["DOCUMENT_ROOT"]);
 require_once 'autoload.php';
 
 //Функция проверки валидности текущей сессии
-function check_session()
-{
+function check_session(){
 	$sid=session_id();
     $currentUserBySessionId =\App\Models\User::getCurrentUserBySession($sid);
 	//Если срок действия сессии не истёк - продлеваем сессию
-	if($currentUserBySessionId && time()- $currentUserBySessionId->updated<1800)
-	{
+	if($currentUserBySessionId && time()- $currentUserBySessionId->updated <1800) {
 		
 		$updated=\App\Models\User::createSession($currentUserBySessionId->login);
 		if($updated)
@@ -41,11 +39,15 @@ if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create")
 	{
 		//если пароль и логин совпадают найдем юзера и сделаем update его сессии по session_id();
 		$currentUserByLoginAndByPassword =\App\Models\User::getCurrentUserByLoginAdnByPassword($login,	$password);
+        //проверим есть ли такой юзер в массиве $_SESSION['users_onSite']
+        //если есть то обновим его сессию, если нет добавим 
+        // вызов этого метода createOrUpdate_SESSION_UsersOnSite() идет в  createSession($login)
+        //  $currentUserByLogin->createOrUpdate_SESSION_UsersOnSite();// создаст или добавит в существующий $_SESSION['user_id' => 'session_id()']
 		//если пароли совпадают то делаем update в таблице user для данного пользователя
-		$resOrUser = $currentUserByLoginAndByPassword->udpateSession(); 
+//		$resOrUser = $currentUserByLoginAndByPassword->udpateSession();
 		$updated =\App\Models\User::createSession( $login );
-//		if($updated)
-		if($resOrUser)
+		if($updated)
+//		if($resOrUser)
 		{
 		    echo "authorized";
 		}

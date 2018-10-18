@@ -1,11 +1,10 @@
 <?
 session_start();
 require 'autoload.php';
-include "handlers/session.php";
+include "handlers/session.php";//подключили файл для проверки юзера по сессии или update сессии
 //из handlers\session.php проверим на наличие сессии и времени не просрочки сессии и найдем юзера по этим параметрам
 $res = check_session();
-if($res=='unauthorized')
-{
+if($res=='unauthorized') {
 	include "authorization.php";
 }
 else

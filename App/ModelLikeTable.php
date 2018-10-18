@@ -260,12 +260,12 @@ abstract class ModelLikeTable
      *@return bool
      *method save позволяет запускать сохрание объекта в зависимости от того новый объект или уже существующий
      */
-    public  function save(){
-        if($this->isNew()){
-            $this->insert();
-        }else{
-            if(!$this->isNew()){
-                $this->update();
+    public function save(){
+        if ($this->isNew()) 
+            return $this->insert();
+        else {
+            if (!$this->isNew()) {
+                return $this->update();
             }
         }
         \App\FastViewTable::showNoUspeh('не сработал метод обратитесь к разработчику');
