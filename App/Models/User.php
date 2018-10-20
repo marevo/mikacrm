@@ -153,6 +153,8 @@ class User extends ModelLikeTable
 		$values [':session']='NULL';
         $query = "UPDATE ".self::TABLE." SET session = :session WHERE session = '".$session."' ; ";
 		$res = $db->execute($query, $values);
+        // TODO: create method to delete $_SESSION id_user => id_session.
+        
         return $res;
 	}
 	public static function saveProfile(string $login, string $name, string $email, string $phone,string $password)
@@ -255,5 +257,20 @@ class User extends ModelLikeTable
 //                $this->update();
 //            }
         }
+    }
+
+    /**
+     * update for user finding on login session and exit from site
+     * @param $loginUser
+     * @return bool true in case successful or fasle in failure
+     */
+    public function deleteSessionForLoginUser(){
+        $db = new Db();
+        $values = [];
+        $values [':session'] = 'NULL';
+        $values [':updated'] = time();
+        $query = "UPDATE ".self::TABLE." SET session = :session, updated = :updated WHERE login = '".$this->login."' ; ";
+        $res = $db->execute($query, $values);
+        return $res;
     }
 }

@@ -27,13 +27,12 @@
                    if($currentUser){
                        echo $currentUser->name;
                    }
-                   
                    ?>
                </a>
            </div>
            <div class=' col-lg-4 col-md-4 col-sm-4 col-xs-4 pod_exit'>
-               <a id="exit" href="#">
-                   <i class="icon-exit3"></i>
+               <a id="exit"   href="#"   >
+                   <i class="icon-exit3"><input type="hidden" name="exitLoginUser" value="<?php echo $currentUser->login ?>" data-loginUser= "<?php echo $currentUser->login ?>" /></i>
                    <?php
                    if (isset($_GET['lang']) && is_file(__DIR__ . '/../locales/' . $_GET['lang'] . '.ini')) {
                        $strings = parse_ini_file(__DIR__ . '/../locales/' . $_GET['lang'] . '.ini');
@@ -50,7 +49,10 @@ document.getElementById("exit").onclick=function(){
         xhr.open("POST", "/handlers/session.php", false);
 	    xhr.overrideMimeType("text/plain; charset=utf8");
 		var formData = new FormData();
+    //
+//		formData.append('action','delete','exitLoginUser');
 		formData.append('action','delete');
+		formData.append('exitLoginUser',$('[name=exitLoginUser]').val());
         xhr.send(formData);
 		location.reload();
 }

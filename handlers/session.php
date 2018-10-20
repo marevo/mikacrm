@@ -26,8 +26,7 @@ function check_session(){
 	}
 }
 //Обработка запроса авторизации
-if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create")
-{
+if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create") {
 	session_start();
 	$login = htmlspecialchars($_POST["login"]);
 	$password = htmlspecialchars($_POST["password"]);
@@ -61,12 +60,22 @@ if( $_POST["action"] && htmlspecialchars( $_POST["action"] )== "create")
 		echo "unauthorized";
 	}
 }
-//Обработка запроса на выход
-else if($_POST["action"]=="delete")
+//Обработка запроса на выход из uathorization.php
+else if( $_POST["action"] && $_POST["action"]=="delete")
 {
+    if(isset($_POST['exitLoginUser'])){
+        $loginForExit = htmlspecialchars($_POST['exitLoginUser']);
+        //TODO: выход для Login $loginForExit
+        $deleted = (new \App\Models\User())->getCurrentUserByLogin($loginForExit)->deleteSessionForLoginUser();
+
+
+    }
+        
+      
 	if(session_start())
     {
-        $session=session_id();
-        $deleted=\App\Models\User::deleteSession($session);
+//        $session=session_id();
+//        $deleted=\App\Models\User::deleteSession($session);
+//        $deleted=\App\Models\User::deleteSessionForLoginUser($loginForExit);
     }
 }
