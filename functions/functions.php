@@ -31,12 +31,21 @@ function activate (id/*,handler*/) {
 <?
 //получение меню из базы данных
     function get_menu(){
+		$config1 = include('./config.php');
+//		var_dump($config1);
 //		задать получение подключения к базе через класс Db !надо исправить
-		$mysql_host = 'localhost';
+//		$mysql_host = 'localhost';
+		$mysql_host = $config1['host'];
+
         // MySQL username
-        $mysql_username = 'root';
-		$mysql_database = 'reclam';
-		$mysql_password = NULL;
+//        $mysql_username = 'root';
+		$mysql_username = $config1['user'];
+
+//		$mysql_database = 'reclam';
+		$mysql_database = $config1['dbname'];
+
+//		$mysql_password = NULL;
+		$mysql_password = $config1['password'];
 		$sql="SELECT * FROM menu";
 		$mysqli = mysqli_connect($mysql_host, $mysql_username,$mysql_password,$mysql_database);
 		$result = mysqli_query($mysqli,$sql);
@@ -113,11 +122,27 @@ function activate (id/*,handler*/) {
 //запрос данных меню для вывода
 	function get_handler_by_menu_title($title){
 //		
-		$mysql_host = 'localhost';
-        // MySQL username
-        $mysql_username = 'root';
-		$mysql_database = 'reclam';
+//		$mysql_host = 'localhost';
+//        // MySQL username
+//        $mysql_username = 'root';
+//		$mysql_database = 'reclam';
+//		$mysql_password = NULL;
+		$config1 = include('./config.php');
+//		var_dump($config1);
+
+//		задать получение подключения к базе через класс Db !надо исправить
+//		$mysql_host = 'localhost';
+		$mysql_host = $config1['host'];
+
+		// MySQL username
+//        $mysql_username = 'root';
+		$mysql_username=$config1['user'];
+
+//		$mysql_database = 'reclam';
+		$mysql_database = $config1['dbname'];
+
 		$mysql_password = NULL;
+		$mysql_password = $config1['password'];
 		
 		$sql="SELECT handler FROM menu WHERE title='".$title."';";
 		$mysqli = mysqli_connect($mysql_host, $mysql_username,$mysql_password,$mysql_database);

@@ -6,7 +6,13 @@
    </div>
    <div class='col-lg-5 col-md-5 col-sm-5 col-xs-5' id="status">
 <!--       <div id="myAffix2" data-spy="affix" data-offset-top="0">-->
-           <?php include_once('App\html\forDisplayTimeShowAnswerServer.html'); ?>
+           <?php
+           if(is_file('App/html/forDisplayTimeShowAnswerServer.html'))
+               include_once('App/html/forDisplayTimeShowAnswerServer.html');
+           else var_dump(__DIR__);
+           var_dump(__DIR__."/forDisplayTimeShowAnswerServer.html");
+           ?>
+           <?php// include_once('App\html\forDisplayTimeShowAnswerServer.html'); ?>
 <!--		</div>-->
    </div>
    <div class='col-lg-3 col-md-3 col-sm-3 col-xs-3 pod_row' id="pod"  id="myAffix3" data-spy="affix" data-offset-top="0">
