@@ -9,8 +9,7 @@
            <?php
            if(is_file('App/html/forDisplayTimeShowAnswerServer.html'))
                include_once('App/html/forDisplayTimeShowAnswerServer.html');
-           else var_dump(__DIR__);
-           var_dump(__DIR__."/forDisplayTimeShowAnswerServer.html");
+           else var_dump(__DIR__."/forDisplayTimeShowAnswerServer.html");
            ?>
            <?php// include_once('App\html\forDisplayTimeShowAnswerServer.html'); ?>
 <!--		</div>-->

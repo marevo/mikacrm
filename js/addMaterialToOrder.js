@@ -81,10 +81,33 @@ function serchAllMaterialsForName() {
 }
 
 //двойной клик на таблице всех материалов в базе что будут показаны в #tableFildMaterialToAddToOrder
+//для работы через комп, для работы через планшет будем использовать click или tup
+/*
 $('#tableFildMaterialToAddToOrder').on('dblclick',function (event) {
     var target = event.target;
    console.log('двойной клик в таблице в строке');
     //найдем строку в которой был двойной клик
+    while (target.nodeName != 'TBODY'){
+        if(target.nodeName == 'TR'){
+            console.log('поймали двойной клик в строке с id материала '+$(target).children()[0].textContent);
+            var idMaterToAddForOrder = $(target).children()[0].textContent;
+            var nameMaterToAddForOrder = $(target).children()[1].textContent;
+            $('#modalAddMaterialToOrderFastIdMat').text(idMaterToAddForOrder);
+            $('#modalAddMaterialToOrderFastNameMat').text(nameMaterToAddForOrder);
+            $('#modalAddMaterialToOrderFast').modal('show');
+        }
+        target = target.parentNode;
+    }
+
+    return false;
+});
+*/
+//клик на таблице всех материалов в базе что будут показаны в #tableFildMaterialToAddToOrder
+//для работы через комп, для работы через планшет будем использовать click или tup
+$('#tableFildMaterialToAddToOrder').on('click',function (event) {
+    var target = event.target;
+   console.log('двойной клик в таблице в строке');
+    //найдем строку в которой был клик
     while (target.nodeName != 'TBODY'){
         if(target.nodeName == 'TR'){
             console.log('поймали двойной клик в строке с id материала '+$(target).children()[0].textContent);
