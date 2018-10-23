@@ -1,18 +1,15 @@
 <?
+//$_SESSION = array();
+//session_unset ();
+//array_shift($_SESSION[]);
+//die();
 session_start();
+use App\Models\User;
 require 'autoload.php';
+$userAUthorized = new User();
 include "handlers/session.php";//подключили файл для проверки юзера по сессии или update сессии
 //из handlers\session.php проверим на наличие сессии и времени не просрочки сессии и найдем юзера по этим параметрам
-$res = check_session();
-if($res=='unauthorized') {
-	include "authorization.php";
-}
-else
-{
-	//session start
-	// проверка на авторизацию
-	// если нет параметра то грузим заказы
-?>
+if($userAUthorized->authorizen =='authorizen' && $userAUthorized->check_session()){ ?>
     <!DOCTYPE html>
     <html>
     <?php require_once ('./head.php'); ?>
@@ -36,6 +33,11 @@ else
     </div>
     </body>
     </html>
+<?php
+}else{
+    include "authorization.php";
+?>
+
   
     <script type="text/javascript">
     /*$(document).ready(function () {
@@ -61,4 +63,5 @@ else
     //  });
     //});
     </script>
-<?}?>
+<?php }
+?>

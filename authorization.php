@@ -54,11 +54,13 @@
         xhr.send(formData);
 			if(xhr.responseText=="authorized")
 			{
-				location.reload();
+				console.log('user aвторизирован:') ;
+				//console.log('user:' <?php //if(isset($userAUthorized)) echo "+". " $userAUthorized->login $userAUthorized->name " ?>);
 			}
 			else if(xhr.responseText!="unauthorized")
 			{
-				console.log(xhr.responseText);
+                console.log(' не авторизирован user:') ;
+                console.log(xhr.responseText);
 			}
 		}
 //Авторизоваться можно по нажатию на кнопку

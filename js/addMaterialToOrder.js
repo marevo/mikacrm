@@ -37,6 +37,15 @@ $('#modalAddMaterialToOrder').on('click',function (event) {
         }
     }
 });
+//подключение плагина для поиска через javaScript по таблице всех материалов из базы подтянутых в таблицу #modalAddMaterialToOrder
+$(function include(url) {
+    var script = document.createElement('script');
+    script.src = "/js/SortSearchTable.js";
+    // script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+    // alert('проверь');
+    console.log("Загружен файл для поиска по таблице всех материалов в базе через javaScript js/checkInput.js");
+});
 
 //при показе модального окна для добавки мы запросим данные о всех материалах что есть в базе и выведем их
 $('#modalAddMaterialToOrder').on('show.bs.modal',function () {

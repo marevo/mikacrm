@@ -39,27 +39,28 @@ class User extends ModelLikeTable
      * and add or update ['id_user'=> idUser, 'id_session'=>session_id()]
      * @return bool true in case
      */
-    public function createOrUpdate_SESSION_UsersOnSite()
-    {
+    public function createOrUpdate_SESSION_UsersOnSite(){
+        if('authorized' !=  $this->authorized )
+            return false;
+//        если нет переменной с ключем 'users_onSite' в $_SESSION
         if (!isset($_SESSION['users_onSite'])) {
             //если нет переменной на сервере с данными о юзерах на сайте
             //создадим такую переменную
             $_SESSION['users_onSite'][$this->id] =  session_id();
-            return true;
-        } else {
-            //есть переменная об юзерах на сайте $_SESSION['users_onSite']
-            //проверим ее содержимое на наличие в ключе значения userId
-            foreach ($_SESSION['users_onSite'] as $userId => $SessionId) {
-                if ($userId == $this->id) {//значит этот юзер уже есть в массиве сессии и надо обновить его значение сессии
-                    $_SESSION['users_onSite'][$userId] = session_id();
-                    return true;
-                }
-            }
-            // юзера с таки userId не было в этом массиве $_SESSION['users_onSite']
-            //значит добавим его в массив $_SESSION['users_onSite']
-            $_SESSION['users_onSite'][$this->id ] =  session_id();
-            return true;
+            return $this;
         }
+        //есть переменная об юзерах на сайте $_SESSION['users_onSite']
+        //проверим ее содержимое на наличие в ключе значения userId
+        foreach ($_SESSION['users_onSite'] as $userId => $SessionId) {
+            if ($userId == $this->id) {//значит этот юзер уже есть в массиве сессии и надо обновить его значение сессии
+                $_SESSION['users_onSite'][$userId] = session_id();
+                return $this;
+            }
+        }
+        // юзера с таки userId не было в этом массиве $_SESSION['users_onSite']
+        //значит добавим его в массив $_SESSION['users_onSite']
+        $_SESSION['users_onSite'][$this->id] = session_id();
+        return $this;
     }
 
     public function isNew(){
@@ -114,8 +115,12 @@ class User extends ModelLikeTable
         $res = $db->query($query, self::class);
         return $res[0];
     }
-    
-    public function udpateSession(){
+
+    /**
+     * save or update $this->session and $this->updated in table users
+     * @return $this|bool
+     */
+    public function udpateSessionInTable(){
         $this->session = session_id();
         $this->updated = time();
         $res = $this->save();
@@ -273,4 +278,36 @@ class User extends ModelLikeTable
         $res = $db->execute($query, $values);
         return $res;
     }
+    
+    /**
+     * tested if User authorized on site 
+     * @param string $passwordFromPost 
+     * @return bool true or false
+     */
+    public function ifUserAuthorized(string $passwordFromPost){
+        if( password_verify($passwordFromPost, $this->password)){
+            $this->authorized = 'authorized';
+            return true;
+        }
+        $this->authorized = 'unauthorized';
+        return false;
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function check_session()
+    {
+        //если пользователь авторизирован на сайте
+        if ('authorized' == $this->authorized ){
+            //Если срок действия сессии не истёк - продлеваем сессию вставляя новое время в поле update 
+           if( time() - $this->updated < 1800) {
+               if( $this->udpateSessionInTable() && $this->createOrUpdate_SESSION_UsersOnSite())
+                  return true;
+               return false;
+           }
+        }
+        return false;
+    }
+
 }
