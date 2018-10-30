@@ -54,7 +54,14 @@ abstract class ModelLikeTable
      * @return bool вернет обЪект по id если есть такой иначе вернет false
      */
     public function findObjById( $id){
-         return self::findObjByIdcStatic( $id);
+        $db = new Db();
+        $query = 'SELECT * FROM '.static::TABLE.' WHERE  '.static::NAME_ID.' = '.$id.';';
+//        echo "из ModelLikeTable  запрос $query ";
+        $res = $db->query($query, static::class);
+        if(false!==$res)
+            return $res[0];
+        else return false;
+//         return self::findObjByIdcStatic( $id);
     }
     /**
      *static method return object for $id or false if obj whith $id not Exist
@@ -255,19 +262,15 @@ abstract class ModelLikeTable
 
     }
     
-    //save позволяет запускать сохрание объекта в зависимости от того новый объект или уже существующий
     /**
      *@return bool
      *method save позволяет запускать сохрание объекта в зависимости от того новый объект или уже существующий
      */
     public function save(){
         if ($this->isNew()) 
-            return $this->insert();
-        else {
-            if (!$this->isNew()) {
-                return $this->update();
-            }
-        }
-        \App\FastViewTable::showNoUspeh('не сработал метод обратитесь к разработчику');
+            return (bool) $this->insert();
+        else 
+            return (bool) $this->update();
+       // \App\FastViewTable::showNoUspeh('не сработал метод обратитесь к разработчику');
     }
 }

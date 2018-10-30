@@ -56,9 +56,9 @@ function activate (id/*,handler*/) {
 		if(mysqli_num_rows($result) != 0) {//если есть строки в запросе меню
 			for($i = 0; $i < mysqli_num_rows($result);$i++) {//проход по строкам меню
 				$row = mysqli_fetch_array($result,MYSQLI_ASSOC);//берем строку
-				if(empty($arr_cat[$row['parent_id']])) {//если есть дочерние, то создаем массив дочерних пунктов меню
+				if(empty($arr_cat[$row['parent_id']])) {
 					$arr_cat[$row['parent_id']] = array();
-				}
+				}//если есть дочерние, то создаем массив дочерних пунктов меню
 				$arr_cat[$row['parent_id']][] = $row;
 			}
 			return $arr_cat;
@@ -78,38 +78,31 @@ function activate (id/*,handler*/) {
 		$ul_id="ul".rand();
 		
 		echo "<ul".$hidden." id=".$ul_id.">\n";
-		
-		for($i = 0; $i < count($arr[$parent_id]);$i++) {
-			$id=$parent_id . "sub" . $i;
-	$bold="";
-	if($id == $_GET['menu'])
-	{
-		$bold=" style='font-weight:bold; color:yellow;'";
-	}
-	
-		$lang="&lang=".$_GET['lang'];
-		
-		echo "<li id='".$id."'><a  href=index.php?page=".$arr[$parent_id][$i]['title']."&menu=".$id.$bold.$lang.">\n"; // onclick="activate(\''.$id.'\')"
-		if($_GET['lang']=='en')
-		{
-	        echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['title']."</a>\n";
+
+        for ($i = 0; $i < count($arr[$parent_id]); $i++) {
+            $id = $parent_id . "sub" . $i;
+            $bold = "";
+            if ($id == $_GET['menu']) {
+                $bold = " style='font-weight:bold; color:yellow;'";
+            }
+
+            $lang = "&lang=" . $_GET['lang'];
+
+            echo "<li id='" . $id . "'><a  href=index.php?page=" . $arr[$parent_id][$i]['title'] . "&menu=" . $id . $bold . $lang . ">\n"; // onclick="activate(\''.$id.'\')"
+            if ($_GET['lang'] == 'en') {
+                echo "<span class='" . $arr[$parent_id][$i]['image'] . "' ></span>" . $arr[$parent_id][$i]['title'] . "</a>\n";
+            } else {
+                echo "<span class='" . $arr[$parent_id][$i]['image'] . "' ></span>" . $arr[$parent_id][$i]['text'] . "</a>\n";
+            }
+            if ($id == $_GET['menu']) {
+                $show_parents = true;
+                view_menu($arr, $arr[$parent_id][$i]['id'], false, $level + 1);
+            } else {
+                $show_parents = view_menu($arr, $arr[$parent_id][$i]['id'], true, $level + 1);
+            }
+            echo "</li>\n";
+
         }
-		else
-		{
-			echo "<span class='".$arr[$parent_id][$i]['image']."' ></span>".$arr[$parent_id][$i]['text']."</a>\n";
-		}
-		if($id==$_GET['menu'])
-		{
-			$show_parents=true;
-			view_menu($arr,$arr[$parent_id][$i]['id'],false,$level+1);
-		}
-		else
-		{
-			$show_parents=view_menu($arr,$arr[$parent_id][$i]['id'],true,$level+1);
-		}
-		echo "</li>\n";
-			
-		}
 		echo "</ul>\n";
 		if($show_parents)
 		{

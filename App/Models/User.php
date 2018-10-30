@@ -39,9 +39,10 @@ class User extends ModelLikeTable
      * and add or update ['id_user'=> idUser, 'id_session'=>session_id()]
      * @return bool true in case
      */
+    /*
     public function createOrUpdate_SESSION_UsersOnSite(){
-        if('authorized' !=  $this->authorized )
-            return false;
+       // if('authorized' !=  $this->authorized )
+         //   return false;
 //        если нет переменной с ключем 'users_onSite' в $_SESSION
         if (!isset($_SESSION['users_onSite'])) {
             //если нет переменной на сервере с данными о юзерах на сайте
@@ -62,7 +63,8 @@ class User extends ModelLikeTable
         $_SESSION['users_onSite'][$this->id] = session_id();
         return $this;
     }
-
+*/
+    
     public function isNew(){
         if (empty($this->id) || is_null($this->id)) {
             return true;
@@ -71,6 +73,11 @@ class User extends ModelLikeTable
         }
     }
 
+    /**
+     * find in table users user where session=session_id()
+     * @param string $session
+     * @return bool class User | false
+     */
     public static function getCurrentUserBySession(string $session){
         $db = new Db();
         $query = "SELECT * FROM ".self::TABLE." WHERE session = '".$session."' ; ";
@@ -87,6 +94,17 @@ class User extends ModelLikeTable
      * @return User or false
      */
     public static function getCurrentUserByLogin(string $loginUser)
+	{
+        $db = new Db();
+        $query = "SELECT * FROM ".self::TABLE." WHERE login = '".$loginUser."' ; ";
+
+        $currentUserByLogin = $db->query($query, self::class );
+        if($currentUserByLogin)
+           return $currentUserByLogin[0];
+        else return false;
+//         return $query;
+	}
+    public function getUserByLogin(string $loginUser)
 	{
         $db = new Db();
         $query = "SELECT * FROM ".self::TABLE." WHERE login = '".$loginUser."' ; ";
@@ -120,7 +138,7 @@ class User extends ModelLikeTable
      * save or update $this->session and $this->updated in table users
      * @return $this|bool
      */
-    public function udpateSessionInTable(){
+    public function updateSessionInTable(){
         $this->session = session_id();
         $this->updated = time();
         $res = $this->save();
@@ -146,7 +164,7 @@ class User extends ModelLikeTable
 	//	echo time();
         $userByLogin = self::getCurrentUserByLogin($login);
         if($userByLogin){
-            $userByLogin->createOrUpdate_SESSION_UsersOnSite();
+            //$userByLogin->createOrUpdate_SESSION_UsersOnSite();
         }
         return $res;
 	}
@@ -280,34 +298,31 @@ class User extends ModelLikeTable
     }
     
     /**
-     * tested if User authorized on site 
+     * tested if User authorized on site by password_verify
      * @param string $passwordFromPost 
      * @return bool true or false
      */
-    public function ifUserAuthorized(string $passwordFromPost){
-        if( password_verify($passwordFromPost, $this->password)){
-            $this->authorized = 'authorized';
-            return true;
-        }
-        $this->authorized = 'unauthorized';
-        return false;
+    public function isUserAuthorized(string $passwordFromClinet){
+       return password_verify($passwordFromClinet, $this->password);
     }
 
     /**
+     * создает или update data for User in table users and in $_SESSION
      * @return bool|string
      */
     public function check_session()
     {
         //если пользователь авторизирован на сайте
-        if ('authorized' == $this->authorized ){
+       // if ('authorized' == $this->authorized ){
+       //     $this->authorized = NULL;
             //Если срок действия сессии не истёк - продлеваем сессию вставляя новое время в поле update 
-           if( time() - $this->updated < 1800) {
-               if( $this->udpateSessionInTable() && $this->createOrUpdate_SESSION_UsersOnSite())
+//           if( time() - $this->updated < 1800) {
+               if( $this->updateSessionInTable()/* && $this->createOrUpdate_SESSION_UsersOnSite()*/ )
                   return true;
                return false;
-           }
-        }
-        return false;
+//           }
+        //}
+//        return false;
     }
 
 }

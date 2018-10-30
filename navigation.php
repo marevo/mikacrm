@@ -10,9 +10,9 @@
 				<?
 				//вроде autoload.php уже подключен
 //					require_once 'autoload.php';
-					$sid = session_id();
-				    $currentUserBySession =\App\Models\User::getCurrentUserBySession($sid);
-				    $currentUserBySession->name;
+//					$sid = session_id();
+//				    $currentUserBySession =\App\Models\User::getCurrentUserBySession($sid);
+//				    $currentUserBySession->name;
 				?>
 				<a><span class="glyphicon glyphicon-cog btn-lg" style="float: right;" id="profile"></span></a>
 			</div>
@@ -35,7 +35,7 @@
                     // предохранитель к доступу меню для администратора
                     $titlesForAdmin = ['AdminPanel','viewAllUsers','viewMenu'];
                     $handlersByMenuForAdmin = ['templates/viewAdminPanel.php','templates/viewAllUsers.php','templates/viewMenu.php'];
-                    $rightCurrentUser = explode(' ',$currentUserBySession->rightUser);
+                    $rightCurrentUser = explode(' ',$user->rightUser);
                     if( in_array($pageFromGet, $titlesForAdmin) &&
                         ( in_array('all' , $rightCurrentUser ) ||  in_array('super',$rightCurrentUser) ) ){
                         $pageNoIndex = $resultTemplateViewForAdmin = get_handler_by_menu_title($pageFromGet);
@@ -62,10 +62,9 @@
                             $pageNoIndex = $resultTemplateViewForOrdinaryUser = get_handler_by_menu_title($pageFromGet);
                         }else{
                             //если нет никаких прав то надо переключить на ветку регистрации
-                            $pageNoIndex = 'authorization.php';
-
+                           // $pageNoIndex = 'authorization.php';
+                            $pageNoIndex= './pageDontHaveAccessRights.php';
                         }
-
                     }
 
 //					include "templates/viewAdminPanel.php" ;
