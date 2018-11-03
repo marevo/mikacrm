@@ -15,4 +15,7 @@
     <link rel="shortcut icon"  href="/img/favicon/icon.ico">
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/ajax_post_get.js"></script>
+    <script type="text/javascript" src="js/jsSortSearchTable.js"></script>
+    <script type="text/javascript" src="js/jsForTable2.js"></script>
+
 </head>

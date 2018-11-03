@@ -1,57 +1,45 @@
 /**
  * Created by marevo on 10.08.2017.
  */
-$('#modalAddMaterialToOrder').on('click',function (event) {
-    var target = event.target;
 
-    console.log('сработало событие click target= '+target.nodeName +'  target.name= '+target.name);
-    if(target.nodeName == 'SPAN' ){
-        while (target.nodeName != "BUTTON"){
-            target = target.parentNode;//это будет строка где мы кликнули добавить
-        }
-    }
-    if(target.nodeName =='BUTTON'){
-        //по нажатию кнопки в таблице с классом class='addMaterialToOrder' будем добавлять материал в таблицу materialsToOrder
-        if($(target).hasClass('addMaterialToOrder')){
-            // будем добавлять данные в таблицу materialsToOrder idOrder,idMaterials,countNeed
-            var idMat = $(target).parent().siblings()['0'].textContent;
-            var idOr = ORDER.id; //idOrder
-            var tdPrev = $(target).parent().prev();
-            var count = $(tdPrev).find('input').val();
-            var countTrue = testInputDigit(count);
-           //добавление материала к заказу
-            /** работаем здесь*/
-            if(countTrue) {
-                console.log('send to server id= '+idOr +' idMat= '+idMat + ' count= '+count);
-                jquery_send('.divForAnswerServer','post','../controllerOneOrder.php',
-                    ['addCountMaterialToOrder', 'idMaterial', 'idOrder','countMaterial'],
-                    ['',idMat,idOr,count]
-                );
-                //закрыть окно добавки нужно сделать radioButton если много добавок то не закрывать модальное окно
-                // $('#modalAddMaterialToOrder').modal('hide');
-            }
-            else {
-               console.log('ошибка введения количество материала');
-            }
-            return false;
-        }
-    }
-});
-//подключение плагина для поиска через javaScript по таблице всех материалов из базы подтянутых в таблицу #modalAddMaterialToOrder
-$(function include(url) {
-    var script = document.createElement('script');
-    script.src = "/js/SortSearchTable.js";
-    // script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-    // alert('проверь');
-    console.log("Загружен файл для поиска по таблице всех материалов в базе через javaScript js/checkInput.js");
-});
+
+
+
+//
+// //подключение строки поиска через js по таблицу
+// $(document).ready(function() {
+//
+//     //подключение плагина для поиска через javaScript по таблице всех материалов из базы подтянутых в таблицу #modalAddMaterialToOrder
+//     $(function include(url) {
+//         var script = document.createElement('script');
+//         script.src = "js/jsSortSearchTable.js";
+//         // script.src = url;
+//         document.getElementsByTagName('head')[0].appendChild(script);
+//         // alert('проверь');
+//         console.log("Загружен файл1 js/jsSortSearchTable.js для поиска по таблице всех материалов в базе через javaScript js/checkInput.js");
+//     });
+//
+//     $(function include2(url) {
+//         var script = document.createElement('script');
+//         script.src = "js/jsForTable2.js";
+//         // script.src = url;
+//         document.getElementsByTagName('head')[0].appendChild(script);
+//         // alert('проверь');
+//         console.log("Загружен файл2 js/jsForTable2.js для поиска по таблице всех материалов в базе через javaScript js/checkInput.js");
+//     });
+//
+//     // $('table').DataTable({
+//     //     scrollY: '50vh',
+//     //     scrollCollapse: true,
+//     //     paging: false
+//     // });
+// });
 
 //при показе модального окна для добавки мы запросим данные о всех материалах что есть в базе и выведем их
 $('#modalAddMaterialToOrder').on('show.bs.modal',function () {
     // перед показом #modalAddMaterialToOrder закрываем окно #modalViewAllMaterialsToThisOrder показа всех материалов к заказу
     $('#modalViewAllMaterialsToThisOrder').modal('hide');
-  //*** вызвать функцию ниже
+   //*** вызвать функцию ниже
     getAllMaterialsFromBase();
     //повесим фунцию показа усеха не успеха обращений на сервер (запросы на изменение)
     herePokazRezZapros($('#rezShowFormAddMaterialToOrder'));
@@ -61,12 +49,10 @@ $('#modalAddMaterialToOrder').on('show.bs.modal',function () {
         console.log('в input ---'+target.nodeName);
         //проверка введения валидного значения в поле input количества материала
         if(target.nodeName == 'INPUT'){
-            elementsCssAfterTestInputDigit(target)
+            elementsCssAfterTestInputDigit(target);
             return false;
         }
     });
-
-
 });
 //запрос всех материалов и з базы
 function getAllMaterialsFromBase() {
@@ -115,11 +101,11 @@ $('#tableFildMaterialToAddToOrder').on('dblclick',function (event) {
 //для работы через комп, для работы через планшет будем использовать click или tup
 $('#tableFildMaterialToAddToOrder').on('click',function (event) {
     var target = event.target;
-   console.log('двойной клик в таблице в строке');
+   console.log('двойной/одинарный клик в таблице в строке');
     //найдем строку в которой был клик
-    while (target.nodeName != 'TBODY'){
-        if(target.nodeName == 'TR'){
-            console.log('поймали двойной клик в строке с id материала '+$(target).children()[0].textContent);
+    while (target && target.nodeName != 'TBODY'){
+        if(target.nodeName == 'TR' && target.parentNode.nodeName == 'TBODY'){
+            console.log('поймали двойной/одинарный клик в строке с id материала '+$(target).children()[0].textContent);
             var idMaterToAddForOrder = $(target).children()[0].textContent;
             var nameMaterToAddForOrder = $(target).children()[1].textContent;
             $('#modalAddMaterialToOrderFastIdMat').text(idMaterToAddForOrder);
@@ -128,6 +114,5 @@ $('#tableFildMaterialToAddToOrder').on('click',function (event) {
         }
         target = target.parentNode;
     }
-
     return false;
 });

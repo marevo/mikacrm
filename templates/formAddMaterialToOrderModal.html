@@ -11,8 +11,10 @@
                     <div class="row" style="background-color: #c0c7d2;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                    <h3 class="text-center">таблица всех материалов что есть в базе</h3>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><button class="btn btn-primary btn-sm" onclick=addSwitcherSearch()>найти материал</button></div>
+
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                    <h3 class="text-center">все материалы в базе</h3>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                     <div id="rezShowFormAddMaterialToOrder">результат зароса</div>
@@ -20,21 +22,46 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tableFildMaterialToAddToOrder">
-                                    <table id="tableFildMaterialToAddToOrder"><!--таблица для показа всех материалов что есть в базе--></table>
+                                    <table id="tableFildMaterialToAddToOrder"><!--таблица для показа всех материалов что есть в базе-->
+                                        <!--сюда будет выкинут ответ сервера в виде <thead>...</thead><tbody>...</tbody>  -->
+                                    </table>
                                 </div>
+                                <script type="text/javascript">
+                                    function addSwitcherSearch() {
+                                        var script = document.createElement('script');
+                                        //script.src = "js/jsSortSearchTable.js";
+                                        // script.src = url;
+//                                        $('head').append(script);
+                                        // alert('проверь');
+                                        //console.log("Загружен файл1 "+ script.src + " для модального окна");
+                                        script.src = "js/jsForTable2.js";
+//                                        $('head').append(script);
+//                                        console.log("Загружен файл1 "+ script.src + " для модального окна");
+                                        $(document).ready(function() {
+                                             $('#tableFildMaterialToAddToOrder').DataTable({
+//                                            $('table').DataTable({
+                                                scrollY: '60vh',
+                                                scrollCollapse: true,
+                                                paging: false
+                                            });
+                                        });
+                                    }
+                                </script>
+                                <!--<script  type='text/javascript' src='js/jsSortSearchTable.js'></script>-->
+                                <!--<script class='scriptDelete' type='text/javascript' src='js/jsForTable2.js'></script>-->
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><label for="idInputNameMaterial">введите название материала</label>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><label for="idInputNameMaterial">поиск по названию</label>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><input type="text"  name="inputNameMaterial" id="idInputNameMaterial" placeholder="название материала"/>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><button name="buttonSearchNameMaterial" class="btn btn-success" title="искать материал в базе материалов"><span class="glyphicon glyphicon-search"> искать</span>  </button>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><button name="buttonSearchNameMaterial" class="btn btn-sm btn-success" title="искать материал в базе материалов"><span class="glyphicon glyphicon-search"></span> искать</button>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><button class="btnViewModalWinForMaterialsToThisOrder btn btn-success" title="смотреть материалы в заказе"><span class="glyphicon glyphicon-eye-open"> материалы</span></button>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><button class="btnViewModalWinForMaterialsToThisOrder btn btn-sm btn-success" title="смотреть материалы в заказе"><span class="glyphicon glyphicon-eye-open"> материалы</span></button>
                                 </div>
                             </div>
                         </div>
@@ -42,23 +69,21 @@
                             результат запроса на сервер
                         </div>
                     </div>
-                    <div class="row" style="background-color: #2aabd2;">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h3>таблица найденных по запросу материалов что есть в базе</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <table id="tbSearchMaterialOnName"><!--таблица найденных по запросу материалов которые мы выведем ниже таблицы всех материалов в базе-->
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <!--<div class="row" style="background-color: #2aabd2;">-->
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+                                    <!--<h3>таблица найденных по запросу материалов что есть в базе</h3>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+                                    <!--<table id="tbSearchMaterialOnName">&lt;!&ndash;таблица найденных по запросу материалов которые мы выведем ниже таблицы всех материалов в базе&ndash;&gt;-->
+                                    <!--</table>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
                            </div><!--modal-body-->
             <div class="modal-futer">

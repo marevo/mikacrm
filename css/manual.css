@@ -609,9 +609,9 @@ table a{
     overflow-x: auto;
 }
 .tableFildMaterialToAddToOrder{
-    height: 500px;
-    overflow-x: auto;
-    overflow-y: auto;
+    /*height: 500px;*/
+    /*overflow-x: auto;*/
+    /*overflow-y: auto;*/
 }
 #modalViewAllMaterialsToThisOrder table a{
     min-width: 100px;
@@ -814,3 +814,6 @@ table a{
     align-items: center;
 }
 /**end выравниевание по вертикали div с кнопкой создать*/
+.dataTables_filter{
+    background-color: #c0c7d2;
+}

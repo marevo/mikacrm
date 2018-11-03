@@ -64,7 +64,6 @@ else:
             </script>
         </nav>
         <div class='row' id='main_cont'>
-            <div class="col-lg-12"><h1> нет данных сессии</h1></div>
             <?php include_once './authorization.php';
             ?>
 

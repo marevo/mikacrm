@@ -59,18 +59,19 @@
             xhr.open("POST", "/authorizationScript.php", false);
             xhr.overrideMimeType("text/plain; charset=utf8");
             xhr.send(formData);
+			location.reload();
 			if(xhr.responseText=="authorized")
 			{
 				//console.log('user aвторизирован:') ;
 				location.reload();
 			}
-//			else if(xhr.responseText!="unauthorized")
-//			{
-//				var main_cont =  document.getElementById("main_cont");
-//				main_cont.innerHTML = xhr.responseText;
-//				console.log(' не авторизирован user:') ;
-////                console.log(xhr.responseText);
-//			}
+			else if(xhr.responseText!="unauthorized")
+			{
+				var main_cont =  document.getElementById("main_cont");
+				main_cont.innerHTML = xhr.responseText;
+				console.log(' не авторизирован user:') ;
+                console.log(xhr.responseText);
+			}
         }
 		//Авторизоваться можно по нажатию на кнопку
 		document.getElementById("authorization").onclick = authorize;

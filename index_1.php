@@ -68,7 +68,7 @@ if ($_POST["action"] && htmlspecialchars($_POST["action"]) == "create") {
     echo "</head><body>";
     echo "<div class='container'>";
     echo "<div class='row' id='main_cont'>";
-    include_once('./authorization_one.php');
+    include_once('./authorization_old.php');
 
     echo "</div></div></body></html>";
 }

@@ -431,6 +431,14 @@ if(isset($_POST['getAllMaterialsFromBase'])){
             }
             $table.="</tbody>";
             echo "$table";
+            //подключение скрипта обработки поиска по таблице всех материалов
+          //  $jscode = "<script  type='text/javascript' src='js/jsSortSearchTable.js'></script>";
+            //echo "$jscode";
+//            $jscode = "<script class='scriptDelete' type='text/javascript' src='js/jsForTable2.js'></script>";
+//            echo "$jscode";
+            
+            
+
         }
     }
     else{
