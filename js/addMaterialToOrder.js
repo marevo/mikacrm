@@ -44,6 +44,8 @@ $('#modalAddMaterialToOrder').on('show.bs.modal',function () {
     $('.tableFildMaterialToAddToOrder').html('<table id="tableFildMaterialToAddToOrder"></table>');
     //*** вызвать функцию ниже
     getAllMaterialsFromBase();
+    // подключим клик добавления материала по таблице загруженных материалов
+    $('#tableFildMaterialToAddToOrder').on('click',addMatToOrder);
     //повесим фунцию показа усеха не успеха обращений на сервер (запросы на изменение)
     herePokazRezZapros($('#rezShowFormAddMaterialToOrder'));
     $('[name = "buttonSearchNameMaterial"]').on('click',serchAllMaterialsForName);
@@ -102,9 +104,10 @@ $('#tableFildMaterialToAddToOrder').on('dblclick',function (event) {
 */
 //клик на таблице всех материалов в базе что будут показаны в #tableFildMaterialToAddToOrder
 //для работы через комп, для работы через планшет будем использовать click или tup
-$('#tableFildMaterialToAddToOrder').on('click',function (event) {
+
+function addMatToOrder (event) {
     var target = event.target;
-   console.log('двойной/одинарный клик в таблице в строке');
+    console.log('двойной/одинарный клик в таблице в строке');
     //найдем строку в которой был клик
     while (target && target.nodeName != 'TBODY'){
         if(target.nodeName == 'TR' && target.parentNode.nodeName == 'TBODY'){
@@ -118,4 +121,18 @@ $('#tableFildMaterialToAddToOrder').on('click',function (event) {
         target = target.parentNode;
     }
     return false;
-});
+}
+
+//запуск функции подключения плагина поиска по таблице всех материалов
+function addSwitcherSearch() {
+    var script = document.createElement('script');
+
+    $(document).ready(function() {
+        $('#tableFildMaterialToAddToOrder').DataTable({
+//                                            $('table').DataTable({
+            scrollY: '60vh',
+            scrollCollapse: true,
+            paging: false
+        });
+    });
+}
