@@ -2,11 +2,11 @@
 //   if($objUser->login == "adminMarevo" && $objUser->password == "AdMiNmArEvO_1972")
 //   if($objUser->login == "admin" && $objUser->password == "password")
 ?>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 navbar navbar-inverse navbar-fixed-top" id="left-sidebar"><!--navbar navbar-inverse navbar-fixed-top-->
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 navbar navbar-inverse navbar-fixed-left" id="left-sidebar"><!--navbar navbar-inverse navbar-fixed-top-->
 			<!--меню сайта слева--> 
-			<img class="img-circle img-sm" hspace="20" vspace="20"/> 
-			<div class="menu_list">
-				<span class="fa-user" style="margin-left: 20px; margin-top: 10px;"></span>
+<!--			<img class="img-circle img-sm" hspace="20" vspace="20"/> -->
+<!--			<div class="menu_list">-->
+<!--				<span class="fa-user" style="margin-left: 20px; margin-top: 10px;"></span>-->
 				<?
 				//вроде autoload.php уже подключен
 //					require_once 'autoload.php';
@@ -14,14 +14,15 @@
 //				    $currentUserBySession =\App\Models\User::getCurrentUserBySession($sid);
 //				    $currentUserBySession->name;
 				?>
-				<a><span class="glyphicon glyphicon-cog btn-lg" style="float: right;" id="profile"></span></a>
-			</div>
+<!--				<a><span class="glyphicon glyphicon-cog btn-lg" style="float: right;" id="profile"></span></a>-->
+<!--			</div>-->
 				<ul id="menu_list">
 					<? include "handlers/menu.php"; ?>
 				</ul>
 			<!-- Доп блок для ответов сервера при отладке или для подсказки -->
 			<ul id="answerServer"><li></li></ul>
-		</div>	
+		</div>
+
 		<!-- конец меню сайта ( слева )--> 
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="main_modul">
 		<!--контент сайта-->
