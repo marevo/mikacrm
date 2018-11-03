@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
     // $('#tableFildMaterialToAddToOrder').DataTable({
+    // $('table:not(#tableFildMaterialToAddToOrder)').DataTable({
     $('table').DataTable({
         scrollY: '60vh',
         scrollCollapse: true,

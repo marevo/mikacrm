@@ -39,7 +39,10 @@
 $('#modalAddMaterialToOrder').on('show.bs.modal',function () {
     // перед показом #modalAddMaterialToOrder закрываем окно #modalViewAllMaterialsToThisOrder показа всех материалов к заказу
     $('#modalViewAllMaterialsToThisOrder').modal('hide');
-   //*** вызвать функцию ниже
+    //сначала очистим таблицу всех материалов которые были отображены, а только потом выховем функцию подтягивающую все материалы из базы клиенту
+    //иначе не будут правильно работать поиск среди всех материалов в модальном окне
+    $('.tableFildMaterialToAddToOrder').html('<table id="tableFildMaterialToAddToOrder"></table>');
+    //*** вызвать функцию ниже
     getAllMaterialsFromBase();
     //повесим фунцию показа усеха не успеха обращений на сервер (запросы на изменение)
     herePokazRezZapros($('#rezShowFormAddMaterialToOrder'));
