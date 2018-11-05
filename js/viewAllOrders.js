@@ -2,7 +2,7 @@
  * Created by marevo on 18.08.2017.
  */
 //вешаем клик на таблицу он должен вернуть id записи из кликнутой таблицы
-$('#table_Orders').on('click', function () {
+$('#table_Orders').on('click', function (event) {
     // здесь   $(this) - это sortStable
     var target = event.target;//где был клик
     //выйдем на ячеку кде был клик

@@ -541,6 +541,10 @@ if(isset($_POST['fastAddCountMaterialToOrder'])){
     //только потом будем делать insert()
     //найдем материал для которого будем считать по $idMaterial
     $materForInsert = Material::findObjByIdStatic($idMaterial);
+    if(!$materForInsert){
+        ModelLikeTable::showNoUspeh('заново выберите материал');
+        exit();
+    }
     //цена за нужное количество материала
     $materToOrder->priceCountNeed = $countMaterial * $materForInsert->priceForMeasure;
     //реком для заказа количество

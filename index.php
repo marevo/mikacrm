@@ -16,37 +16,36 @@ require './autoload.php';
 $sid = session_id();
 if (isset($_SESSION) && isset($_SESSION['user_id']) && $user = (new User())->findObjById($_SESSION['user_id'])):
 //if($user && time() - $user->updated <1800):
-   
+
     $user->updated = time();
     $user->session = $sid;
     if ($user->save()):
         //загружаем по умолчанию просмотр заказов
         ?>
-<!DOCTYPE html>
-<html>
-<?php require_once "head.php"; ?>
-<body>
-<div class='container'>
-    <div class='row'>
-        <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12' id='header'>
-            <div class="row">
-            <?php include_once './templates/header.php'; ?>
+        <!DOCTYPE html>
+        <html>
+        <?php require_once "head.php"; ?>
+        <body>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12' id='header'>
+                    <div class="row">
+                        <?php include_once './templates/header.php'; ?>
+                    </div>
+                </div><!-- end .row id=header   -->
+                <script type="text/javascript">
+                    //            $('.pod_user a').html("<i class='fa-user'>$user->login </i>");
+                    //            $('[name=exitIdUser]').val("$user->id");
+                </script>
             </div>
-        </div><!-- end .row id=header   -->
-        <script type="text/javascript">
-//            $('.pod_user a').html("<i class='fa-user'>$user->login </i>");
-//            $('[name=exitIdUser]').val("$user->id");
-        </script>
-    </div>
-    <div class='row' id='main_cont'>
-        <?php include_once 'navigation.php'; ?>
-    </div><!-- end .row id='main_cont'   -->
-</div><!-- end .container   -->
-</body>
-    </html>
+            <div class='row' id='main_cont'>
+                <?php include_once 'navigation.php'; ?>
+            </div><!-- end .row id='main_cont'   -->
+        </div><!-- end .container   -->
+        </body>
+        </html>
         <?php
     endif;
-
 else:
 // нет сессии или не найден юзер по параметру $_SESSION['user-id'] загрузим форму авторизации
     session_start();
@@ -56,15 +55,17 @@ else:
     <?php require_once "head.php"; ?>
     <body>
     <div class='container'>
-        <nav class='navbar navbar-default  navbar-fixed-top'>
-            <div class='row' id='header'>
-                <?php include_once './templates/header.php'; ?>
-            </div><!-- end .row id=header   -->
-            <script type="text/javascript">
-                $('.pod_user a').html("<i class='fa-user'>enter logIn </i>");
-                $('[name=exitIdUser]').val("");
-            </script>
-        </nav>
+        <div class="row">
+            <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12' id='header'>
+                <div class="row">
+                    <?php include_once './templates/header.php'; ?>
+                </div>
+            </div>
+        </div><!-- end .row id=header   -->
+        <script type="text/javascript">
+            $('.pod_user a').html("<i class='fa-user'>enter logIn </i>");
+            $('[name=exitIdUser]').val("");
+        </script>
         <div class='row' id='main_cont'>
             <?php include_once './authorization.php';
             ?>

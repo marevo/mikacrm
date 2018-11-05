@@ -72,7 +72,7 @@ $('#modalViewAllMaterialsToThisOrder').on('shown.bs.modal',function () {
 
 });
 //обработка click в таблице tableAllMaterialsForOrder
-function clickTableAllMaterialsForOrder() {
+function clickTableAllMaterialsForOrder(event) {
     var target = event.target;
     console.log('кликнули в модальном окне таблице id=tableAllMaterialsForOrder всех материалов в заказе');
     // проверим был клик в input

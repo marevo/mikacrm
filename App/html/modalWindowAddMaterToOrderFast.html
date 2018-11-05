@@ -21,7 +21,7 @@
                             <script type="text/javascript">
                                 $('#modalAddMaterialToOrderFastBtnAddFast').on('click',function (event) {
                                     $('.fastShowErorCountMat').remove();
-                                    if(testSumOnFloat( $('#modalAddMaterialToOrderFastCountMat').val()) ){
+                                    if(testSumOnFloat( $('#modalAddMaterialToOrderFastCountMat').val()) && $('#modalAddMaterialToOrderFastIdMat').text()!="" ){
                                         console.log('fast  send for fastAddMaterToOrder to server ');
                                         jquery_send('.divForAnswerServer','post','../controllerOneOrder.php',
                                                 ['fastAddCountMaterialToOrder', 'idMaterial', 'idOrder','countMaterial'],
@@ -33,6 +33,13 @@
 
                                     }
                                     else {
+                                        if($('#modalAddMaterialToOrderFastIdMat').text()==""){
+                                            $('#modalAddMaterialToOrderFastIdMat').before('<div style="background-color: red;" class="fastShowErorCountMat">выберите заново материал</div>');
+                                            setTimeout(function () {
+                                                $('.fastShowErorCountMat').remove();
+                                            },'2000');
+                                            return false;
+                                        }
                                         $('#modalAddMaterialToOrderFastIdMat').before('<div style="background-color: red;" class="fastShowErorCountMat">правильный формат 1 или 1.11 или 1.1</div>');
                                        setTimeout(function () {
                                            $('.fastShowErorCountMat').remove();

@@ -79,18 +79,18 @@
 
 
 <script type="text/javascript">
-    document.getElementById("profile").onclick=function() {
-		// создать объект для формы
-        // отослать
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "./profile.php", false);
-	    xhr.overrideMimeType("text/plain; charset=utf8");
-        xhr.send(null);
-		document.getElementById("main_modul").innerHTML = xhr.responseText;
-		document.getElementById("name_profile").value='<?echo $res[0]->name;?>';
-		document.getElementById("email_profile").value='<?echo $res[0]->gmail;?>';
-		document.getElementById("phone_profile").value='<?echo $res[0]->phone;?>';
-}
+//    document.getElementById("profile").onclick=function() {
+//		// создать объект для формы
+//        // отослать
+//        var xhr = new XMLHttpRequest();
+//        xhr.open("POST", "./profile.php", false);
+//	    xhr.overrideMimeType("text/plain; charset=utf8");
+//        xhr.send(null);
+//		document.getElementById("main_modul").innerHTML = xhr.responseText;
+//		document.getElementById("name_profile").value='<?//echo $res[0]->name;?>//';
+//		document.getElementById("email_profile").value='<?//echo $res[0]->gmail;?>//';
+//		document.getElementById("phone_profile").value='<?//echo $res[0]->phone;?>//';
+//}
 
    var zoomed=true;
    function zoomInY(targetBlock)
