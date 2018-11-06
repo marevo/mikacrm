@@ -16,6 +16,18 @@ function clientsOptions(){
     }
     return $option;
 }
+function sourceOptions(){
+    $option = "";
+    $option .="<option value='0' selected>не известен</option>";
+    $option .="<option value='1'>входящий звонок</option>";
+    $option .="<option value='2'>prom.ua</option>";
+    $option .="<option value='3'>olx</option>";
+    $option .="<option value='4'>сайт</option>";
+    $option .="<option value='5'>объявление в газете</option>";
+    $option .="<option value='6'>другой</option>";
+    $option .="<option value='7'>постоянный клиент</option>";
+    return $option;
+}
 //функция вставки в базу нового заказа
 ?>
     <div class="row">
@@ -28,7 +40,7 @@ function clientsOptions(){
             </div>
             <div class="row"><!--форма добавления нового заказа в базу -->
                 <div class="col-lg-12 сol-md-12 col-sm-12 col-xs-12 divForTableInFormAdd">
-                        <form  id="formOneOrder"   method="post" action="../App/controllers/controllerAddNewOrderToBase.php">
+                        <form  id="formOneOrder"  add accesskey=""  method="post" action="../App/controllers/controllerAddNewOrderToBase.php">
                             <table>
                                 <thead>
                                 <tr class="trDisplayNone">
@@ -57,14 +69,10 @@ function clientsOptions(){
                                             <!--                                            <option data-id="2">фирма Рога и Копыта</option>-->
                                         </select></td></tr>
 
-                                <tr><td> <label for="source">источник заказа</label></td>
-                                    <td><input type="radio" name="source" value="0" checked/> не известен</br>
-                                    <input type="radio" name="source" value="1"/> входящий звонок</br>
-                                    <input type="radio" name="source" value="2"/> prom.ua</br>
-                                    <input type="radio" name="source" value="3"/> olx</br>
-                                    <input type="radio" name="source" value="4"/> сайте</br>
-                                    <input type="radio" name="source" value="5"/> объявление в газете</br>
-                                    <input type="radio" name="source" value="6"/> другой</td></tr>
+                                <tr><td><label for="source">источник заказа</label></td>
+                                    <td><select name="source"   class="fontSizeMedium">
+                                            <?php echo sourceOptions(); ?>
+                                        </select></td></tr>
 
                                 <tr><td><label for="orderPrice">цена заказа</label></td>
                                     <td><input type="text" name="orderPrice" value="0.00" pattern="\d{1,5}(\.)?\d{1,2}" placeholder="0.00 или 1 или 1.0" title="формат целые или десятичные числа"/></td></tr>
@@ -114,7 +122,7 @@ $(function () {
                                             <!-- в поле с классом divForAnswerServer будем получать ответы сервера (script ) -->
                                             <div class="divForAnswerServer"></div>
                                         </div></td></tr>
-                                <tr><td><label for="submitFromFormOneOrder">после заполнения полей формы нажмите кнопку отправить</label> </td><td><input type="submit" name="submitFromFormOneOrder"/></td></tr>
+                                <tr><td><label for="submitFromFormOneOrder">после заполнения полей формы нажмите кнопку отправить</label> </td><td><input type="submit" value="создать" class="btn btn-success" name="submitFromFormOneOrder"/></td></tr>
                                 <tr class="trDisplayNone"><td><label for="controlka"></label> контролька</td><td><input name="controlka" value="sendNewOrderToBase"/></td></tr>
                                 </tbody>
                             </table>

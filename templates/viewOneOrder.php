@@ -383,6 +383,9 @@ $manufacturingPriceCount = $order->getManufacturingPriceCount();
                         case  '6':
                             tdToAllocate.text('другое').attr('data-value',ORDER[k]);
                             break;
+                        case  '7':
+                            tdToAllocate.text('постоянный клиент').attr('data-value',ORDER[k]);
+                            break;
                     }
                 }
                 if(k == 'isAllowCalculateCost') {
@@ -482,14 +485,25 @@ $manufacturingPriceCount = $order->getManufacturingPriceCount();
             console.log('значение ORDER[data-name] = '+ORDER[nameField]);
             ORDER.nameFieldForUpdate = nameField;
             ORDER.oldValue = ORDER[nameField];
-
+//меняем инпут радио на селект оптион
             inputt ="<input type='radio' name='source' value='0'/>не известен<br>"+
                 "<input type='radio' name='source' value='1'/>входящий звонок<br>"+
                 "<input type='radio' name='source' value='2'/>prom.ua<br>"+
                 "<input type='radio' name='source' value='3'/>olx<br>"+
                 "<input type='radio' name='source' value='4'/>сайте<br>"+
                 "<input type='radio' name='source' value='5'/>объявление в газете<br>"+
-                "<input type='radio' name='source' value='6'/>другое";
+                "<input type='radio' name='source' value='6'/>другое<br>"+
+                "<input type='radio' name='source' value='7'/>постоянный клиент";
+
+//            inputt ="<select name='source' ><option value='0'>не известен</option>"+
+//                            "<option value='1'>входящий звонок</option>"+
+//                            "<option value='2'>prom.ua</option>"+
+//                            "<option value='3'>olx</option>"+
+//                            "<option value='4'>сайт</option>"+
+//                            "<option value='5'>объявление в газете</option>"+
+//                            "<option value='6'>другой</option>"+
+//                            "<option value='7'>постоянный клиент</option></select>";
+
         }
         //*заказ укомплектован материалами 0-нет 1-да
         if(nameField == 'isCompleted'){
