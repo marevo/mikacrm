@@ -46,7 +46,7 @@ function activate (id/*,handler*/) {
 
 //		$mysql_password = NULL;
 		$mysql_password = $config1['password'];
-		$sql="SELECT * FROM menu";
+		$sql="SELECT * FROM menu ORDER BY  numberInOrder";
 		$mysqli = mysqli_connect($mysql_host, $mysql_username,$mysql_password,$mysql_database);
 		$result = mysqli_query($mysqli,$sql);
 		if(!$result) {

@@ -5,7 +5,7 @@
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="left-sidebar"><!--navbar navbar-inverse navbar-fixed-top-->
 			<!--меню сайта слева--> 
 <!--			<img class="img-circle img-sm" hspace="20" vspace="20"/> -->
-<!--			<div class="menu_list">-->
+			<div class="menu_list">
 <!--				<span class="fa-user" style="margin-left: 20px; margin-top: 10px;"></span>-->
 				<?
 				//вроде autoload.php уже подключен
@@ -17,10 +17,18 @@
 <!--				<a><span class="glyphicon glyphicon-cog btn-lg" style="float: right;" id="profile"></span></a>-->
 <!--			</div>-->
 				<ul id="menu_list">
-					<? include "handlers/menu.php"; ?>
+					<?php // include "handlers/menu.php"; ?>
 				</ul>
 			<!-- Доп блок для ответов сервера при отладке или для подсказки -->
 			<ul id="answerServer"><li></li></ul>
+			<!-- новая панель навигации  begin-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main_menu" style="background-color: #2aabd2;">-->
+					<?php include'./templates/viewMenu.php' ?>
+<!--				</div>-->
+<!--                </div>-->
+			</div>
+			<!-- новая панель навигации  end-->
 		</div>
 
 		<!-- конец меню сайта ( слева )--> 

@@ -1,5 +1,16 @@
 ﻿@charset "utf8";
 
+#menuDoIt li, #menuDoIt ul li{
+    width: 100%;
+}
+/*.nav>li>a:focus, .nav>li>a:hover,*/
+#menuDoIt ul li>a:focus, #menuDoIt ul li>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+#menuDoIt ul li>a {
+    padding: 15px;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -709,7 +720,7 @@ table a{
              .headingContent:first-child{
                  display: flex;
                  font-size: large;
-                 margin-top: 20px;
+                 /*margin-top: 20px;*/
              }
              .headingContent  div{
                  margin-right: 20px;
@@ -747,7 +758,8 @@ table a{
 #tbViewAllSuppliers tbody td span,
 #tbViewAllClients tbody td span,
 #tbViewAllContacts tbody td span,
-#tbViewAllUsers tbody td span{
+#tbViewAllUsers tbody td span,
+#tbViewMenu tbody td span{
 /*#tbViewAllMaterials tbody td:last-child span, .iconInTd{*/
     border: 1px solid black;
     border-radius: 3px;
