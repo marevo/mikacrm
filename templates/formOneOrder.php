@@ -18,15 +18,22 @@ function clientsOptions(){
 ?>
 <!DOCTYPE HTML>
 <html>
-<?php// include ('../head.php')?>
+<?php
+// include ('../head.php')
+?>
 <body>
 <div class="container" id="cont">
-    <!--<div class="row">
-        <?php //require_once('header.php'); ?>
-    </div>
-    <div class="row"><!-- навигация 
-        <?php //include ('../navigation.php');?>
-    </div>-->
+    <!--<div class="row"> -->
+        <?php
+         //require_once('header.php');
+          ?>
+    <!-- </div> -->
+    <!-- навигация -->
+    <!-- <div class="row"> -->
+        <?php 
+        //include ('../navigation.php');
+        ?>
+   <!-- </div> -->
     <div class="row">
        <!-- <div class="col-lg-2 backForDiv">
             этот див слева от таблицы в нем можно расположить дополнительные кнопки добавить редактировать удалить
